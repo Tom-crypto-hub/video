@@ -2,7 +2,10 @@ package com.martinwj.controller.protal;
 
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Result;
+import com.martinwj.entity.User;
+import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
+import com.martinwj.util.EmailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,9 +53,16 @@ public class UserAction {
     @RequestMapping("register_email.json")
     @ResponseBody
     public Result registerEmail(HttpServletRequest request, @RequestParam(value="userToken") String userToken) throws Exception {
+        User user = null;
+        try {
+            user = userService.getUserInfoByUserToken(userToken);
+        } catch (SysException sys) {
+            return Result.error(sys.getMessage());
+        }
+        // 发邮件
+        EmailUtils.sendMessage(request, userToken, user);
 
-
-        return null;
+        return Result.success();
     }
 
     /**
