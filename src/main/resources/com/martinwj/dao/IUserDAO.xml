@@ -4,45 +4,49 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.martinwj.dao.user.IUserDAO">
+
     <!-- 建立sql查询结果字段与实体属性的映射关系 -->
     <resultMap id="UserMap" type="com.martinwj.entity.User">
-        <result column="id" property="id"/>
-        <result column="loginName" property="loginName"/>
-        <result column="password" property="passWord"/>
-        <result column="email" property="email"/>
-        <result column="registerTime" property="registerTime"/>
-        <result column="registerIp" property="registerIp"/>
-        <result column="lastLoginTime" property="lastLoginTime"/>
-        <result column="lastLoginIp" property="lastLoginIp"/>
-        <result column="status" property="status"/>
+        <result column="id" property="id" />
+        <result column="loginName" property="loginName" />
+        <result column="password" property="passWord" />
+        <result column="email" property="email" />
+        <result column="registerTime" property="registerTime" />
+        <result column="registerIp" property="registerIp" />
+        <result column="lastLoginTime" property="lastLoginTime" />
+        <result column="lastLoginIp" property="lastLoginIp" />
+        <result column="status" property="status" />
 
-        <result column="avatar" property="avatar"/>
-        <result column="sign_personal" property="signPersonal"/>
-        <result column="point" property="point"/>
-        <result column="groupId" property="groupId"/>
-        <result column="groupName" property="groupName"/>
-        <result column="power" property="power"/>
+        <result column="avatar" property="avatar" />
+        <result column="sign_personal" property="signPersonal" />
+        <result column="point" property="point" />
+        <result column="groupId" property="groupId" />
+        <result column="groupName" property="groupName" />
+        <result column="power" property="power" />
     </resultMap>
 
     <!-- 查询用户 -->
     <select id="selectUser" resultMap="UserMap">
-        SELECT user.id,
-               user.loginName,
-               user.email,
-               user.registerTime,
-               user.registerIp,
-               user.lastLoginTime,
-               user.lastLoginIp,
-               user.status,
-               up.avatar,
-               up.signPersonal,
-               up.point,
-               g.name AS groupName,
-               g.power
-        FROM user,
-             userprofile up,
-             group g
-        WHERE user.id = up.userId
+        SELECT
+                user.id,
+                user.loginName,
+                user.email,
+                user.registerTime,
+                user.registerIp,
+                user.lastLoginTime,
+                user.lastLoginIp,
+                user.status,
+                up.avatar,
+                up.signPersonal,
+                up.point,
+                g.name AS groupName,
+                g.power
+        FROM
+                user,
+                userprofile up,
+                group g
+        WHERE
+                user.id = up.userId
           AND up.groupId = g.id
           AND loginName = #{loginName}
           AND password = #{passWord}

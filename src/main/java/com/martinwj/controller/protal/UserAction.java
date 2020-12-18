@@ -5,6 +5,9 @@ import com.martinwj.entity.Result;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
+import com.martinwj.entity.User;
+import com.martinwj.exception.SysException;
+import com.martinwj.service.UserService;
 import com.martinwj.util.EmailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,10 +40,15 @@ public class UserAction {
     @ResponseBody
     public Result register(HttpServletRequest request) throws Exception {
 
-//        Map<String, Object> info = userService.register(request);
-//
-//        return Result.success().add("info", info);
-        return null;
+        Map<String, Object> info = null ;
+        try{
+            info = userService.register(request);
+        }catch(SysException e){
+            return Result.error(e.getMessage());
+        }finally{
+            return Result.success().add("info",info);
+        }
+
     }
 
     /**
@@ -100,10 +108,20 @@ public class UserAction {
     @ResponseBody
     public Result login(HttpServletRequest request) throws Exception {
 
-//        Map<String, Object> info = userService.login(request);
+        /**
+         *  定义Map，去调ServiceImpl里面的Login方法，去验证用户信息
+         *  捕获异常的话，就返回对应的错误信息
+         *  未捕获到异常的话，就调用success方法，添加Info
+         */
+        Map<String, Object> info = null;
+        try{
+            info = userService.login(request);
+        }catch (SysException e ){
+            return Result.error(e.getMessage());
+        }finally {
+            return Result.success().add("info", info);
+        }
 
-//        return Result.success().add("info", info);
-        return null;
     }
 
     /**
