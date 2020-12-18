@@ -65,7 +65,7 @@
 				<span style="float: right;">
 					<a href="${pageContext.request.contextPath}/portal/find_pwd.action" target="_blank">忘记密码</a>
 					<span class="line"></span>
-					<a href="${pageContext.request.contextPath}/portal/register.action" target="_blank"">注册</a>
+					<a href="${pageContext.request.contextPath}/portal/register.action" target="_blank">注册</a>
 				</span>
 			</div>
 		</form>

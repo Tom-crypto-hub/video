@@ -72,8 +72,15 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 注入连接池 -->
 		<property name="dataSource" ref="dataSource"/>
+		<!-- 扫描 po 包，使用别名 -->
+<!--		<property name="typeAliasesPackage" value="com.martinwj.entity"/>-->
 		<!-- 映射文件的位置 -->
-		<property name="mapperLocations" value="classpath:com/martinwj/dao/*.xml"/>
+		<property name="mapperLocations">
+			<array>
+				<value>classpath:com/martinwj/dao/*/*.xml</value>
+				<value>classpath:com/martinwj/dao/*.xml</value>
+			</array>
+		</property>
 		<!-- 分页插件pageHelper -->
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 	</bean>
@@ -81,6 +88,8 @@
 	<!-- 该bean负责调用SqlSession的getMapper函数 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.martinwj.dao" />
+		<!-- 注意使用 sqlSessionFactoryBeanName 避免出现spring 扫描组件失效问题 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	
 	<!-- 开启事务注解驱动 -->
