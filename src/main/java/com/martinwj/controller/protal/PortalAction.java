@@ -50,7 +50,7 @@ public class PortalAction {
         map.put("seoInfo", seo);
 
         // 获取用户信息
-        User user = userService.getUserInfo(request);
+        User user = userService.getUser(request);
         map.put("userInfo", user);
 
         // 获取所选模板

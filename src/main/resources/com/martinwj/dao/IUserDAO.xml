@@ -52,4 +52,88 @@
           AND password = #{passWord}
     </select>
 
+    <!-- 查询用户数量 -->
+    <select id="countUser" resultType="int">
+        SELECT COUNT(*)
+        FROM user
+        WHERE 1 = 1
+        <if test="loginName!=null and loginName!=''">
+            AND loginName=#{loginName}
+        </if>
+        <if test="email!=null and email!=''">
+            AND email=#{email}
+        </if>
+    </select>
+
+    <!-- 注册新用户 -->
+    <insert id="insert">
+        INSERT INTO user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loginName!=null and loginName!=''">
+                loginName,
+            </if>
+            <if test="passWord!=null and passWord!=''">
+                password,
+            </if>
+            <if test="email!=null and email!=''">
+                email,
+            </if>
+            <if test="registerTime!=null and registerTime!=''">
+                registerTime,
+            </if>
+            <if test="registerIp!=null and registerIp!=''">
+                registerIp,
+            </if>
+            <if test="lastLoginTime!=null and lastLoginTime!=''">
+                lastLoginTime,
+            </if>
+            <if test="lastLoginIp!=null and lastLoginIp!=''">
+                lastLoginIp,
+            </if>
+            <if test="status!=null and status!=''">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loginName!=null and loginName!=''">
+                #{loginName},
+            </if>
+            <if test="passWord!=null and passWord!=''">
+                #{passWord},
+            </if>
+            <if test="email!=null and email!=''">
+                #{email},
+            </if>
+            <if test="registerTime!=null and registerTime!=''">
+                #{registerTime},
+            </if>
+            <if test="registerIp!=null and registerIp!=''">
+                #{registerIp},
+            </if>
+            <if test="lastLoginTime!=null and lastLoginTime!=''">
+                #{lastLoginTime},
+            </if>
+            <if test="lastLoginIp!=null and lastLoginIp!=''">
+                #{lastLoginIp},
+            </if>
+            <if test="status!=null and status!=''">
+                #{status},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新用户信息 -->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="passWord!=null">password=#{passWord},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="registerTime!=null">registerTime=#{registerTime},</if>
+            <if test="registerIp!=null">registerIp=#{registerIp},</if>
+            <if test="lastLoginTime!=null">lastLoginTime=#{lastLoginTime},</if>
+            <if test="lastLoginIp!=null">lastLogin_Ip=#{lastLoginIp},</if>
+            <if test="status!=null">status=#{status},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>
