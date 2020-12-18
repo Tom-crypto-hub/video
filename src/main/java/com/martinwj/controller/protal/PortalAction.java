@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * @ClassName: ProtalAction
+ * @ClassName: PortalAction
  * @Description: TODO
  * @author: martin-wj
  * @createDate: 2020-12-18
  */
 @Controller
 @RequestMapping("portal")
-public class ProtalAction {
+public class PortalAction {
 
     @Autowired
     private NavService navService;
