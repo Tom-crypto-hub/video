@@ -100,9 +100,10 @@ public class UserAction {
     @ResponseBody
     public Result login(HttpServletRequest request) throws Exception {
 
-        Map<String, Object> info = userService.login(request);
+//        Map<String, Object> info = userService.login(request);
 
-        return Result.success().add("info", info);
+//        return Result.success().add("info", info);
+        return null;
     }
 
     /**
