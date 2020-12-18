@@ -3,6 +3,7 @@ package com.martinwj.controller.protal;
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Result;
 import com.martinwj.entity.User;
+import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +33,15 @@ public class UserAction {
     @ResponseBody
     public Result register(HttpServletRequest request) throws Exception {
 
-//        Map<String, Object> info = userService.register(request);
-//
-//        return Result.success().add("info", info);
-        return null;
+        Map<String, Object> info = null ;
+        try{
+            info = userService.register(request);
+        }catch(SysException e){
+            return Result.error(e.getMessage());
+        }finally{
+            return Result.success().add("info",info);
+        }
+
     }
 
     /**
@@ -86,28 +92,22 @@ public class UserAction {
      */
     @RequestMapping("login.json")
     @ResponseBody
-    public Result login(User user, HttpServletRequest request) throws Exception {
+    public Result login(HttpServletRequest request) throws Exception {
 
-        //Map<String, Object> info = userService.login(request);
-        //
-        Map<String, Object> info = userService.login(request);
-        if(user==null){
-            info.put("type","error");
-            info.put("msg","未获取到数据");
-            return (Result) info;
+        /**
+         *  定义Map，去调ServiceImpl里面的Login方法，去验证用户信息
+         *  捕获异常的话，就返回对应的错误信息
+         *  未捕获到异常的话，就调用success方法，添加Info
+         */
+        Map<String, Object> info = null;
+        try{
+            info = userService.login(request);
+        }catch (SysException e ){
+            return Result.error(e.getMessage());
+        }finally {
+            return Result.success().add("info", info);
         }
-        // 从session中获取验证码值
-        HttpSession session = request.getSession();
-        user = userService.selectUser(user.getLoginName(),user.getPassWord());
-        if(user==null){
-            info.put("type","error");
-            info.put("msg","用户名或密码错误");
-            return (Result) info;
-        }
-        session.setAttribute("user",user);
-        info.put("type","success");
-        info.put("msg","登陆成功");
-        return Result.success().add("info", info);
+
     }
 
     /**
