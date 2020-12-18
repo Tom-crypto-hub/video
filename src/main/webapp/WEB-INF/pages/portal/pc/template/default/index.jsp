@@ -10,16 +10,17 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>${seoInfo.title}</title>
-<meta name="keywords" content="${seoInfo.keywords}" />
-<meta name="description" content="${seoInfo.description}" />
-<c:import url="common/common.jsp"></c:import>
+	<meta charset="utf-8">
+	<title>${seoInfo.title}</title>
+	<meta name="keywords" content="${seoInfo.keywords}" />
+	<meta name="description" content="${seoInfo.description}" />
+	<c:import url="common/common.jsp"/>
 </head>
 <body>
+
 	<!--头部-->
 	<div class="header-wrap header-channel">
-		<c:import url="common/header.jsp"></c:import>
+		<c:import url="common/header.jsp"/>
 	</div>
 
 	<!--内容-->
@@ -190,7 +191,7 @@
 		<!--广告-->
 		<div class="block no-shadow">
 			<div class="main">
-				<c:import url="ad/ad1.jsp"></c:import>
+				<c:import url="ad/ad1.jsp"/>
 			</div>
 		</div>
 		
@@ -307,7 +308,7 @@
 									<li id="newest_left">
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第24集</span>
-											<img src="http://173.javaex.cn/FuFpI3FQhIUejcz9tMgUl_aj3pbf" width="100%" height="100%" style="animation-delay: '+Math.random()+'s" />
+											<img src="http://173.javaex.cn/FuFpI3FQhIUejcz9tMgUl_aj3pbf" width="100%" height="100%" style="'animation-delay: '+Math.random()+'s'" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -629,7 +630,7 @@
 					<!--选项卡内容部分-->
 					<div class="tab-content">
 						<div>
-							<ul id="tab4_1" class="equal-6 cover">
+							<ul id="tab4_0" class="equal-6 cover">
 								<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
@@ -680,42 +681,43 @@
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
-							<li>
-								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
-								</a>
-								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
-								<p>100次播放</p>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
-								</a>
-								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
-								<p>100次播放</p>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
-								</a>
-								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
-								<p>100次播放</p>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
-								</a>
-								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
-								<p>100次播放</p>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
-								</a>
-								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
-								<p>100次播放</p>
-							</li>
-							<span class="clearfix"></span>
+								<li>
+									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
+										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									</a>
+									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
+									<p>100次播放</p>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
+										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									</a>
+									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
+									<p>100次播放</p>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
+										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									</a>
+									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
+									<p>100次播放</p>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
+										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									</a>
+									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
+									<p>100次播放</p>
+								</li>
+								<li>
+									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
+										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									</a>
+									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
+									<p>100次播放</p>
+								</li>
+								<span class="clearfix"></span>
+							</ul>
 							</ul>
 						</div>
 						<div><ul id="tab4_2" class="equal-6 cover">2</ul></div>

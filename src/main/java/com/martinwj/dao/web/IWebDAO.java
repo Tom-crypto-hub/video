@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
  * @author: martin-wj
  * @createDate: 2020-12-18
  */
-@Repository
 public interface IWebDAO {
-
 
     /**
      * 查询网站信息
