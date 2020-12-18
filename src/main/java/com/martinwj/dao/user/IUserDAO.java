@@ -21,4 +21,25 @@ public interface IUserDAO {
      */
     User selectUser(@Param("loginName") String loginName, @Param("passWord") String passWord);
 
+    /**
+     * 查询用户数量
+     * @param loginName 注册时填写的账号
+     * @param email 注册时填写的邮箱
+     * @return
+     */
+    int countUser(@Param("loginName") String loginName, @Param("email") String email);
+
+    /**
+     * 注册新用户
+     * @param user
+     */
+    int insert(User user);
+
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int update(User user);
+
 }

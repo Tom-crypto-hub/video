@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.userProfile.IUserProfileDAO">
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="UserProfileInfoMap" type="com.martinwj.entity.UserProfile">
+        <result column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="groupId" property="groupId"/>
+        <result column="avatar" property="avatar"/>
+        <result column="signPersonal" property="signPersonal"/>
+        <result column="point" property="point"/>
+    </resultMap>
+
+    <!-- 注册新用户 -->
+    <insert id="insert">
+        INSERT INTO userprofile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId!=null and userId!=''">
+                userId,
+            </if>
+            <if test="groupId!=null and groupId!=''">
+                groupId,
+            </if>
+            <if test="avatar!=null and avatar!=''">
+                avatar,
+            </if>
+            <if test="signPersonal!=null and signPersonal!=''">
+                signPersonal,
+            </if>
+            <if test="point!=null and point!=''">
+                point,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId!=null and userId!=''">
+                #{userId},
+            </if>
+            <if test="groupId!=null and groupId!=''">
+                #{groupId},
+            </if>
+            <if test="avatar!=null and avatar!=''">
+                #{avatar},
+            </if>
+            <if test="signPersonal!=null and signPersonal!=''">
+                #{signPersonal},
+            </if>
+            <if test="point!=null and point!=''">
+                #{point},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 查询指定用户组的数量 -->
+    <select id="countByGroupId" resultType="int">
+        SELECT COUNT(*)
+        FROM userprofile
+        WHERE groupId = #{groupId}
+    </select>
+
+    <!-- 更新用户扩展信息 -->
+    <update id="update">
+        UPDATE userprofile
+        <set>
+            <if test="groupId!=null">
+                groupId=#{groupId},
+            </if>
+            <if test="avatar!=null">
+                avatar=#{avatar},
+            </if>
+            <if test="signPersonal!=null">
+                signPersonal=#{signPersonal},
+            </if>
+            <if test="point!=null">
+                point=#{point},
+            </if>
+        </set>
+        WHERE userId = #{userId}
+    </update>
+
+    <!-- 批量更新用户 -->
+    <update id="batchUpdate">
+        UPDATE userprofile
+        <set>
+            <if test="groupId!=null">
+                groupId=#{groupId},
+            </if>
+        </set>
+        WHERE userId IN
+        <foreach collection="userIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

@@ -2,6 +2,8 @@ package com.martinwj.controller.protal;
 
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Result;
+import com.martinwj.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("portal/user")
 public class UserAction {
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 用户注册
@@ -85,10 +90,9 @@ public class UserAction {
     @ResponseBody
     public Result login(HttpServletRequest request) throws Exception {
 
-//        Map<String, Object> info = userService.login(request);
+        Map<String, Object> info = userService.login(request);
 
-//        return Result.success().add("info", info);
-        return null;
+        return Result.success().add("info", info);
     }
 
     /**

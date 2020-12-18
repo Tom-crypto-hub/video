@@ -24,6 +24,14 @@ public interface UserService {
     public User selectUser(String loginName, String passWord);
 
     /**
+     * 校验账号是否已经被注册
+     * @param loginName 注册时填写的账号
+     * @param email 注册时填写的邮箱
+     * @return
+     */
+    public int countUser(String loginName, String email);
+
+    /**
      * 注册新用户
      * @param request
      * @return
@@ -62,6 +70,13 @@ public interface UserService {
      * @param request
      * @return
      */
-    public User getUserInfo(HttpServletRequest request);
+    public User getUser(HttpServletRequest request);
+
+    /**
+     * 保存用户信息
+     * @param user
+     * @throws SysException
+     */
+    public void save(User user) throws SysException;
 
 }
