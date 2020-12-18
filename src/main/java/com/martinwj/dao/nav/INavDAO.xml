@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.nav.INavDAO">
+    <cache/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="NavMap" type="com.martinwj.entity.Nav">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="link" property="link"/>
+        <result column="type" property="type"/>
+        <result column="sort" property="sort"/>
+        <result column="isIndex" property="isIndex"/>
+        <result column="isUse" property="isUse"/>
+        <result column="channelId" property="channelId"/>
+    </resultMap>
+
+    <!-- 可用导航列表 -->
+    <select id="listIsUse" resultMap="NavMap">
+        SELECT *
+        FROM nav
+        WHERE isUse = '1'
+        ORDER BY sort
+    </select>
+</mapper>

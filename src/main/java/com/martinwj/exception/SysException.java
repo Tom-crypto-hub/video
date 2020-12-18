@@ -1,5 +1,7 @@
 package com.martinwj.exception;
 
+import com.martinwj.constant.ErrorMsg;
+
 /**
  * @ClassName: SysException
  * @Description: TODO  系统自定义异常类，抛出预期异常信息
@@ -13,9 +15,9 @@ public class SysException extends Exception{
     // 异常信息
     public String message;
 
-    public SysException(String message){
-        super(message);
-        this.message = message;
+    public SysException(ErrorMsg message){
+        super(message.getMsg());
+        this.message = message.getMsg();
     }
 
     public String getMessage() {

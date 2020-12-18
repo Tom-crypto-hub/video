@@ -1,25 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: martin
-  Date: 2020/12/1
-  Time: 15:27
+  Date: 2020/12/18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    <a href="account/findAll.action">查询</a>
-
-    <hr>
-
-    <form action="account/save" method="post">
-        <label for="name">姓名：</label><input type="text" name="name" id="name"><br>
-        <label for="money">金额：</label><input type="text" name="money" id="money"><br>
-        <input type="submit" value="提交">
-    </form>
-
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<jsp:forward page="portal/index.action"/>
