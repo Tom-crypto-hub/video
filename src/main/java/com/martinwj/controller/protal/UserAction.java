@@ -2,6 +2,8 @@ package com.martinwj.controller.protal;
 
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Result;
+import com.martinwj.entity.User;
+import com.martinwj.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("portal/user")
 public class UserAction {
+    private UserService userService;
 
     /**
      * 用户注册
@@ -83,12 +86,28 @@ public class UserAction {
      */
     @RequestMapping("login.json")
     @ResponseBody
-    public Result login(HttpServletRequest request) throws Exception {
+    public Result login(User user, HttpServletRequest request) throws Exception {
 
-//        Map<String, Object> info = userService.login(request);
-
-//        return Result.success().add("info", info);
-        return null;
+        //Map<String, Object> info = userService.login(request);
+        //
+        Map<String, Object> info = userService.login(request);
+        if(user==null){
+            info.put("type","error");
+            info.put("msg","未获取到数据");
+            return (Result) info;
+        }
+        // 从session中获取验证码值
+        HttpSession session = request.getSession();
+        user = userService.selectUser(user.getLoginName(),user.getPassWord());
+        if(user==null){
+            info.put("type","error");
+            info.put("msg","用户名或密码错误");
+            return (Result) info;
+        }
+        session.setAttribute("user",user);
+        info.put("type","success");
+        info.put("msg","登陆成功");
+        return Result.success().add("info", info);
     }
 
     /**
