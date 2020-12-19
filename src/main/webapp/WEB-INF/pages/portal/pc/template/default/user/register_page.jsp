@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>用户注册 - ${webInfo.name}</title>
-<link rel="shortcut icon" href=${pageContext.request.contextPath}/static/favicon.ico type=image/x-icon>
+	<link rel="shortcut icon" href=${pageContext.request.contextPath}/static/favicon.ico type=image/x-icon>
 <!--字体图标样式-->
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/icomoon.css" rel="stylesheet" />
 <!--动画样式-->
@@ -19,7 +19,7 @@
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/common.css" rel="stylesheet" />
 <!--皮肤（缇娜）-->
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/skin/tina.css" rel="stylesheet" />
-<script src="${pageContext.request.contextPath}/static/default/javaex/pc/lib/jquery-1.7.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/default/javaex/pc/lib/jquery-1.7.2.min.js"></script>
 <!--核心组件-->
 <script src="${pageContext.request.contextPath}/static/default/javaex/pc/js/javaex.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/default/css/loginreg.css" rel="stylesheet" />
@@ -118,19 +118,19 @@
 	// 点击注册
 	function register() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/register.json",
+			url : "${pageContext.request.contextPath}/portal/user/register.action",
 			type : "POST",
 			dataType : "json",
 			data : $("#form").serialize(),
 			success : function(rtn) {
 				if (rtn.code=="000000") {
 					var info = rtn.data.info;
-					
+
 					delCookie("UID");
 					delCookie("userToken");
 					setCookie("UID", info.UID);
 					setCookie("userToken", info.userToken);
-					
+
 					$("#register").hide();
 					$("#validate").show();
 					sendEmail();
@@ -152,7 +152,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/register_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/register_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -177,7 +177,7 @@
 	// 点击激活账号
 	function validate() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/validate_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/validate_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {

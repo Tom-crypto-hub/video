@@ -1,9 +1,14 @@
 package com.martinwj.service;
 
+import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 
+import javax.mail.internet.ParseException;
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -78,5 +83,39 @@ public interface UserService {
      * @throws SysException
      */
     public void save(User user) throws SysException;
+
+    /**
+     * 用户换绑邮箱验证
+     * @param user 用户信息
+     * @param subject 邮件标题
+     * @param type 验证类型
+     * @throws SysException
+     */
+    public void sendEmail(User user, String subject, String type) throws SysException;
+
+    /**
+     * 邮箱验证，激活账号
+     * @param user
+     * @param identifyingCode
+     * @throws SysException
+     * @throws ParseException
+     */
+    public void validateEmail(User user, String identifyingCode) throws SysException, ParseException;
+
+    /**
+     * 用户找回密码，发送邮箱验证码
+     * @param email 用户填写的邮箱地址
+     * @throws SysException
+     */
+    public void findPwdEmail(String email) throws SysException;
+
+    /**
+     * 用户找回密码，校验验证码
+     * @param email 邮箱
+     * @param identifyingCode 验证码
+     * @throws SysException
+     * @throws ParseException
+     */
+    public void findPwdCode(String email, String identifyingCode) throws SysException, ParseException;
 
 }

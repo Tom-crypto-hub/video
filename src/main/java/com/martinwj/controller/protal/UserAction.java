@@ -11,6 +11,7 @@ import com.martinwj.service.UserService;
 import com.martinwj.util.EmailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,10 +37,9 @@ public class UserAction {
      * 用户注册
      * @throws Exception
      */
-    @RequestMapping("register.json")
+    @RequestMapping("register.action")
     @ResponseBody
     public Result register(HttpServletRequest request) throws Exception {
-
         Map<String, Object> info = null ;
         try{
             info = userService.register(request);
@@ -61,14 +61,13 @@ public class UserAction {
     @RequestMapping("register_email.json")
     @ResponseBody
     public Result registerEmail(HttpServletRequest request, @RequestParam(value="userToken") String userToken) throws Exception {
-        User user = null;
-        try {
-            user = userService.getUserInfoByUserToken(userToken);
-        } catch (SysException sys) {
-            return Result.error(sys.getMessage());
+
+        if (StringUtils.isEmpty(userToken)) {
+            throw new SysException(ErrorMsg.ERROR_100011);
         }
-        // 发邮件
-        EmailUtils.sendMessage(request, userToken, user);
+        User user = userService.getUserByUserToken(userToken);
+
+        userService.sendEmail(user, "注册邮箱验证", "register");
 
         return Result.success();
     }
@@ -87,16 +86,28 @@ public class UserAction {
                                 @RequestParam(value="identifyingCode") String identifyingCode,
                                 @RequestParam(value="userToken") String userToken) throws Exception {
         // 校验验证码
+        if (StringUtils.isEmpty(identifyingCode)) {
+            throw new SysException(ErrorMsg.ERROR_100013);
+        }
 
         // 校验用户凭证
+        if (StringUtils.isEmpty(userToken)) {
+            throw new SysException(ErrorMsg.ERROR_100011);
+        }
 
         // 取出用户身份信息
+        User user = userService.getUserByUserToken(userToken);
+        System.out.println(user);
 
+        User userTemp = new User();
+        userTemp.setId(user.getId());
         // 激活
+        userTemp.setStatus("1");
+
+        userService.validateEmail(userTemp, identifyingCode);
 
         // 将用户信息保存进session
-
-        // 返回
+        request.getSession().setAttribute("userInfo", user);
         return Result.success();
     }
 

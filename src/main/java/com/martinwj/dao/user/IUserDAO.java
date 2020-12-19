@@ -42,4 +42,11 @@ public interface IUserDAO {
      */
     int update(User user);
 
+    /**
+     * 根据邮箱查询用户
+     * @param email
+     * @return
+     */
+    User selectUserByEmail(String email);
+
 }
