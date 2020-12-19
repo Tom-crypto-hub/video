@@ -9,6 +9,7 @@ import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
 import com.martinwj.util.EmailUtils;
+import com.martinwj.util.Jiami;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,11 +88,18 @@ public class UserAction {
                                 @RequestParam(value="identifyingCode") String identifyingCode,
                                 @RequestParam(value="userToken") String userToken) throws Exception {
         // 校验验证码
-
+        if(identifyingCode==null){
+            return Result.error("验证码验证失败");
+        }
         // 校验用户凭证
-
+        if(userToken==null){
+            return Result.error("用户凭证验证失败");
+        }
         // 取出用户身份信息
-
+        String identityInfo[]=Jiami.getInstance().decrypt(userToken).split("&&");
+        String username=identityInfo[0];
+        String password=identityInfo[1];
+        String email=identityInfo[2];
         // 激活
 
         // 将用户信息保存进session
