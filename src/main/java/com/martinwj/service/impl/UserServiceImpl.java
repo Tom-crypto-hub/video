@@ -433,4 +433,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public void update(User user) throws SysException {
+        iUserDAO.update(user);
+    }
+
 }

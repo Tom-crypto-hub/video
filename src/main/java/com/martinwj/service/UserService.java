@@ -79,4 +79,9 @@ public interface UserService {
      */
     public void save(User user) throws SysException;
 
+    /**
+     * 更新用户信息
+     */
+    public void update(User user) throws SysException;
+
 }

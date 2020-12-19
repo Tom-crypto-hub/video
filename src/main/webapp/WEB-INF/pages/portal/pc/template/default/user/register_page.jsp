@@ -118,7 +118,7 @@
 	// 点击注册
 	function register() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/register.json",
+			url : "${pageContext.request.contextPath}/portal/user/register.json",
 			type : "POST",
 			dataType : "json",
 			data : $("#form").serialize(),
@@ -152,7 +152,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/register_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/register_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -177,7 +177,7 @@
 	// 点击激活账号
 	function validate() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/validate_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/validate_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {

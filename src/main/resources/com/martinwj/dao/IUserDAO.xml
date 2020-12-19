@@ -131,7 +131,7 @@
             <if test="registerTime!=null">registerTime=#{registerTime},</if>
             <if test="registerIp!=null">registerIp=#{registerIp},</if>
             <if test="lastLoginTime!=null">lastLoginTime=#{lastLoginTime},</if>
-            <if test="lastLoginIp!=null">lastLogin_Ip=#{lastLoginIp},</if>
+            <if test="lastLoginIp!=null">lastLoginIp=#{lastLoginIp},</if>
             <if test="status!=null">status=#{status},</if>
         </set>
         WHERE id = #{id}
