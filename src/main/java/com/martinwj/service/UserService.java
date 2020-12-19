@@ -118,8 +118,11 @@ public interface UserService {
     public void findPwdCode(String email, String identifyingCode) throws SysException, ParseException;
 
     /**
-     * 更新用户信息
+     * 用户找回密码，设置新密码
+     * @param email 邮箱
+     * @param identifyingCode 验证码
+     * @param password 新密码
+     * @throws SysException
      */
-    public void update(User user) throws SysException;
-
+    public void setNewPassword(String email, String identifyingCode, String password) throws SysException;
 }

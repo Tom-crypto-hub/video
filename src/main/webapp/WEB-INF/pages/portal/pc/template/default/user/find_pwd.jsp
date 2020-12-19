@@ -120,7 +120,7 @@
             });
 
             $.ajax({
-                url : "${pageContext.request.contextPath}/portal/user_info/find_pwd_email.json",
+                url : "${pageContext.request.contextPath}/portal/user/find_pwd_email.json",
                 type : "POST",
                 dataType : "json",
                 data : {
@@ -165,7 +165,7 @@
             });
         } else {
             $.ajax({
-                url : "${pageContext.request.contextPath}/portal/user_info/find_pwd_code.json",
+                url : "${pageContext.request.contextPath}/portal/user/find_pwd_code.json",
                 type : "POST",
                 dataType : "json",
                 data : {
@@ -207,13 +207,13 @@
             });
         } else {
             $.ajax({
-                url : "${pageContext.request.contextPath}/portal/user_info/set_new_pass_word.json",
+                url : "${pageContext.request.contextPath}/portal/user/set_new_pass_word.json",
                 type : "POST",
                 dataType : "json",
                 data : {
                     "email" : $("#email").val(),
                     "identifyingCode" : $("#identifying_code").val(),
-                    "passWord" : $("#pass_word").val()
+                    "password" : $("#pass_word").val()
                 },
                 success : function(rtn) {
                     if (rtn.code=="000000") {

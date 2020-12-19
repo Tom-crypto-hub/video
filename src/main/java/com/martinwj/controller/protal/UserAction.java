@@ -11,10 +11,12 @@ import com.martinwj.service.UserService;
 import com.martinwj.util.EmailUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.internet.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -143,6 +145,73 @@ public class UserAction {
     public Result login(HttpSession session) {
         // 清除session
         session.invalidate();
+
+        return Result.success();
+    }
+
+    /**
+     * 找回密码
+     * 邮箱发送
+     * @param email 传的邮箱
+     * @return
+     */
+    @RequestMapping("find_pwd_email.json")
+    @ResponseBody
+    public Result find_pwd_email(String email) throws SysException{
+        //验证邮箱是否为空，空的话邮件发不过去，抛异常
+        if(StringUtils.isEmpty(email)){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        //给当前邮箱发送邮件
+        userService.findPwdEmail(email);
+        return Result.success();
+    }
+
+    /**
+     * 找回密码
+     * 校验验证码
+     * @param email 校验邮箱
+     * @param identifyingCode 邮箱收到的验证码
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("find_pwd_code.json")
+    @ResponseBody
+    public Result find_pwd_code(String email,String identifyingCode) throws SysException, ParseException {
+        // 校验验证码是否为空
+        if(StringUtils.isEmpty(identifyingCode)){
+            throw new SysException(ErrorMsg.ERROR_100013);
+        }
+
+        //校验验证码是否正确
+        userService.findPwdCode(email, identifyingCode);
+        return Result.success();
+    }
+
+    /**
+     * 找回密码
+     * 设置新密码
+     * @param email 校验邮箱
+     * @param identifyingCode 邮箱收到的验证码
+     * @Param password 新密码
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("set_new_pass_word.json")
+    @ResponseBody
+    public Result set_new_pass_word(String email,String identifyingCode, String password) throws SysException, ParseException {
+        // 校验密码是否为空
+        if(StringUtils.isEmpty(password)){
+            throw new SysException(ErrorMsg.ERROR_100006);
+        }
+        // 2.4 校验密码长度
+        password = password.replaceAll("\\s*", "");
+        if (password.length() < 6 || password.length() > 16) {
+            throw new SysException(ErrorMsg.ERROR_100007);
+        }
+
+        // 设置新密码
+        userService.setNewPassword(email, identifyingCode, password);
 
         return Result.success();
     }

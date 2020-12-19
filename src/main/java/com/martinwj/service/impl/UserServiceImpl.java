@@ -619,9 +619,25 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
-    @Override
-    public void update(User user) throws SysException {
+    /**
+     * 用户找回密码，设置新密码
+     * @param email 邮箱
+     * @param identifyingCode 验证码
+     * @param password 新密码
+     * @throws SysException
+     */
+    public void setNewPassword(String email, String identifyingCode, String password) throws SysException {
+        // 删除激活表中的验证记录
+        Activate find_pwd = iActivateDAO.selectByEmailAndCodeAndType(email, identifyingCode, "find_pwd");
+        if(StringUtils.isEmpty(find_pwd)){
+            throw new SysException(ErrorMsg.ERROR_X00002);
+        }
+        iActivateDAO.delete(find_pwd.getId());
+        // 通过邮箱修改用户密码为新密码
+        User user = new User();
+        user.setId(find_pwd.getUserId());
+        user.setEmail(email);
+        user.setPassWord(MD5.md5(password));
         iUserDAO.update(user);
     }
 

@@ -79,7 +79,7 @@
 	});
 	function login() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/login.json",
+			url : "${pageContext.request.contextPath}/portal/user/login.json",
 			type : "POST",
 			dataType : "json",
 			data : $("#form").serialize(),
@@ -93,7 +93,7 @@
 					setCookie("userToken", info.userToken);
 
 					// 跳转到首页
-					window.location.href = "${pageContext.request.contextPath}/";
+					window.location.href = "${pageContext.request.contextPath}/portal/index.action";
 				} else {
 					javaex.optTip({
 						content : rtn.message,
