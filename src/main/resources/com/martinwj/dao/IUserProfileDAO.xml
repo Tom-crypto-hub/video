@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 注册新用户 -->
-    <insert id="insert">
+    <insert id="insert" parameterType="com.martinwj.entity.UserProfile">
         INSERT INTO userprofile
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId!=null and userId!=''">

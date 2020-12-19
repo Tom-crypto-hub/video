@@ -118,7 +118,7 @@
 	// 点击注册
 	function register() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user/register.json",
+			url : "${pageContext.request.contextPath}/portal/user/register.action",
 			type : "POST",
 			dataType : "json",
 			data : $("#form").serialize(),
