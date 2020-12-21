@@ -10,14 +10,14 @@
 <div class="footer-inner">
 	<div class="footmenu">
 		<span class="pc-menu-only">
-			<a href="http://www.javaex.cn/" target="_blank" class="menu-item company-intro">网站介绍</a>
+			<a href="https://www.martinwj.com/" target="_blank" class="menu-item company-intro">网站介绍</a>
 			<span class="dl"></span>
-			<a href="http://www.javaex.cn/" target="_blank" class="menu-item">联系方式</a>
+			<a href="https://www.martinwj.com/" target="_blank" class="menu-item">联系方式</a>
 			<span class="dl"></span>
 		</span>
-		<a href="http://www.javaex.cn/" rel="nofollow" target="_blank" class="menu-item">帮助与反馈</a>
+		<a href="https://www.martinwj.com/" rel="nofollow" target="_blank" class="menu-item">帮助与反馈</a>
 		<span class="dl"></span>
-		<a href="http://www.javaex.cn/" rel="nofollow" target="_blank" class="menu-item">侵权投诉</a>
+		<a href="https://www.martinwj.com/" rel="nofollow" target="_blank" class="menu-item">侵权投诉</a>
 		<c:if test="${!empty webInfo.statisticalCode}">
 			<span class="dl"></span>
 			<span class="menu-item">${webInfo.statisticalCode}</span>
@@ -30,7 +30,7 @@
 <!--回到顶部-->
 <div class="alien">
 	<div class="feedback">
-		<a href="http://www.javaex.cn/" target="_blank"></a>
+		<a href="https://www.martinwj.com/" target="_blank"></a>
 	</div>
 	<div id="goTopBtn">
 		<img width="29" height="65" src="${pageContext.request.contextPath}/static/default/images/goTopBtn.gif">

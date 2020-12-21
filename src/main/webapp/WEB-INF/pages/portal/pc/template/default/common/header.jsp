@@ -116,7 +116,7 @@ a:visited {color: #666}
 								</a>
 							</li>
 							<li id="im-list-box" class="menu-item">
-								<a href="javascript:;" class="title">系统</a>
+								<a href="javascript:;" class="title">${userInfo.loginName}</a>
 								<div class="im-list-box">
 									<c:if test="${userInfo.groupName=='管理员'}">
 										<a class="im-list" href="${pageContext.request.contextPath}/admin/index.action" target="_blank">后台管理</a>
