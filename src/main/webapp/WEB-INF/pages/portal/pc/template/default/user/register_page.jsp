@@ -68,9 +68,9 @@
 								</p>
 								<div class="tip-container tip-pwd-container">
 									<p class="tip-info">请输入密码</p>
-									<input type="password" class="txt-info txt-password" name="passWord" />
+									<input type="password" id="text-password" class="txt-info txt-password" name="passWord" />
 								</div>
-								<a href="javascript:;" class="eye-close"></a>
+								<a href="javascript:changeEye();" id="css_eye" class="eye-close"></a>
 							</div>
 							<div class="info-container">
 								<p class="errorInfo vh"><span>邮箱错误</span></p>
@@ -203,5 +203,24 @@
 			}
 		});
 	}
+
+	//让眼睛生效
+	function changeEye() {
+		let Eye = $("#text-password");
+		let text_type = Eye.attr("type");
+		let css_eye = $("#css_eye");
+		if(text_type=="password"){
+			document.getElementById("text-password").type="text";
+			// css_eye.addClass("icon-eye");
+			// css_eye.removeClass("eye-close");
+		}
+		else{
+			document.getElementById("text-password").type="password";
+			// css_eye.removeClass(" icon-eye");
+			// css_eye.addClass("eye-close");
+		}
+	}
+
+
 </script>
 </html>

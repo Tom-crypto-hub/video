@@ -9,6 +9,7 @@ import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
 import com.martinwj.util.EmailUtils;
+import com.martinwj.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -270,4 +271,19 @@ public class UserAction {
         return Result.success();
     }
 
+
+    @RequestMapping("/change_pass_word.json")
+    @ResponseBody()
+    public Result change_pass_word(String password,String userToken) throws SysException{
+        User user = userService.getUserByUserToken(userToken);
+        if(StringUtils.isEmpty(password)){
+            throw new SysException(ErrorMsg.ERROR_100006);
+        }
+        password = password.replaceAll("\\s*", "");
+        if (password.length()<6 || password.length()>16) {
+            throw new SysException(ErrorMsg.ERROR_100007);
+        }
+        userService.updatePwd(user, MD5.md5(password));
+        return Result.success();
+    }
 }

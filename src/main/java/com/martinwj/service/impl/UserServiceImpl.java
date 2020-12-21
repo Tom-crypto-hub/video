@@ -665,4 +665,13 @@ public class UserServiceImpl implements UserService {
         iActivateDAO.delete(updateEmail.getId());
     }
 
+    @Override
+    public void updatePwd(User user,String newPassword) throws SysException {
+        User userTemp = new User();
+        userTemp.setId(user.getId());
+        userTemp.setPassWord(newPassword);
+        iUserDAO.update(userTemp);
+    }
+
+
 }

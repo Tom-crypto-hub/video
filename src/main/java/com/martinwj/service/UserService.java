@@ -141,4 +141,8 @@ public interface UserService {
      * @throws SysException
      */
     public void updateEmailCode(User user,String newEmail,String identifyingCode) throws SysException;
+
+    //修改密码
+    public void updatePwd(User user,String password) throws SysException;
+
 }
