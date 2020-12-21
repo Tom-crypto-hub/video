@@ -125,4 +125,20 @@ public interface UserService {
      * @throws SysException
      */
     public void setNewPassword(String email, String identifyingCode, String password) throws SysException;
+
+    /**
+     * 换绑邮箱
+     * @param user
+     * @throws SysException
+     */
+    public void updateEmail(User user) throws SysException;
+
+    /**
+     * 换绑邮箱中的验证码验证
+     * @param user
+     * @param newEmail 换绑需要用到的新邮箱
+     * @param identifyingCode
+     * @throws SysException
+     */
+    public void updateEmailCode(User user,String newEmail,String identifyingCode) throws SysException;
 }

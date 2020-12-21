@@ -130,7 +130,7 @@ public class UserAction {
         try{
             info = userService.login(request);
         }catch (SysException e ){
-            return Result.error(e.getMessage());
+            return Result.error(ErrorMsg.ERROR_100002.getMsg());
         }finally {
             return Result.success().add("info", info);
         }
@@ -213,6 +213,60 @@ public class UserAction {
         // 设置新密码
         userService.setNewPassword(email, identifyingCode, password);
 
+        return Result.success();
+    }
+
+    /**
+     * 换绑
+     * 发邮件
+     * @param email
+     * @param userToken
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("/send_email.json")
+    @ResponseBody
+    public Result send_email(String email,String userToken) throws SysException {
+        if(StringUtils.isEmpty(email)){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        User userTemp = new User();
+        User user = userService.getUserByUserToken(userToken);
+        //如果换绑前的邮箱为空的话，则空的邮箱地址发不过去，会抛异常
+        if(user==null){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        if(user.getEmail().equals(email)){
+            return Result.error("新旧邮箱相同！！!给老子换");
+        }
+        //给当前邮箱发送邮件
+        userTemp.setId(user.getId());
+        userTemp.setLoginName(user.getLoginName());
+        userTemp.setEmail(email);
+        userService.updateEmail(userTemp);
+        return Result.success();
+
+    }
+
+    /**
+     * 换绑
+     * 发验证码
+     * @param email 新的邮箱地址
+     * @param identifyingCode 验证码
+     * @param userToken
+     * @return
+     * @throws SysException
+     * @throws ParseException
+     */
+    @RequestMapping("/change_email.json")
+    @ResponseBody
+    public Result change_email(String email,String identifyingCode,String userToken) throws SysException, ParseException {
+        User user = userService.getUserByUserToken(userToken);
+        if(StringUtils.isEmpty(identifyingCode)){
+            throw new SysException(ErrorMsg.ERROR_100013);
+        }
+        //校验验证码是否正确
+        userService.updateEmailCode(user,email,identifyingCode);
         return Result.success();
     }
 

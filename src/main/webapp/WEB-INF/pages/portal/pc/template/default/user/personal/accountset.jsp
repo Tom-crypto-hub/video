@@ -37,7 +37,7 @@
 								<a class="user-avatar">
 									<c:choose>
 										<c:when test="${empty userInfo.avatar}">
-											<img src="http://doc.javaex.cn/javaex/javaex/pc/images/user.jpg" />
+											<img src="${pageContext.request.contextPath}/static/default/images/akari.jpg" class="face">
 										</c:when>
 										<c:otherwise>
 											<img src="${userInfo.avatar}" />
@@ -125,12 +125,13 @@
 			content : "系统处理中，请稍候...",
 			type : "submit"
 		});
-		
+		let newEmail = $("#email").val();
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/send_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/send_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
+				"email": newEmail,
 				"userToken" : userToken
 			},
 			success : function(rtn) {
@@ -159,7 +160,7 @@
 	function saveEmail() {
 		var newEmail = $("#email").val();
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/change_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/change_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -199,7 +200,7 @@
 	}
 	function changePassword() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/change_pass_word.json",
+			url : "${pageContext.request.contextPath}/portal/user/change_pass_word.json",
 			type : "POST",
 			dataType : "json",
 			data : {

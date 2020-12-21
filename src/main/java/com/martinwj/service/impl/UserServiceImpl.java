@@ -641,4 +641,28 @@ public class UserServiceImpl implements UserService {
         iUserDAO.update(user);
     }
 
+    //换绑邮箱
+    public void updateEmail(User user) throws SysException {
+        sendEmail(user,"换绑邮箱","updateEmail");
+    }
+
+    //换绑邮箱 校验验证码
+    public void updateEmailCode(User user, String newEmail, String identifyingCode) throws SysException {
+        Activate updateEmail = iActivateDAO.selectByEmailAndCodeAndType(user.getEmail(), identifyingCode, "updateEmail");
+        //如果验证码为空时
+        if(updateEmail==null){
+            throw new SysException(ErrorMsg.ERROR_X00002);
+        }
+        //定义User的临时用户
+        User userTemp = new User();
+        //获取当前用户的id，方便更新
+        userTemp.setId(user.getId());
+        //为当前id的用户，设置新的email
+        userTemp.setEmail(newEmail);
+        //更新当前用户信息
+        iUserDAO.update(userTemp);
+        //删除临时生成的验证码
+        iActivateDAO.delete(updateEmail.getId());
+    }
+
 }
