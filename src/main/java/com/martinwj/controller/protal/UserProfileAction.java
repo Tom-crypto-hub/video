@@ -79,7 +79,7 @@ public class UserProfileAction {
         if (user==null) {
             user = userService.getUserInfoByUserToken(userToken);
             // 将用户信息保存进session
-            request.getSession().setAttribute("userInfo", user);
+            request.getSession().setAttribute("user", user);
         }
 
         // 将base64头像上传到七牛云
@@ -97,7 +97,7 @@ public class UserProfileAction {
 
         // 重新设置session
         user = userService.getUserInfoByUserToken(userToken);
-        request.getSession().setAttribute("userInfo", user);
+        request.getSession().setAttribute("user", user);
 
         return Result.success();
     }
