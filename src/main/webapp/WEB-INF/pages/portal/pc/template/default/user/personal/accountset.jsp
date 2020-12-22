@@ -37,7 +37,7 @@
 								<a class="user-avatar">
 									<c:choose>
 										<c:when test="${empty userInfo.avatar}">
-											<img src="http://doc.javaex.cn/javaex/javaex/pc/images/user.jpg" />
+											<img src="${pageContext.request.contextPath}/static/default/images/akari.jpg" class="face">
 										</c:when>
 										<c:otherwise>
 											<img src="${userInfo.avatar}" />
@@ -75,7 +75,7 @@
 							<td style="position: relative;">
 								<span class="set-con">***********</span>
 								<div id="change_password" class="name-edit" style="background: none;display: none;width: 60%;position: absolute;top: 5px;">
-									<input type="text" id="password" class="edit-input original" style="width: 60%;" />
+									<input type="password" id="password" class="edit-input original" style="width: 60%;" />
 									<a class="edit-btn" onclick="changePassword()">保存</a>
 								</div>
 							</td>
@@ -125,12 +125,13 @@
 			content : "系统处理中，请稍候...",
 			type : "submit"
 		});
-		
+		let newEmail = $("#email").val();
 		$.ajax({
 			url : "${pageContext.request.contextPath}/portal/user/send_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
+				"email": newEmail,
 				"userToken" : userToken
 			},
 			success : function(rtn) {
@@ -203,7 +204,7 @@
 			type : "POST",
 			dataType : "json",
 			data : {
-				"passWord" : $("#password").val(),
+				"password" : $("#password").val(),
 				"userToken" : userToken
 			},
 			success : function(rtn) {

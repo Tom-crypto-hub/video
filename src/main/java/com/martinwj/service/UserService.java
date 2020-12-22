@@ -1,6 +1,5 @@
 package com.martinwj.service;
 
-import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 
@@ -117,5 +116,33 @@ public interface UserService {
      * @throws ParseException
      */
     public void findPwdCode(String email, String identifyingCode) throws SysException, ParseException;
+
+    /**
+     * 用户找回密码，设置新密码
+     * @param email 邮箱
+     * @param identifyingCode 验证码
+     * @param password 新密码
+     * @throws SysException
+     */
+    public void setNewPassword(String email, String identifyingCode, String password) throws SysException;
+
+    /**
+     * 换绑邮箱
+     * @param user
+     * @throws SysException
+     */
+    public void updateEmail(User user) throws SysException;
+
+    /**
+     * 换绑邮箱中的验证码验证
+     * @param user
+     * @param newEmail 换绑需要用到的新邮箱
+     * @param identifyingCode
+     * @throws SysException
+     */
+    public void updateEmailCode(User user,String newEmail,String identifyingCode) throws SysException;
+
+    //修改密码
+    public void updatePwd(User user,String password) throws SysException;
 
 }

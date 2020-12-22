@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>用户注册 - ${webInfo.name}</title>
-	<link rel="shortcut icon" href=${pageContext.request.contextPath}/static/favicon.ico type=image/x-icon>
+<link rel="shortcut icon" href=${pageContext.request.contextPath}/static/favicon.ico type=image/x-icon>
 <!--字体图标样式-->
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/icomoon.css" rel="stylesheet" />
 <!--动画样式-->
@@ -19,11 +19,11 @@
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/common.css" rel="stylesheet" />
 <!--皮肤（缇娜）-->
 <link href="${pageContext.request.contextPath}/static/default/javaex/pc/css/skin/tina.css" rel="stylesheet" />
-	<script src="${pageContext.request.contextPath}/static/default/javaex/pc/lib/jquery-1.7.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/default/javaex/pc/lib/jquery-1.7.2.min.js" language="JavaScript" charset="UTF-8"></script>
 <!--核心组件-->
-<script src="${pageContext.request.contextPath}/static/default/javaex/pc/js/javaex.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/default/javaex/pc/js/javaex.min.js"  language="JavaScript" charset="UTF-8"></script>
 <link href="${pageContext.request.contextPath}/static/default/css/loginreg.css" rel="stylesheet" />
-<script src="${pageContext.request.contextPath}/static/default/js/cookie.js"></script>
+<script src="${pageContext.request.contextPath}/static/default/js/cookie.js"  language="JavaScript" charset="UTF-8"></script>
 <style>
 	.login-step-con{
 		height: 650px;
@@ -68,9 +68,9 @@
 								</p>
 								<div class="tip-container tip-pwd-container">
 									<p class="tip-info">请输入密码</p>
-									<input type="password" class="txt-info txt-password" name="passWord" />
+									<input type="password" id="text-password" class="txt-info txt-password" name="passWord" />
 								</div>
-								<a href="javascript:;" class="eye-close"></a>
+								<a href="javascript:changeEye();" id="css_eye" class="eye-close"></a>
 							</div>
 							<div class="info-container">
 								<p class="errorInfo vh"><span>邮箱错误</span></p>
@@ -118,19 +118,19 @@
 	// 点击注册
 	function register() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user/register.action",
+			url : "${pageContext.request.contextPath}/portal/user/register.json",
 			type : "POST",
 			dataType : "json",
 			data : $("#form").serialize(),
 			success : function(rtn) {
 				if (rtn.code=="000000") {
 					var info = rtn.data.info;
-
+					
 					delCookie("UID");
 					delCookie("userToken");
 					setCookie("UID", info.UID);
 					setCookie("userToken", info.userToken);
-
+					
 					$("#register").hide();
 					$("#validate").show();
 					sendEmail();
@@ -203,5 +203,24 @@
 			}
 		});
 	}
+
+	//让眼睛生效
+	function changeEye() {
+		let Eye = $("#text-password");
+		let text_type = Eye.attr("type");
+		let css_eye = $("#css_eye");
+		if(text_type=="password"){
+			document.getElementById("text-password").type="text";
+			// css_eye.addClass("icon-eye");
+			// css_eye.removeClass("eye-close");
+		}
+		else{
+			document.getElementById("text-password").type="password";
+			// css_eye.removeClass(" icon-eye");
+			// css_eye.addClass("eye-close");
+		}
+	}
+
+
 </script>
 </html>

@@ -121,7 +121,7 @@ a:visited {color: #666}
 									<c:if test="${userInfo.groupName=='管理员'}">
 										<a class="im-list" href="${pageContext.request.contextPath}/admin/index.action" target="_blank">后台管理</a>
 									</c:if>
-									<a class="im-list" href="${pageContext.request.contextPath}/portal/user/accountset.action" target="_blank">个人设置</a>
+									<a class="im-list" href="${pageContext.request.contextPath}/portal/accountset.action" target="_blank">个人设置</a>
 									<a class="im-list" href="javascript:;" onclick="logout()">退出账号</a>
 								</div>
 							</li>
@@ -209,7 +209,7 @@ a:visited {color: #666}
 	// 退出登录
 	function logout() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/logout.json",
+			url : "${pageContext.request.contextPath}/portal/user/logout.json",
 			type : "POST",
 			dataType : "json",
 			success : function(rtn) {

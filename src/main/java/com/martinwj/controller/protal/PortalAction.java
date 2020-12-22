@@ -153,4 +153,22 @@ public class PortalAction {
 
         return "portal/pc/template/" + templatePC + "/user/find_pwd";
     }
+
+    /**
+     * 跳转到个人信息页面
+     * @param request
+     * @param map 用map键值对存储用户数据
+     * @return
+     */
+    @RequestMapping("/accountset.action")
+    public String accountSet(HttpServletRequest request,ModelMap map){
+        User user = userService.getUser(request);
+        map.put("userInfo",user);
+        map.put("webInfo",webService.selectWebInfo());
+        String templatePC = templateService.selectNameByType("pc");
+
+        return "portal/pc/template/" + templatePC + "/user/personal/accountset";
+    }
+
+
 }

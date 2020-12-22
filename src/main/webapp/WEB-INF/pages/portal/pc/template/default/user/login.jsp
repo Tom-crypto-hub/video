@@ -151,9 +151,9 @@
                         parent.location.reload();
                     } else {
                         javaex.optTip({
-                            content : rtn.message,
-                            type : "pass_word"
-                        });
+                            content: rtn.message,
+                            type: "pass_word"
+                        })
                         // addErrorMsg("pass_word", rtn.message);
                     }
                 }

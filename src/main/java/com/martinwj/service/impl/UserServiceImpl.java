@@ -408,7 +408,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 保存用户信息
-     *
      * @param user
      * @throws SysException
      */
@@ -427,7 +426,7 @@ public class UserServiceImpl implements UserService {
             }
             // 2.2 校验账号长度
             szLoginName = szLoginName.replaceAll("\\s*", "");
-            if (szLoginName.length() < 4 || szLoginName.length() > 10) {
+            if (szLoginName.length()<4 || szLoginName.length()>10) {
                 throw new SysException(ErrorMsg.ERROR_100005);
             }
 
@@ -437,7 +436,7 @@ public class UserServiceImpl implements UserService {
             }
             // 2.4 校验密码长度
             szPassWord = szPassWord.replaceAll("\\s*", "");
-            if (szPassWord.length() < 6 || szPassWord.length() > 16) {
+            if (szPassWord.length()<6 || szPassWord.length()>16) {
                 throw new SysException(ErrorMsg.ERROR_100007);
             }
 
@@ -449,13 +448,13 @@ public class UserServiceImpl implements UserService {
             int count = 0;
             // 2.6 校验账号是否已被占用
             count = countUser(szLoginName, null);
-            if (count > 0) {
+            if (count>0) {
                 throw new SysException(ErrorMsg.ERROR_100009);
             }
             // 2.7 校验邮箱是否已被占用
             szEmail = szEmail.replaceAll("\\s*", "").toLowerCase();
             count = countUser(null, szEmail);
-            if (count > 0) {
+            if (count>0) {
                 throw new SysException(ErrorMsg.ERROR_100010);
             }
 
@@ -475,8 +474,8 @@ public class UserServiceImpl implements UserService {
                 user.setLastLoginTime(now);
             }
 
-            user.setPassWord(MD5.md5(szPassWord));    // 密码加密
-            user.setStatus("1");    // 正常状态
+            user.setPassWord(MD5.md5(szPassWord));	// 密码加密
+            user.setStatus("1");	// 正常状态
 
             iUserDAO.insert(user);
 
@@ -491,7 +490,7 @@ public class UserServiceImpl implements UserService {
         } else {
             // 编辑
             if (!StringUtils.isEmpty(user.getPassWord())) {
-                user.setPassWord(MD5.md5(user.getPassWord()));    // 密码加密
+                user.setPassWord(MD5.md5(user.getPassWord()));	// 密码加密
                 iUserDAO.update(user);
             }
 
@@ -618,6 +617,60 @@ public class UserServiceImpl implements UserService {
         if (hours>0) {
             throw new SysException(ErrorMsg.ERROR_100015);
         }
+    }
+
+    /**
+     * 用户找回密码，设置新密码
+     * @param email 邮箱
+     * @param identifyingCode 验证码
+     * @param password 新密码
+     * @throws SysException
+     */
+    public void setNewPassword(String email, String identifyingCode, String password) throws SysException {
+        // 删除激活表中的验证记录
+        Activate find_pwd = iActivateDAO.selectByEmailAndCodeAndType(email, identifyingCode, "find_pwd");
+        if(StringUtils.isEmpty(find_pwd)){
+            throw new SysException(ErrorMsg.ERROR_X00002);
+        }
+        iActivateDAO.delete(find_pwd.getId());
+        // 通过邮箱修改用户密码为新密码
+        User user = new User();
+        user.setId(find_pwd.getUserId());
+        user.setEmail(email);
+        user.setPassWord(MD5.md5(password));
+        iUserDAO.update(user);
+    }
+
+    //换绑邮箱
+    public void updateEmail(User user) throws SysException {
+        sendEmail(user,"换绑邮箱","updateEmail");
+    }
+
+    //换绑邮箱 校验验证码
+    public void updateEmailCode(User user, String newEmail, String identifyingCode) throws SysException {
+        Activate updateEmail = iActivateDAO.selectByEmailAndCodeAndType(user.getEmail(), identifyingCode, "updateEmail");
+        //如果验证码为空时
+        if(updateEmail==null){
+            throw new SysException(ErrorMsg.ERROR_X00002);
+        }
+        //定义User的临时用户
+        User userTemp = new User();
+        //获取当前用户的id，方便更新
+        userTemp.setId(user.getId());
+        //为当前id的用户，设置新的email
+        userTemp.setEmail(newEmail);
+        //更新当前用户信息
+        iUserDAO.update(userTemp);
+        //删除临时生成的验证码
+        iActivateDAO.delete(updateEmail.getId());
+    }
+
+    @Override
+    public void updatePwd(User user,String newPassword) throws SysException {
+        User userTemp = new User();
+        userTemp.setId(user.getId());
+        userTemp.setPassWord(newPassword);
+        iUserDAO.update(userTemp);
     }
 
 

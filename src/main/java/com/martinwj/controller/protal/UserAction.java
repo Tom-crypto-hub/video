@@ -5,6 +5,10 @@ import com.martinwj.entity.Result;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
+import com.martinwj.entity.User;
+import com.martinwj.exception.SysException;
+import com.martinwj.service.UserService;
+import com.martinwj.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.internet.ParseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
@@ -33,9 +38,10 @@ public class UserAction {
      * 用户注册
      * @throws Exception
      */
-    @RequestMapping("register.action")
+    @RequestMapping("register.json")
     @ResponseBody
     public Result register(HttpServletRequest request) throws Exception {
+
         Map<String, Object> info = null ;
         try{
             info = userService.register(request);
@@ -124,7 +130,7 @@ public class UserAction {
         try{
             info = userService.login(request);
         }catch (SysException e ){
-            return Result.error(e.getMessage());
+            return Result.error(ErrorMsg.ERROR_100002.getMsg());
         }finally {
             return Result.success().add("info", info);
         }
@@ -143,4 +149,140 @@ public class UserAction {
         return Result.success();
     }
 
+    /**
+     * 找回密码
+     * 邮箱发送
+     * @param email 传的邮箱
+     * @return
+     */
+    @RequestMapping("find_pwd_email.json")
+    @ResponseBody
+    public Result find_pwd_email(String email) throws SysException{
+        //验证邮箱是否为空，空的话邮件发不过去，抛异常
+        if(StringUtils.isEmpty(email)){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        //给当前邮箱发送邮件
+        userService.findPwdEmail(email);
+        return Result.success();
+    }
+
+    /**
+     * 找回密码
+     * 校验验证码
+     * @param email 校验邮箱
+     * @param identifyingCode 邮箱收到的验证码
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("find_pwd_code.json")
+    @ResponseBody
+    public Result find_pwd_code(String email,String identifyingCode) throws SysException, ParseException {
+        // 校验验证码是否为空
+        if(StringUtils.isEmpty(identifyingCode)){
+            throw new SysException(ErrorMsg.ERROR_100013);
+        }
+
+        //校验验证码是否正确
+        userService.findPwdCode(email, identifyingCode);
+        return Result.success();
+    }
+
+    /**
+     * 找回密码
+     * 设置新密码
+     * @param email 校验邮箱
+     * @param identifyingCode 邮箱收到的验证码
+     * @Param password 新密码
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("set_new_pass_word.json")
+    @ResponseBody
+    public Result set_new_pass_word(String email,String identifyingCode, String password) throws SysException, ParseException {
+        // 校验密码是否为空
+        if(StringUtils.isEmpty(password)){
+            throw new SysException(ErrorMsg.ERROR_100006);
+        }
+        // 2.4 校验密码长度
+        password = password.replaceAll("\\s*", "");
+        if (password.length() < 6 || password.length() > 16) {
+            throw new SysException(ErrorMsg.ERROR_100007);
+        }
+
+        // 设置新密码
+        userService.setNewPassword(email, identifyingCode, password);
+
+        return Result.success();
+    }
+
+    /**
+     * 换绑
+     * 发邮件
+     * @param email
+     * @param userToken
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("/send_email.json")
+    @ResponseBody
+    public Result send_email(String email,String userToken) throws SysException {
+        if(StringUtils.isEmpty(email)){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        User userTemp = new User();
+        User user = userService.getUserByUserToken(userToken);
+        //如果换绑前的邮箱为空的话，则空的邮箱地址发不过去，会抛异常
+        if(user==null){
+            throw new SysException(ErrorMsg.ERROR_100008);
+        }
+        if(user.getEmail().equals(email)){
+            return Result.error("新旧邮箱相同！！!给老子换");
+        }
+        //给当前邮箱发送邮件
+        userTemp.setId(user.getId());
+        userTemp.setLoginName(user.getLoginName());
+        userTemp.setEmail(email);
+        userService.updateEmail(userTemp);
+        return Result.success();
+
+    }
+
+    /**
+     * 换绑
+     * 发验证码
+     * @param email 新的邮箱地址
+     * @param identifyingCode 验证码
+     * @param userToken
+     * @return
+     * @throws SysException
+     * @throws ParseException
+     */
+    @RequestMapping("/change_email.json")
+    @ResponseBody
+    public Result change_email(String email,String identifyingCode,String userToken) throws SysException, ParseException {
+        User user = userService.getUserByUserToken(userToken);
+        if(StringUtils.isEmpty(identifyingCode)){
+            throw new SysException(ErrorMsg.ERROR_100013);
+        }
+        //校验验证码是否正确
+        userService.updateEmailCode(user,email,identifyingCode);
+        return Result.success();
+    }
+
+
+    @RequestMapping("/change_pass_word.json")
+    @ResponseBody()
+    public Result change_pass_word(String password,String userToken) throws SysException{
+        User user = userService.getUserByUserToken(userToken);
+        if(StringUtils.isEmpty(password)){
+            throw new SysException(ErrorMsg.ERROR_100006);
+        }
+        password = password.replaceAll("\\s*", "");
+        if (password.length()<6 || password.length()>16) {
+            throw new SysException(ErrorMsg.ERROR_100007);
+        }
+        userService.updatePwd(user, MD5.md5(password));
+        return Result.success();
+    }
 }

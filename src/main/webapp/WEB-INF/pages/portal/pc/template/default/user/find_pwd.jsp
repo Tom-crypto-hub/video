@@ -213,7 +213,7 @@
                 data : {
                     "email" : $("#email").val(),
                     "identifyingCode" : $("#identifying_code").val(),
-                    "passWord" : $("#pass_word").val()
+                    "password" : $("#pass_word").val()
                 },
                 success : function(rtn) {
                     if (rtn.code=="000000") {
