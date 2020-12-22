@@ -88,7 +88,7 @@
 	</div>
 	
 	<!--底部-->
-	<div class="page-wrap footer-wrap" >
+	<div class="page-wrap footer-wrap">
 		<c:import url="../../common/footer.jsp"/>
 	</div>
 </body>

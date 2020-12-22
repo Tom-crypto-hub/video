@@ -1,5 +1,6 @@
 package com.martinwj.service.impl;
 
+import com.martinwj.constant.CommonConstant;
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.dao.activate.IActivateDAO;
 import com.martinwj.dao.user.IUserDAO;
@@ -26,7 +27,6 @@ import javax.mail.internet.ParseException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -156,6 +156,7 @@ public class UserServiceImpl implements UserService {
 
         UserProfile userProfile = new UserProfile();
         userProfile.setUserId(user.getId());
+        userProfile.setAvatar(CommonConstant.avatar);
         userProfile.setGroupId("2");    // 注册会员
         userProfile.setPoint(0);        // 积分0份
         System.out.println(userProfile);

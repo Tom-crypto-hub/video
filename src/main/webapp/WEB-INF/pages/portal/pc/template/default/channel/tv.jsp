@@ -8,7 +8,7 @@
 <title>${channelInfo.title}</title>
 <meta name="keywords" content="${channelInfo.keywords}" />
 <meta name="description" content="${channelInfo.description}" />
-<c:import url="../common/common.jsp"></c:import>
+<c:import url="../common/common.jsp"/>
 <script src="${pageContext.request.contextPath}/static/default/js/jquery.SuperSlide.2.1.1.js"></script>
 </head>
 <style>
@@ -43,8 +43,8 @@
 </style>
 <body>
 	<!-- 头部 -->
-	<div class="yaoqishan-header">
-		<c:import url="../common/header.jsp"></c:import>
+	<div class="martin-header">
+		<c:import url="../common/header.jsp"/>
 	</div>
 
 	<!--内容-->

@@ -31,17 +31,17 @@
 				<div class="grid-1-1-1 spacing-20">
 					<div>
 						<div style="width: 420px;height: 244px;position: relative;margin-bottom: 20px;">
-							<a href="http://www.javaex.cn/" target="_blank"><img src="http://173.javaex.cn/Fl9vo0PYYkFWc95sJm9UyfSxumNz" width="100%" height="100%"></a>
+							<a href="http://www.martinwj.com/" target="_blank"><img src="http://cdn.martinwj.com/test" width="100%" height="100%"></a>
 							
 							<div class="t">
-								<p class="t1"><span><a href="http://www.javaex.cn/" target="_blank">java程序员写的前端框架</a></span></p>
+								<p class="t1"><span><a href="http://www.martinwj.com/" target="_blank">我是来测试的</a></span></p>
 							</div>
 						</div>
 						<ul class="equal-2" id="juhe2" style="width: 440px;margin-right: -20px;">
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -49,7 +49,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -61,7 +61,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -69,7 +69,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -77,7 +77,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -85,7 +85,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -93,7 +93,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -101,7 +101,7 @@
 							<li>
 								<div class="poly-ul-img">
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 								</div>
 								<div class="poly-title">我是来测试的</div>
@@ -110,10 +110,10 @@
 					</div>
 					<div>
 						<div style="width: 420px;height: 112px;margin-bottom: 20px;">
-							<a href="http://www.javaex.cn/" target="_blank"><img src="http://173.javaex.cn/FuHDdQCBVHpQjncxdm76yzO2q6fj" width="100%" height="100%"></a>
+							<a href="http://www.martinwj.com/" target="_blank"><img src="http://cdn.martinwj.com/test" width="100%" height="100%"></a>
 						</div>
 						<div style="width: 420px;height: 244px;position: relative">
-							<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank"><img src="http://173.javaex.cn/FgM-UfvaZEVK4mnlPIisI0wPASW6" width="100%" height="100%"></a>
+							<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank"><img src="http://cdn.martinwj.com/test" width="100%" height="100%"></a>
 							<div class="t">
 								<p class="t1"><span><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">爱如意 电影《阿修罗》主题曲 -- 邓紫棋</a></span></p>
 							</div>
@@ -136,7 +136,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -144,7 +144,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -152,7 +152,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -160,7 +160,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -168,7 +168,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -176,7 +176,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FpDRB9J4fYUJ2EddbM3CTvway8lZ" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">热血狂篮</a></p>
 								<p>100次播放</p>
@@ -221,42 +221,42 @@
 							<ul id="new_movie" class="equal-6 poster">
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FjYbNZwC-cRvrZtuXDAPn3AecI3B" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">人再囧途之泰囧</a></p>
 									<p>国产喜剧黄金三角</p>
@@ -308,7 +308,7 @@
 									<li id="newest_left">
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第24集</span>
-											<img src="http://173.javaex.cn/FuFpI3FQhIUejcz9tMgUl_aj3pbf" width="100%" height="100%" style="'animation-delay: '+Math.random()+'s'" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" style="'animation-delay: '+Math.random()+'s'" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -320,7 +320,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -328,7 +328,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -336,7 +336,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -344,7 +344,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -352,7 +352,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -360,7 +360,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -368,7 +368,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -376,7 +376,7 @@
 									<li>
 										<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 											<span class="duration">更新至第8集</span>
-											<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+											<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 										</a>
 										<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 										<p>杨蓉变外星人为爱痴狂</p>
@@ -445,7 +445,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -453,7 +453,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -461,7 +461,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -469,7 +469,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -477,7 +477,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -485,7 +485,7 @@
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 									<span class="duration">更新至第8集</span>
-									<img src="http://173.javaex.cn/FoY7KOxNyZPPn7AQ_whR5P3SVGxl" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">冒险王卫斯理之无名发</a></p>
 								<p>杨蓉变外星人为爱痴狂</p>
@@ -529,7 +529,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -537,7 +537,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -545,7 +545,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -553,7 +553,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -561,7 +561,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -569,7 +569,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -577,7 +577,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -585,7 +585,7 @@
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
 										<span class="duration">更新至第8集</span>
-										<img src="http://173.javaex.cn/FhAfIrrRYzmhv73QKLxHVoK65d7I" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">少年锦衣卫</a></p>
 									<p>少年袁小棠的传奇人生</p>
@@ -633,42 +633,42 @@
 							<ul id="tab4_0" class="equal-6 cover">
 								<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
@@ -676,42 +676,42 @@
 							<ul id="tab4_1" class="equal-6 cover">
 								<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 									<p>100次播放</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 									<p>100次播放</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 									<p>100次播放</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 									<p>100次播放</p>
 								</li>
 								<li>
 									<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-										<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+										<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 									</a>
 									<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 									<p>100次播放</p>
@@ -742,42 +742,42 @@
 						<ul id="gaoxiao" class="equal-6 cover">
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
@@ -801,42 +801,42 @@
 						<ul id="guichu" class="equal-6 cover">
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
@@ -860,42 +860,42 @@
 						<ul id="dongmanzonghe" class="equal-6 cover">
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
 							</li>
 							<li>
 								<a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank" class="screenshot">
-									<img src="http://173.javaex.cn/FmimHy5MLxEtcAg5Tm72vbT0eu_f" width="100%" height="100%" />
+									<img src="http://cdn.martinwj.com/test" width="100%" height="100%" />
 								</a>
 								<p class="screenshot-title"><a href="${pageContext.request.contextPath}/portal/play.action?videoId=3495" target="_blank">我是来测试的</a></p>
 								<p>100次播放</p>
