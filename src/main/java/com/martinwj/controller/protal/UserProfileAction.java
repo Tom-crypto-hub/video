@@ -1,13 +1,13 @@
 package com.martinwj.controller.protal;
 
 import com.martinwj.constant.ErrorMsg;
+import com.martinwj.entity.Qny;
 import com.martinwj.entity.Result;
-import com.martinwj.entity.Tencent;
 import com.martinwj.entity.User;
 import com.martinwj.entity.UserProfile;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.TemplateService;
-import com.martinwj.service.TencentService;
+import com.martinwj.service.QnyService;
 import com.martinwj.service.UserProfileService;
 import com.martinwj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class UserProfileAction {
     @Autowired
     private UserProfileService userProfileService;
     @Autowired
-    private TencentService tencentService;
+    private QnyService qnyService;
 
 
     /**
@@ -82,8 +82,10 @@ public class UserProfileAction {
             request.getSession().setAttribute("userInfo", user);
         }
 
-        // 将base64头像上传到腾讯云
-        // 暂时省略
+        // 将base64头像上传到七牛云
+        Qny qny = qnyService.selectByType("touxiang");
+        avatar = qnyService.uploadAvatar(avatar, qny);
+        System.out.println(avatar);
 
         // 保存用户头像
         UserProfile userProfile = new UserProfile();
@@ -91,7 +93,7 @@ public class UserProfileAction {
         userProfile.setUserId(user.getId());
 
         // 调用service执行 保存用户操作
-//        userProfileService.save(userProfile);
+        userProfileService.save(userProfile);
 
         // 重新设置session
         user = userService.getUserInfoByUserToken(userToken);

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * @ClassName: Tencent
- * @Description: TODO 腾讯云配置表
+ * @Description: TODO 七牛云配置表
  * @author: martin-wj
  * @createDate: 2020-12-18
  */
@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class Tencent implements Serializable {
+public class Qny implements Serializable {
     private String id;		// 主键
     private String type;	// 类型
     private String name;	// 名称

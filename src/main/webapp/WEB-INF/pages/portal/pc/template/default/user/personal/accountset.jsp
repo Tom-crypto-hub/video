@@ -127,7 +127,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/send_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/send_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -159,7 +159,7 @@
 	function saveEmail() {
 		var newEmail = $("#email").val();
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/change_email.json",
+			url : "${pageContext.request.contextPath}/portal/user/change_email.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -199,7 +199,7 @@
 	}
 	function changePassword() {
 		$.ajax({
-			url : "${pageContext.request.contextPath}/portal/user_info/change_pass_word.json",
+			url : "${pageContext.request.contextPath}/portal/user/change_pass_word.json",
 			type : "POST",
 			dataType : "json",
 			data : {

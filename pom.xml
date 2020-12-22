@@ -118,6 +118,12 @@
       <version>1.1.2</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.dadiyang</groupId>
+      <artifactId>jave</artifactId>
+      <version>1.0.5</version>
+    </dependency>
+
     <!-- 邮件 -->
     <dependency>
       <groupId>com.sun.mail</groupId>
@@ -130,6 +136,31 @@
       <version>1.6.2</version>
     </dependency>
 
+    <!-- 七牛云 -->
+    <dependency>
+      <groupId>com.qiniu</groupId>
+      <artifactId>qiniu-java-sdk</artifactId>
+      <version>7.2.6</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>3.3.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.6.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.qiniu</groupId>
+      <artifactId>happy-dns-java</artifactId>
+      <version>0.1.4</version>
+      <scope>compile</scope>
+    </dependency>
 
     <!-- log start -->
     <dependency>
