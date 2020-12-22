@@ -26,19 +26,20 @@
 
     <!-- 查询用户 -->
     <select id="selectUser" resultMap="UserMap">
-        SELECT user.id,
-               user.loginName,
-               user.email,
-               user.registerTime,
-               user.registerIp,
-               user.lastLoginTime,
-               user.lastLoginIp,
-               user.status,
-               up.avatar,
-               up.signPersonal,
-               up.point,
-               g.name AS groupName,
-               g.power
+        SELECT user.id            id,
+               user.loginName     loginName,
+               user.email         email,
+               user.registerTime  registerTime,
+               user.registerIp    registerIp,
+               user.lastLoginTime lastLoginTime,
+               user.lastLoginIp   lastLoginIp,
+               user.status        status,
+               up.avatar          avatar,
+               up.signPersonal    signPersonal,
+               up.point           point,
+               g.id               groupId,
+               g.name             groupName,
+               g.power            power
         FROM user,
              userprofile up,
              `group` g

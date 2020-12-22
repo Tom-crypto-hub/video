@@ -37,10 +37,10 @@
 								<a class="user-avatar">
 									<c:choose>
 										<c:when test="${empty userInfo.avatar}">
-											<img src="${pageContext.request.contextPath}/static/default/images/akari.jpg" class="face">
+											<img src="${pageContext.request.contextPath}/static/default/images/akari.jpg" class="face" alt="头像">
 										</c:when>
 										<c:otherwise>
-											<img src="${userInfo.avatar}" />
+											<img src="${userInfo.avatar}" alt="头像"/>
 										</c:otherwise>
 									</c:choose>
 								</a>

@@ -26,6 +26,7 @@ import javax.mail.internet.ParseException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -297,6 +298,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new SysException(ErrorMsg.ERROR_100012);
         }
+        System.out.println(user);
         // 校验用户是否正常
         if ("0".equals(user.getStatus())) {
             throw new SysException(ErrorMsg.ERROR_100019);

@@ -5,9 +5,6 @@ import com.martinwj.entity.Result;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.UserService;
-import com.martinwj.entity.User;
-import com.martinwj.exception.SysException;
-import com.martinwj.service.UserService;
 import com.martinwj.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -120,21 +117,13 @@ public class UserAction {
     @RequestMapping("login.json")
     @ResponseBody
     public Result login(HttpServletRequest request) throws Exception {
-
         /**
          *  定义Map，去调ServiceImpl里面的Login方法，去验证用户信息
          *  捕获异常的话，就返回对应的错误信息
          *  未捕获到异常的话，就调用success方法，添加Info
          */
-        Map<String, Object> info = null;
-        try{
-            info = userService.login(request);
-        }catch (SysException e ){
-            return Result.error(ErrorMsg.ERROR_100002.getMsg());
-        }finally {
-            return Result.success().add("info", info);
-        }
-
+        Map<String, Object> info = userService.login(request);
+        return Result.success().add("info", info);
     }
 
     /**
@@ -237,7 +226,8 @@ public class UserAction {
             throw new SysException(ErrorMsg.ERROR_100008);
         }
         if(user.getEmail().equals(email)){
-            return Result.error("新旧邮箱相同！！!给老子换");
+//            "新旧邮箱相同！！!给老子换");
+            throw new SysException(ErrorMsg.ERROR_100016);
         }
         //给当前邮箱发送邮件
         userTemp.setId(user.getId());
@@ -245,7 +235,6 @@ public class UserAction {
         userTemp.setEmail(email);
         userService.updateEmail(userTemp);
         return Result.success();
-
     }
 
     /**

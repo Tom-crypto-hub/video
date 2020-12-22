@@ -150,11 +150,12 @@
                         // 刷新页面
                         parent.location.reload();
                     } else {
-                        javaex.optTip({
-                            content: rtn.message,
-                            type: "pass_word"
-                        })
-                        // addErrorMsg("pass_word", rtn.message);
+                        console.log(rtn.message);
+                        // javaex.optTip({
+                        //     content: rtn.message,
+                        //     type: "pass_word"
+                        // })
+                        addErrorMsg("pass_word", rtn.message);
                     }
                 }
             });

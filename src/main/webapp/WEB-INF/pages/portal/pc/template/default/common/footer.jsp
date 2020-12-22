@@ -24,7 +24,7 @@
 		</c:if>
 		
 	</div>
-	<p class="copyright">Copyright © 2018 妖气山 All Rights Reserved</p>
+	<p class="copyright">Copyright © 2020 Martin All Rights Reserved</p>
 </div>
 
 <!--回到顶部-->
