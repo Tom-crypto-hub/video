@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Media {
+public class Media implements Serializable {
     private String mediaId;	// 媒体信息主键
     private String typeId;	// 所属分类
     private String status;	// 状态，是否已删除至回收站。1代表正常

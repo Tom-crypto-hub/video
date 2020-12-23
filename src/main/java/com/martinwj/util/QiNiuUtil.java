@@ -133,7 +133,7 @@ public class QiNiuUtil {
         String publicUrl = String.format("%s/%s", qny.getDomain(), encodedFileName);
         Auth auth = getAuth(qny);
         long expireInSeconds = Long.parseLong(qny.getCompress());
-        if(-1 == expireInSeconds){
+        if(0 == expireInSeconds){
             return auth.privateDownloadUrl(publicUrl);
         }
         return auth.privateDownloadUrl(publicUrl, expireInSeconds);

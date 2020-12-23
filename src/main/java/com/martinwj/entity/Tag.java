@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Tag
  * @Description: TODO 标签表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tag {
+public class Tag implements Serializable {
     private String id;		// 主键
     private String name;	// 标签名称
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.type.ITypeDAO">
+
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="TypeMap" type="com.martinwj.entity.Type">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sort" property="sort"/>
+        <result column="profileTemplate" property="profileTemplate"/>
+        <result column="playTemplate" property="playTemplate"/>
+    </resultMap>
+
+    <!-- 查询分类列表 -->
+    <select id="list" resultMap="TypeMap">
+        SELECT *
+        FROM type
+        ORDER BY sort
+    </select>
+</mapper>

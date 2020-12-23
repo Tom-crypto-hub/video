@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.martinwj.dao.userProfile.IUserProfileDAO">
+
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
     <!-- 建立sql查询结果字段与实体属性的映射关系 -->
     <resultMap id="UserProfileInfoMap" type="com.martinwj.entity.UserProfile">
         <result column="id" property="id"/>

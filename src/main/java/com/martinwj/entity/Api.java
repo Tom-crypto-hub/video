@@ -2,6 +2,8 @@ package com.martinwj.entity;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Api
  * @Description: TODO 接口设置类
@@ -11,7 +13,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Api {
+public class Api implements Serializable {
     private String id;		// 主键
     private String name;	// 名称，用于让用户识别自己的接口
     private String sort;	// 排序

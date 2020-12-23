@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: UserProfile
  * @Description: TODO 用户个人信息简况表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserProfile {
+public class UserProfile implements Serializable {
     private String id;			// 主键
     private String userId;		// 用户id
     private String groupId;		// 用户组id

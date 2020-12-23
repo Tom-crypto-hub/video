@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Result {
+public class Result implements Serializable {
     // 状态码 000000：成功；999999：失败
     private String code;
     // 提示信息

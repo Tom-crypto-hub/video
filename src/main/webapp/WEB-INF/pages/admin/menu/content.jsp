@@ -14,18 +14,18 @@
 	<div class="admin-iframe-content">
 		<div class="admin-iframe-menu">
 			<ul class="menu">
-				<li class="active"><a href="javascript:page('${pageContext.request.contextPath}/media_info/list_normal.action');">视频管理</a></li>
-				<li><a href="javascript:page('${pageContext.request.contextPath}/media_info/list_recycle.action');">回收站</a></li>
+				<li class="active"><a href="javascript:page('${pageContext.request.contextPath}/media/list_normal.action');">视频管理</a></li>
+				<li><a href="javascript:page('${pageContext.request.contextPath}/media/list_recycle.action');">回收站</a></li>
 			</ul>
 		</div>
 
 		<!--载入页面-->
 		<div class="admin-markdown">
-			<iframe id="page" src="${pageContext.request.contextPath}/media_info/list_normal.action"></iframe>
+			<iframe id="page" src="${pageContext.request.contextPath}/media/list_normal.action"></iframe>
 		</div>
 	</div>
 	
 	<!-- 底部js函数 -->
-	<c:import url="../common/footer.jsp"></c:import>
+	<c:import url="../common/footer.jsp"/>
 </body>
 </html>

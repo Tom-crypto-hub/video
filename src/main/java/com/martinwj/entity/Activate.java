@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Activate
  * @Description: TODO 用户认证激活表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Activate {
+public class Activate implements Serializable {
     private String id;			// 主键
     private String userId;		// 用户id
     private String type;		// 激活类型

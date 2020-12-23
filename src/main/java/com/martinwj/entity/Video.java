@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Video
  * @Description: TODO 视频播放地址表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Video {
+public class Video implements Serializable {
     private String videoId;		// 主键
     private String mediaId;		// 媒体信息主键
     private String num;			// 第几集

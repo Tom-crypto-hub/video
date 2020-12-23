@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Slide
  * @Description: TODO 幻灯片数据表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Slide {
+public class Slide implements Serializable {
     private String id;		// 主键
     private String apiId;	// 接口表的主键
     private String title;	// 标题

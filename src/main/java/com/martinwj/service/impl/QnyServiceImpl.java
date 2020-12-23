@@ -53,21 +53,21 @@ public class QnyServiceImpl implements QnyService {
 
     /**
      * 保存配置
-     * @param Qny
+     * @param qny
      */
-    public void save(Qny Qny) {
-        iQnyDAO.update(Qny);
+    public void save(Qny qny) {
+        iQnyDAO.update(qny);
     }
 
     /**
      * 上传本地图片到七牛云
      * @param file
-     * @param Qny
+     * @param qny
      * @return
      * @throws IOException
      * @throws SysException
      */
-    public String uploadImage(MultipartFile file, Qny Qny) throws IOException, SysException {
+    public String uploadImage(MultipartFile file, Qny qny) throws IOException, SysException {
         /**
          * 构造一个带指定Zone对象的配置类
          * 华东 : Zone.zone0()
@@ -79,9 +79,9 @@ public class QnyServiceImpl implements QnyService {
         // ...其他参数参考类注释
         UploadManager uploadManager = new UploadManager(cfg);
         // ...生成上传凭证，然后准备上传
-        String accessKey = Qny.getAk();
-        String secretKey = Qny.getSk();
-        String bucket = Qny.getBucket();
+        String accessKey = qny.getAk();
+        String secretKey = qny.getSk();
+        String bucket = qny.getBucket();
         // 默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = null;
 
@@ -98,14 +98,14 @@ public class QnyServiceImpl implements QnyService {
 //				System.out.println(putRet.key);
 //				System.out.println(putRet.hash);
                 String deleteKey = putRet.hash;
-                imgUrl = Qny.getDomain() + putRet.hash;
+                imgUrl = qny.getDomain() + putRet.hash;
 
                 // 判断是否需要对图片进行裁剪
-                if ("0".equals(Qny.getWidth()) || "0".equals(Qny.getHeight())) {
+                if ("0".equals(qny.getWidth()) || "0".equals(qny.getHeight())) {
 
                 } else {
                     // 图片裁剪后再次上传
-                    imgUrl = uploadCutImage(Qny, auth, cfg, bucket, imgUrl);
+                    imgUrl = uploadCutImage(qny, auth, cfg, bucket, imgUrl);
                     // 删除原图
                     deleteFile(auth, cfg, bucket, deleteKey);
                 }
@@ -130,11 +130,11 @@ public class QnyServiceImpl implements QnyService {
     /**
      * 远程图片上传到七牛云
      * @param url 远程图片地址
-     * @param Qny 七牛云对象
+     * @param qny 七牛云对象
      * @return
      * @throws SysException
      */
-    public String uploadImageByYuancheng(String url, Qny Qny) throws SysException {
+    public String uploadImageByYuancheng(String url, Qny qny) throws SysException {
         /**
          * 构造一个带指定Zone对象的配置类
          * 华东 : Zone.zone0()
@@ -144,9 +144,9 @@ public class QnyServiceImpl implements QnyService {
          */
         Configuration cfg = new Configuration(Zone.zone0());
         // ...生成上传凭证，然后准备上传
-        String accessKey = Qny.getAk();
-        String secretKey = Qny.getSk();
-        String bucket = Qny.getBucket();
+        String accessKey = qny.getAk();
+        String secretKey = qny.getSk();
+        String bucket = qny.getBucket();
         // 默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = null;
 
@@ -164,14 +164,14 @@ public class QnyServiceImpl implements QnyService {
             String hash = bucketManager.fetch(url, bucket, key).hash;
 //			System.out.println(hash);
             String deleteKey = hash;
-            imgUrl = Qny.getDomain() + hash;
+            imgUrl = qny.getDomain() + hash;
 
             // 判断是否需要对图片进行裁剪
-            if ("0".equals(Qny.getWidth()) || "0".equals(Qny.getHeight())) {
+            if ("0".equals(qny.getWidth()) || "0".equals(qny.getHeight())) {
 
             } else {
                 // 图片裁剪后再次上传
-                imgUrl = uploadCutImage(Qny, auth, cfg, bucket, imgUrl);
+                imgUrl = uploadCutImage(qny, auth, cfg, bucket, imgUrl);
                 // 删除原图
                 deleteFile(auth, cfg, bucket, deleteKey);
             }
@@ -258,18 +258,18 @@ public class QnyServiceImpl implements QnyService {
     /**
      * 上传base64图片
      * @param file64
-     * @param Qny
+     * @param qny
      * @return
      * @throws IOException
      */
-    public String uploadAvatar(String file64, Qny Qny) throws IOException {
+    public String uploadAvatar(String file64, Qny qny) throws IOException {
         // 密钥配置
-        String ak = Qny.getAk();
-        String sk = Qny.getSk();
+        String ak = qny.getAk();
+        String sk = qny.getSk();
         Auth auth = Auth.create(ak, sk);
 
         // 空间名
-        String bucketname = Qny.getBucket();
+        String bucketname = qny.getBucket();
         // 上传的图片名
         String key = UUID.randomUUID().toString().replace("-", "");
 
@@ -289,7 +289,7 @@ public class QnyServiceImpl implements QnyService {
         okhttp3.Response response = client.newCall(request).execute();
         System.out.println(response);
 
-        String imgUrl = Qny.getDomain() + key;
+        String imgUrl = qny.getDomain() + key;
 
         return imgUrl;
     }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Field {
+public class Field implements Serializable {
     private String id;			// 主键
     private String name;		// 分类名称（视频所属分类：电影、电视剧、动漫...）
     private String type;		// 该用户组是否为系统内置（system代表内置的，不可修改）

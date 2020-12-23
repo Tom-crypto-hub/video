@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Channel
  * @Description: TODO 频道栏目表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Channel {
+public class Channel implements Serializable {
     private String id;			// 主键
     private String name;		// 名称
     private String sort;		// 排序用

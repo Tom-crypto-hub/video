@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: TypeField
  * @Description: TODO分类信息字段配置表，某个分类信息中，包含哪些字段
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TypeField {
+public class TypeField implements Serializable {
     private String id;			// 主键
     private String typeId;		// 分类信息主键
     private String fieldId;		// 字段主键

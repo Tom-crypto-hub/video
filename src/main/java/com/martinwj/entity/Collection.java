@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Collection
  * @Description: TODO 视频收藏表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Collection {
+public class Collection implements Serializable {
     private String id;		// 主键
     private String mediaId;	// 媒体表主键
     private String userId;	// 用户id

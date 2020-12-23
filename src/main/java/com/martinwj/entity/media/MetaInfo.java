@@ -2,6 +2,8 @@ package com.martinwj.entity.media;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: MetaInfo
  * @Description: TODO 多媒体数据（包含图片，视频）的基本信息类
@@ -9,7 +11,7 @@ import lombok.Data;
  * @createDate: 2020-12-22
  */
 @Data
-public class MetaInfo {
+public class MetaInfo implements Serializable {
     /**
      * 多媒体信息的宽度，图片代表宽度，视频代表帧宽度 ，单位为px
      */

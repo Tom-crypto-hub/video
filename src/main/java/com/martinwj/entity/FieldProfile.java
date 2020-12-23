@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: FieldProfile
  * @Description: TODO 字段简况表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FieldProfile {
+public class FieldProfile implements Serializable {
     private String id;		// 主键
     private String fieldId;	// 字段的主键
     private String name;	// 字段内容名称（大陆、香港、欧美...）

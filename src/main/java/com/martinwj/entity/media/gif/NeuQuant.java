@@ -1,9 +1,11 @@
 package com.martinwj.entity.media.gif;
 
+import java.io.Serializable;
+
 /**
  * 多张静态图片合成动态gif图工具类
  */
-public class NeuQuant {
+public class NeuQuant implements Serializable {
     protected static final int netsize = 256; /* number of colours used */
     /* four primes near 500 - assume no image has a length so large */
     /* that it is divisible by all four primes */

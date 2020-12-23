@@ -2,11 +2,12 @@ package com.martinwj.entity.media.gif;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 /**
  * 多张静态图片合成动态gif图工具类
  */
-public class LZWEncoder {
+public class LZWEncoder implements Serializable {
 	private static final int EOF = -1;
 	private int imgW, imgH;
 	private byte[] pixAry;

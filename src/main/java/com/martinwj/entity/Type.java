@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Type
  * @Description: TODO  分类表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Type {
+public class Type implements Serializable {
     private String id;		// 主键
     private String name;	// 分类名称（电影、电视剧、动漫...）
     private String sort;	// 排序

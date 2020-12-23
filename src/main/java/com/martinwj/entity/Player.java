@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Player
  * @Description: TODO 播放器接口表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Player {
+public class Player implements Serializable {
     private String id;		// 主键
     private String name;	// 名称
     private String content;	// 播放器内容

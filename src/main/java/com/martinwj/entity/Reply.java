@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Reply
  * @Description: TODO 对某条评论或回复的回复表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reply {
+public class Reply implements Serializable {
     private String id;				// 主键
     private String videoId;			// 视频id
     private String commentId;		// 评论表的主键

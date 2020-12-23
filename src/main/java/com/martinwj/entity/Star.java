@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: Star
  * @Description: TODO 明星信息表
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Star {
+public class Star implements Serializable {
     private String id;				// 主键
     private String name;			// 姓名
     private String alias;			// 别名（英文名）

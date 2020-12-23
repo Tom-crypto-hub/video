@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.media.IMediaDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="MediaMap" type="com.martinwj.entity.Media">
+        <result column="mediaId" property="mediaId"/>
+        <result column="typeId" property="typeId"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="haibao" property="haibao"/>
+        <result column="dafengmian" property="dafengmian"/>
+        <result column="fengmian" property="fengmian"/>
+        <result column="biaoti" property="biaoti"/>
+        <result column="bieming" property="bieming"/>
+        <result column="jianjie" property="jianjie"/>
+        <result column="tag" property="tag"/>
+        <result column="hasVideo" property="hasVideo"/>
+    </resultMap>
+
+    <!-- 查询媒体列表 -->
+    <select id="list" resultMap="MediaMap">
+        SELECT mediaId, typeId, haibao, fengmian, biaoti
+        FROM media
+        WHERE 1 = 1
+        <if test="typeId!=null and typeId!=''">
+            AND typeId = #{typeId}
+        </if>
+        <if test="status!=null and status!=''">
+            AND status = #{status}
+        </if>
+        <if test="keyWord!=null and keyWord!=''">
+            AND (biaoti LIKE CONCAT('%',#{keyWord},'%') OR bieming LIKE CONCAT('%',#{keyWord},'%'))
+        </if>
+        ORDER BY updateTime DESC
+    </select>
+</mapper>

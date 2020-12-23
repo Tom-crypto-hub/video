@@ -3,15 +3,12 @@ package com.martinwj.entity.media.gif;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * 多张静态图片合成动态gif图工具类
  */
-public class AnimatedGifEncoder {
+public class AnimatedGifEncoder implements Serializable {
 	protected int width; // image size
 	protected int height;
 	protected Color transparent = null; // transparent color if given
