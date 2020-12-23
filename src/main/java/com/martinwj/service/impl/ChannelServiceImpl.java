@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 /**
  * @ClassName: ChannelServiceImpl
  * @Description: TODO
@@ -18,6 +20,13 @@ public class ChannelServiceImpl implements ChannelService {
 
     @Autowired
     private IChannelDAO iChannelDAO;
+
+    /**
+     * 查询频道列表
+     */
+    public List<Channel> list() {
+        return iChannelDAO.list();
+    }
 
     /**
      * 根据主键查询频道信息

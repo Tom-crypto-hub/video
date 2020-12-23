@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.martinwj.dao.channel.IChannelDAO">
-
     <!-- 使用Redis二级缓存 -->
     <cache type="com.martinwj.jedis.RedisCache"/>
 
@@ -17,6 +16,13 @@
         <result column="keywords" property="keywords"/>
         <result column="description" property="description"/>
     </resultMap>
+
+    <!-- 查询频道列表 -->
+    <select id="list" resultMap="ChannelMap">
+        SELECT *
+        FROM channel
+        ORDER BY sort
+    </select>
 
     <!-- 根据主键查询频道信息 -->
     <select id="selectById" resultMap="ChannelMap">
