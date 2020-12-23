@@ -25,4 +25,11 @@
         WHERE type = #{type}
         ORDER BY sort
     </select>
+
+    <!-- 根据主键，获取接口设置条件 -->
+    <select id="selectById" resultType="hashmap">
+        SELECT *
+        FROM api
+        WHERE id = #{id}
+    </select>
 </mapper>

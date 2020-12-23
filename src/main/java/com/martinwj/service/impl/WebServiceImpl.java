@@ -15,13 +15,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class WebServiceImpl implements WebService {
     @Autowired
-    private IWebDAO iWebDao;
+    private IWebDAO iWebDAO;
 
     /**
      * 查询网站信息
      * @return
      */
     public Web selectWebInfo() {
-        return iWebDao.selectWebInfo();
+        return iWebDAO.selectWebInfo();
+    }
+
+    /**
+     * 保存站点信息配置
+     * @param web
+     */
+    public void save(Web web) {
+        iWebDAO.update(web);
     }
 }

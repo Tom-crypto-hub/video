@@ -19,6 +19,8 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<import resource="classpath:spring-redis.xml"/>
+
 	<context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>
 	<!-- 配置数据库连接参数及连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

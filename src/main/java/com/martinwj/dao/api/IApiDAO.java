@@ -4,6 +4,7 @@ import com.martinwj.entity.Api;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: IApiDAO
@@ -19,4 +20,13 @@ public interface IApiDAO {
      * @return
      */
     List<Api> listByType(String type);
+
+    /**
+     * 根据主键，获取接口设置条件
+     * @param id 主键
+     * @return
+     */
+    Map<String, Object> selectById(String id);
+
+
 }

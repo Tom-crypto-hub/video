@@ -1,6 +1,7 @@
 package com.martinwj.service;
 
 import com.martinwj.entity.Media;
+import com.martinwj.exception.SysException;
 
 import java.util.List;
 import java.util.Map;
@@ -19,5 +20,13 @@ public interface MediaService {
      * @return
      */
     public List<Media> list(Map<String, Object> param);
+
+    /**
+     * 根据接口自定义查询数据
+     * @param apiId 接口表主键
+     * @return
+     * @throws SysException
+     */
+    public List<Map<String, Object>> getDataByApiId(String apiId) throws SysException;
 
 }

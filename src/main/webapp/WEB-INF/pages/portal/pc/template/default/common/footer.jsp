@@ -24,7 +24,10 @@
 		</c:if>
 		
 	</div>
-	<p class="copyright">Copyright © 2020 Martin All Rights Reserved</p>
+	<p class="copyright">Copyright © 2020 Martin All Rights Reserved.
+		<a class="icon-copyright" href="javascript: ;">${webInfo.recordNumber}</a>
+	</p>
+
 </div>
 
 <!--回到顶部-->

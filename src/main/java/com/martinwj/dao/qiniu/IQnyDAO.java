@@ -3,6 +3,8 @@ package com.martinwj.dao.qiniu;
 import com.martinwj.entity.Qny;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @ClassName: Qny
  * @Description: TODO
@@ -24,4 +26,10 @@ public interface IQnyDAO {
      * @return
      */
     int update(Qny qny);
+
+    /**
+     * 获取所有的七牛云配置信息
+     * @return
+     */
+    List<Qny> selectAll();
 }

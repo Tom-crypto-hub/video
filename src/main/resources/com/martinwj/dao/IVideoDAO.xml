@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.video.IVideoDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="VideoMap" type="com.martinwj.entity.Video">
+        <result column="videoId" property="videoId"/>
+        <result column="mediaId" property="mediaId"/>
+        <result column="num" property="num"/>
+        <result column="title" property="title"/>
+        <result column="image" property="image"/>
+        <result column="url" property="url"/>
+        <result column="playerId" property="playerId"/>
+        <result column="sort" property="sort"/>
+        <result column="status" property="status"/>
+        <result column="remark" property="remark"/>
+        <result column="power" property="power"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="viewCount" property="viewCount"/>
+        <result column="viewCountDay" property="viewCountDay"/>
+        <result column="viewCountWeek" property="viewCountWeek"/>
+        <result column="viewCountMonth" property="viewCountMonth"/>
+        <result column="viewCountYear" property="viewCountYear"/>
+
+        <result column="biaoti" property="biaoti"/>
+    </resultMap>
+
+    <!-- 查询该视频下的第一集 -->
+    <select id="selectByMediaIdFirst" resultMap="VideoMap">
+        SELECT videoId, num, viewCount
+        FROM video
+        WHERE mediaId = #{mediaId}
+          AND status = '1'
+        ORDER BY sort
+        limit 0, 1
+    </select>
+
+    <!-- 查询该视频下的最新一集 -->
+    <select id="selectByMediaIdLast" resultMap="VideoMap">
+        SELECT videoId, num, viewCount
+        FROM video
+        WHERE mediaId = #{mediaId}
+          AND status = '1'
+        ORDER BY sort DESC
+        limit 0, 1
+    </select>
+</mapper>

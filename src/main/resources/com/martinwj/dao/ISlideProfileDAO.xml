@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.slide.ISlideProfileDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果幻灯片数据与实体属性的映射关系 -->
+    <resultMap id="SlideMap" type="com.martinwj.entity.Slide">
+        <result column="id" property="id"/>
+        <result column="apiId" property="apiId"/>
+        <result column="title" property="title"/>
+        <result column="summary" property="summary"/>
+        <result column="image" property="image"/>
+        <result column="thumbnail" property="thumbnail"/>
+        <result column="url" property="url"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+
+    <!-- 接口专用 -->
+    <!-- 根据幻灯片主键，查询所有幻灯片数据 -->
+    <select id="mapListByApiId" resultType="hashmap">
+        SELECT title, summary, image, thumbnail, url
+        FROM slide
+        WHERE apiId = #{apiId}
+        ORDER BY sort
+    </select>
+</mapper>

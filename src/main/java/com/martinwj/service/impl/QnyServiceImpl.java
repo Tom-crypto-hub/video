@@ -7,6 +7,7 @@ import com.martinwj.entity.Qny;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.QnyService;
 import com.martinwj.util.QiNiuUtil;
+import com.martinwj.util.RedisUtil;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -28,7 +29,10 @@ import com.qiniu.storage.UploadManager;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
 
 /**
  * @ClassName: TencentServiceImpl
@@ -41,6 +45,8 @@ public class QnyServiceImpl implements QnyService {
     
     @Autowired
     private IQnyDAO iQnyDAO;
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 根据指定类型查询配置记录
@@ -308,6 +314,28 @@ public class QnyServiceImpl implements QnyService {
         String str = QiNiuUtil.uploadMultipartFile(file, videoName, override, qny);
         System.out.println(str);
         return str;
+    }
+
+    @Override
+    public List<Qny> selectAll() {
+
+        // 先从缓存中找数据，如果没有，则从数据库获取，同时存一份到Redis中
+        List<Object> list = redisUtil.lGet("qny_list", 0, -1);
+        if(list == null || list.size() == 0) {
+            // 从数据库中获取数据
+            List<Qny> qny_list = iQnyDAO.selectAll();
+            list = new ArrayList<>(qny_list);
+            System.out.println(list);
+            redisUtil.lSet("qny_list", list, 60 * 60 * 48);
+            return qny_list;
+        } else {
+            // 直接从缓存中获取数据，返回数据
+            List<Qny> qny_list = new ArrayList<>();
+            for(Object object : list) {
+                qny_list.add((Qny) object);
+            }
+            return qny_list;
+        }
     }
 
 }

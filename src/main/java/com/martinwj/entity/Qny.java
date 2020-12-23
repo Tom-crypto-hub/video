@@ -18,6 +18,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Qny implements Serializable {
     private String id;		// 主键
+    private String title;   // 标题
     private String type;	// 类型
     private String name;	// 名称
     private String domain;	// 空间绑定域名
@@ -27,4 +28,5 @@ public class Qny implements Serializable {
     private String width;	// 自动裁剪后的宽度（0为不裁剪）
     private String height;	// 自动裁剪后的高度（0为不裁剪）
     private String compress;// 压缩率（0为不压缩）
+    private String api;     // 程序中的接口名称
 }

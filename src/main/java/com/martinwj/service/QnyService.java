@@ -7,6 +7,7 @@ import com.qiniu.util.Auth;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @ClassName: TencentService
@@ -88,4 +89,10 @@ public interface QnyService {
      * @throws SysException
      */
     public String uploadVideo(MultipartFile file, String videoName, boolean override, Qny qny) throws IOException, SysException;
+
+    /**
+     * 获取所有的七牛云配置
+     * @return
+     */
+    List<Qny> selectAll();
 }

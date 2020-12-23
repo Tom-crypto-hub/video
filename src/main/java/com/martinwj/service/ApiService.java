@@ -1,9 +1,11 @@
 package com.martinwj.service;
 
 import com.martinwj.entity.Api;
+import com.martinwj.exception.SysException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: ApiService
@@ -19,5 +21,6 @@ public interface ApiService {
      * @return
      */
     public List<Api> listByType(String type);
+
 
 }

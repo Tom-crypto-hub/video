@@ -1,6 +1,7 @@
 package com.martinwj.dao.media;
 
 import com.martinwj.entity.Media;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -18,4 +19,11 @@ public interface IMediaDAO {
      * @return
      */
     List<Media> list(Map<String, Object> param);
+
+    /**
+     * 根据接口自定义查询数据
+     * @param selectSql
+     * @return
+     */
+    List<Map<String, Object>> selectSqlByApi(@Param("selectSql") String selectSql);
 }

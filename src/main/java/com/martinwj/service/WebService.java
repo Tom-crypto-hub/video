@@ -14,4 +14,10 @@ public interface WebService {
      * @return
      */
     Web selectWebInfo();
+
+    /**
+     * 保存站点信息配置
+     * @param web
+     */
+    public void save(Web web);
 }

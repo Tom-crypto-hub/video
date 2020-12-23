@@ -10,6 +10,7 @@
     <!-- 建立sql查询结果字段与实体属性的映射关系 -->
     <resultMap id="QnyMap" type="com.martinwj.entity.Qny">
         <result column="id" property="id" />
+        <result column="title" property="title" />
         <result column="type" property="type" />
         <result column="name" property="name" />
         <result column="domain" property="domain" />
@@ -19,6 +20,7 @@
         <result column="width" property="width" />
         <result column="height" property="height" />
         <result column="compress" property="compress" />
+        <result column="api" property="api" />
     </resultMap>
 
     <!-- 查询指定类型的配置 -->
@@ -28,10 +30,17 @@
         WHERE type = #{type}
     </select>
 
+    <!-- 查询所有 -->
+    <select id="selectAll" resultMap="QnyMap">
+        SELECT title, api
+        FROM qny
+    </select>
+
     <!-- 更新配置 -->
     <update id="update">
         UPDATE qny
         <set>
+            <if test="title!=null">title=#{title},</if>
             <if test="domain!=null">domain=#{domain},</if>
             <if test="ak!=null">ak=#{ak},</if>
             <if test="sk!=null">sk=#{sk},</if>
@@ -39,6 +48,7 @@
             <if test="width!=null">width=#{width},</if>
             <if test="height!=null">height=#{height},</if>
             <if test="compress!=null">compress=#{compress},</if>
+            <if test="api!=null">api=#{api}</if>
         </set>
         WHERE type = #{type}
     </update>

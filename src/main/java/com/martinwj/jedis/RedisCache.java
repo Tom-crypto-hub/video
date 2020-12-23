@@ -72,7 +72,7 @@ public class RedisCache implements Cache {
         JedisConnection connection = null;
         try {
             connection = (JedisConnection) jedisConnectionFactory.getConnection();
-            result = Integer.parseInt(connection.dbSize().toString());
+            result = Integer.parseInt(Objects.requireNonNull(connection.dbSize()).toString());
             logger.info("添加mybaits二级缓存数量：" + result);
         } catch (JedisConnectionException e) {
             e.printStackTrace();
@@ -85,7 +85,6 @@ public class RedisCache implements Cache {
     }
 
     public void putObject(Object key, Object value) {
-        System.out.println("key: " + key + "\n value: "  + value);
         rwl.writeLock().lock();
 
         JedisConnection connection = null;
@@ -112,7 +111,7 @@ public class RedisCache implements Cache {
         try {
             connection = (JedisConnection) jedisConnectionFactory.getConnection();
             RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
-            result = serializer.deserialize(connection.get(serializer.serialize(key)));
+            result = serializer.deserialize(connection.get(Objects.requireNonNull(serializer.serialize(key))));
             logger.info("命中mybaits二级缓存,value=" + result);
 
         } catch (JedisConnectionException e) {

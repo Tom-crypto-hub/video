@@ -1,6 +1,10 @@
 package com.martinwj.controller.api;
 
 import com.martinwj.entity.Result;
+import com.martinwj.exception.SysException;
+import com.martinwj.service.MediaService;
+import com.martinwj.service.SlideProfileService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +23,12 @@ import java.util.Map;
 @Controller
 @RequestMapping("api")
 public class ApiAction {
+
+    @Autowired
+    private SlideProfileService slideProfileService;
+    @Autowired
+    private MediaService mediaService;
+
     /**
      * 幻灯片数据
      * @param apiId 接口表主键
@@ -30,9 +40,23 @@ public class ApiAction {
             HttpServletRequest request,
             @RequestParam(value="apiId") String apiId) {
 
-//        List<Map<String, Object>> list = slideProfileService.mapListByApiId(apiId);
+        List<Map<String, Object>> list = slideProfileService.mapListByApiId(apiId);
 
-//        return Result.success().add("list", list);
-        return null;
+        return Result.success().add("list", list);
+    }
+
+    /**
+     * 根据接口自定义查询数据
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("data.json")
+    @ResponseBody
+    public Result data(
+            @RequestParam(value="apiId") String apiId) throws SysException {
+
+        List<Map<String, Object>> list = mediaService.getDataByApiId(apiId);
+
+        return Result.success().add("list", list);
     }
 }

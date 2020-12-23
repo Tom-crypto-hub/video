@@ -39,4 +39,9 @@
         </if>
         ORDER BY updateTime DESC
     </select>
+
+    <!-- 根据接口自定义查询数据 -->
+    <select id="selectSqlByApi" resultType="hashmap">
+        ${selectSql}
+    </select>
 </mapper>

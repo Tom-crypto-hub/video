@@ -32,6 +32,10 @@
         <property name="poolConfig"  ref="poolConfig"/>
     </bean>
 
+    <bean id="redisCacheTransfer" class="com.martinwj.jedis.RedisCacheTransfer">
+        <property name="jedisConnectionFactory" ref="jedisConnectionFactory" />
+    </bean>
+
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="jedisConnectionFactory"/>
         <!--     如果不配置Serializer，那么存储的时候只能使用String，如果用对象类型存储，那么会提示错误 can't cast to String！！！-->
@@ -51,8 +55,8 @@
         <property name="enableTransactionSupport" value="true"/>
     </bean>
 
-    <bean id="redisCacheTransfer" class="com.martinwj.jedis.RedisCacheTransfer">
-        <property name="jedisConnectionFactory" ref="jedisConnectionFactory" />
+    <bean id="redisUtil" class="com.martinwj.util.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate"/>
     </bean>
 
 </beans>

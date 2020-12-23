@@ -1,9 +1,11 @@
 package com.martinwj.controller.admin;
 
 import com.martinwj.constant.ErrorMsg;
+import com.martinwj.entity.Qny;
 import com.martinwj.entity.Result;
 import com.martinwj.entity.User;
 import com.martinwj.exception.SysException;
+import com.martinwj.service.QnyService;
 import com.martinwj.service.UserService;
 import com.martinwj.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @ClassName: AdminAction
@@ -27,6 +30,9 @@ import javax.servlet.http.HttpSession;
 public class AdminAction {
     @Autowired
     private UserService userService;
+    @Autowired
+    private QnyService qnyService;
+
 
     // 登录页面显示
     @RequestMapping("login.action")
@@ -177,7 +183,10 @@ public class AdminAction {
      * 全局
      */
     @RequestMapping("basic.action")
-    public String basic() {
+    public String basic(ModelMap map) {
+        List<Qny> list = qnyService.selectAll();
+        map.put("qny_list", list);
+        System.out.println(list);
         return "admin/menu/basic";
     }
 

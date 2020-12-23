@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -170,5 +171,45 @@ public class PortalAction {
         return "portal/pc/template/" + templatePC + "/user/personal/accountset";
     }
 
+    /**
+     * 跳转频道页面
+     * @return
+     */
+    @RequestMapping("portal.action")
+    public String portal(ModelMap map,
+                         HttpServletRequest request,
+                         @RequestParam(value="channelId") String channelId) {
+        // 站点信息
+        Web web = webService.selectWebInfo();
+        map.put("webInfo", web);
 
+        // 获取所选模板
+        String templatePC = templateService.selectNameByType("pc");
+
+        // 判断合法性
+        try {
+            Integer.parseInt(channelId);
+        } catch (Exception e) {
+            // 404
+            return "portal/pc/template/" + templatePC + "/error/404";
+        }
+        Channel channel = channelService.selectById(channelId);
+        if (channel==null) {
+            // 404
+            return "portal/pc/template/" + templatePC + "/error/404";
+        }
+        map.put("channelInfo", channel);
+
+        // 获取用户信息
+        User user = userService.getUser(request);
+        map.put("userInfo", user);
+
+        // 获取可用导航
+        List<Nav> navlist = navService.listIsUse();
+        map.put("navlist", navlist);
+
+        map.put("active", "portal.action?channelId="+channelId);
+
+        return "portal/pc/template/" + templatePC + "/channel/" + channel.getTemplate();
+    }
 }

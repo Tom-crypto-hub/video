@@ -154,7 +154,7 @@
 		<!--广告-->
 		<div class="block no-shadow">
 			<div class="main">
-				<c:import url="../ad/ad1.jsp"></c:import>
+				<c:import url="../ad/ad1.jsp"/>
 			</div>
 		</div>
 		
@@ -482,6 +482,7 @@
 					loadData(id, api);
 					return;
 				}
+				console.log(rtn);
 				var list = rtn.data.list;
 				if (list.length>0) {
 					var html = '';

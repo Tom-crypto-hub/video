@@ -24,11 +24,14 @@ import org.springframework.util.CollectionUtils;
  * @author: martin-wj
  * @createDate: 2020-12-23
  */
-@Component
 public class RedisUtil {
 
-    @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    @Autowired
+    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     //=============================common============================
     /**
@@ -55,7 +58,7 @@ public class RedisUtil {
      * @return 时间(秒) 返回0代表为永久有效
      */
     public long getExpire(String key){
-        return redisTemplate.getExpire(key,TimeUnit.SECONDS);
+        return redisTemplate.getExpire(key, TimeUnit.SECONDS);
     }
 
     /**

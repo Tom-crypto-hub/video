@@ -33,11 +33,14 @@
 				<li>
 					<a href="javascript:;">七牛云上传设置</a>
 					<ul class="menu">
-						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=haibao');">上传海报</a></li>
-						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=dafengmian');">上传大封面</a></li>
-						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=fengmian');">上传小封面</a></li>
-						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=touxiang');">上传头像</a></li>
-						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=content');">简介中的图片</a></li>
+						<c:forEach items="${qny_list}" var="qny">
+							<li><a href="javascript:page('${pageContext.request.contextPath}${qny.api}');">${qny.title}</a></li>
+						</c:forEach>
+<%--						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=haibao');">上传海报</a></li>--%>
+<%--						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=dafengmian');">上传大封面</a></li>--%>
+<%--						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=fengmian');">上传小封面</a></li>--%>
+<%--						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=touxiang');">上传头像</a></li>--%>
+<%--						<li><a href="javascript:page('${pageContext.request.contextPath}/qny/edit.action?type=content');">简介中的图片</a></li>--%>
 					</ul>
 				</li>
 			</ul>

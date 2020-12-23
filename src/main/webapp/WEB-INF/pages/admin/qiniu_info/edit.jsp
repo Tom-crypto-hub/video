@@ -17,7 +17,7 @@
 			<div class="breadcrumb">
 				<span>全局</span>
 				<span class="divider">/</span>
-				<span class="active">图片上传设置</span>
+				<span class="active">${qiniuInfo.title}</span>
 			</div>
 		</div>
 		
@@ -34,7 +34,19 @@
 					<!--表单-->
 					<form id="form">
 						<input type="hidden" name="type" value="${type}" />
-						
+
+						<!--标题-->
+						<div class="unit">
+							<div class="left">
+								<span class="required">*</span><p class="subtitle">标题</p>
+							</div>
+							<div class="right">
+								<input type="text" class="text" name="title" value="${qiniuInfo.title}" data-type="必填" />
+							</div>
+							<!--清浮动-->
+							<span class="clearfix"></span>
+						</div>
+
 						<!--域名-->
 						<div class="unit">
 							<div class="left">
@@ -78,6 +90,18 @@
 							</div>
 							<div class="right">
 								<input type="text" class="text" name="bucket" value="${qiniuInfo.bucket}" data-type="必填" />
+							</div>
+							<!--清浮动-->
+							<span class="clearfix"></span>
+						</div>
+
+						<!--接口名称-->
+						<div class="unit">
+							<div class="left">
+								<span class="required">*</span><p class="subtitle">接口名称</p>
+							</div>
+							<div class="right">
+								<input type="text" class="text" name="api" value="${qiniuInfo.api}" data-type="必填" />
 							</div>
 							<!--清浮动-->
 							<span class="clearfix"></span>
