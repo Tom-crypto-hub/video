@@ -31,7 +31,7 @@ public interface INavDAO {
      * @param nav
      * @return
      */
-    int update(Nav navI);
+    int update(Nav nav);
 
     /**
      * 批量删除导航

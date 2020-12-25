@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.group.IGroupDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="GroupMap" type="com.martinwj.entity.Group">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="power" property="power"/>
+        <result column="type" property="type"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+    <!-- 查询导航列表 -->
+    <select id="list" resultMap="GroupMap">
+        SELECT *
+        FROM `group`
+        ORDER BY sort
+    </select>
+
+    <!--添加导航组-->
+    <insert id="insert" parameterType="com.martinwj.entity.Group">
+        insert into `group`(name,power,type,sort)
+        value(#{name},#{power},#{type},#{sort})
+    </insert>
+    <!--更新导航组-->
+    <update id="update" parameterType="com.martinwj.entity.Group">
+        update `group`
+        set name=#{name},power=#{power},sort=#{sort}
+        where id=#{id}
+    </update>
+    <!--删除导航组-->
+    <delete id="deleteById" parameterType="string">
+        delete from `group`
+        where id in
+        <foreach  item="id" open="(" close=")" separator="," collection="idArr">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
