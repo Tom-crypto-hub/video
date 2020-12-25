@@ -27,7 +27,7 @@ public interface NavService {
 
     /**
      * 保存导航
-     * @param NavList
+     * @param navList
      */
     public void save(List<Nav> navList);
 
