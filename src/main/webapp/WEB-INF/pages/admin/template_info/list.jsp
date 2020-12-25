@@ -36,7 +36,7 @@
 									<img src="${entity.previewPath}" width="100%" height="100%" />
 								</div>
 								<c:choose>
-									<c:when test="${templateInfoPC.name==entity.templateName}">
+									<c:when test="${templatePC.name==entity.templateName}">
 										<input type="radio" class="fill" name="pc" value="${entity.templateName}" checked />${entity.templateName}
 									</c:when>
 									<c:otherwise>

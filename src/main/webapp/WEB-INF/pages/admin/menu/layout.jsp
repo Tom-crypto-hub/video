@@ -15,7 +15,7 @@
 		<div class="admin-iframe-menu">
 			<ul class="menu">
 				<li class="active"><a href="javascript:page('${pageContext.request.contextPath}/nav_info/list.action');">导航设置</a></li>
-				<li><a href="javascript:page('${pageContext.request.contextPath}/template_info/list.action');">模板风格</a></li>
+				<li><a href="javascript:page('${pageContext.request.contextPath}/template/list.action');">模板风格</a></li>
 				<li><a href="javascript:page('${pageContext.request.contextPath}/channel_info/list.action');">频道栏目</a></li>
 				<li><a href="javascript:page('${pageContext.request.contextPath}/player_info/list.action');">播放器</a></li>
 			</ul>

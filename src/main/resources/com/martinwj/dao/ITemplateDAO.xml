@@ -14,10 +14,25 @@
         <result column="name" property="name"/>
     </resultMap>
 
+    <!-- 根据类型查询已选的模板 -->
+    <select id="selectByType" resultMap="TemplateMap">
+        SELECT *
+        FROM template
+        WHERE type = #{type}
+    </select>
+
     <!-- 获取类型对应的模板名称 -->
     <select id="selectNameByType" resultType="String">
         SELECT name
         FROM template
         WHERE type = #{type}
     </select>
+
+
+    <!-- 查询所有的模板 -->
+    <select id="selectAll" resultMap="TemplateMap">
+        SELECT *
+        FROM template
+    </select>
+
 </mapper>

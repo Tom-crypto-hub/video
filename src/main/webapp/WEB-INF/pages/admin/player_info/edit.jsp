@@ -32,14 +32,14 @@
 					<!--表单-->
 					<form id="form">
 						<input type="hidden" name="id" value="${id}" />
-						
+						<input type="hidden" name="sort" value="${playerInfo.sort}" />
 						<!--输入框-->
 						<div class="unit">
 							<div class="left">
 								<p class="subtitle">名称</p>
 							</div>
 							<div class="right">
-								${playerInfo.name}
+								<input type="text" class="text" name="name" value="${playerInfo.name}" />
 							</div>
 							<!--清浮动-->
 							<span class="clearfix"></span>

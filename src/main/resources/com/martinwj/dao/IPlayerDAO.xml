@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.player.IPlayerDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="PlayerMap" type="com.martinwj.entity.Player">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="content" property="content"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+    <!-- 查询播放器列表 -->
+    <select id="list" resultMap="PlayerMap">
+        SELECT *
+        FROM player
+        ORDER BY sort
+    </select>
+
+    <!--添加播放器-->
+    <insert id="addList" parameterType="com.martinwj.entity.Player">
+        insert into player(name,content,sort)
+        values (#{name},#{content},#{sort})
+    </insert>
+    <!--删除播放器-->
+    <delete id="deleteById" parameterType="string">
+        delete from player
+        where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--更新播放器列表-->
+    <update id="updateList" parameterType="com.martinwj.entity.Player">
+        update player
+        set name=#{name},sort=#{sort}
+        where id=#{id}
+    </update>
+    <!--根据主键查询播放器信息-->
+    <select id="selectById" resultMap="PlayerMap">
+        select *
+        from player
+        where id = #{id}
+    </select>
+</mapper>
