@@ -28,7 +28,7 @@
         SELECT mediaId, typeId, haibao, fengmian, biaoti
         FROM media
         WHERE 1 = 1
-        <if test="typeId!=null and typeId!=''">
+        <if test="typeId!=null and typeId!='' and typeId!=0">
             AND typeId = #{typeId}
         </if>
         <if test="status!=null and status!=''">
@@ -43,5 +43,15 @@
     <!-- 根据接口自定义查询数据 -->
     <select id="selectSqlByApi" resultType="hashmap">
         ${selectSql}
+    </select>
+
+    <select id="selectBiaotiById" resultType="string">
+        select biaoti
+        from media
+        where mediaId=#{mediaId}
+    </select>
+
+    <select id="selectById" resultMap="MediaMap">
+        select * from media where mediaId=#{mediaId}
     </select>
 </mapper>

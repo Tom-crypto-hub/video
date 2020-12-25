@@ -146,5 +146,24 @@ public class MediaServiceImpl implements MediaService {
         return list;
     }
 
+    /**
+     * 根据主键，查询该媒体信息标题
+     * @param mediaId 主键
+     * @return
+     */
+    @Override
+    public String selectBiaotiById(String mediaId) {
+        return iMediaDAO.selectBiaotiById(mediaId);
+    }
+
+    /**
+     * 根据主键查询媒体信息
+     * @param mediaId 主键
+     * @return
+     */
+    public Media selectById(String mediaId) {
+        return iMediaDAO.selectById(mediaId);
+    }
+
 
 }

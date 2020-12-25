@@ -29,4 +29,18 @@ public interface MediaService {
      */
     public List<Map<String, Object>> getDataByApiId(String apiId) throws SysException;
 
+    /**
+     * 根据主键，查询该媒体信息标题
+     * @param mediaId 主键
+     * @return
+     */
+    String selectBiaotiById(String mediaId);
+
+    /**
+     * 根据主键查询媒体信息
+     * @param mediaId 主键
+     * @return
+     */
+    public Media selectById(String mediaId);
+
 }

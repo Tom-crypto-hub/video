@@ -48,4 +48,42 @@
         ORDER BY sort DESC
         limit 0, 1
     </select>
+
+    <!-- 根据媒体信息主键，查询该视频下的所有播放集数，从大到小排序（后台管理专用） -->
+    <select id="listByMediaIdDesc" resultMap="VideoMap">
+        SELECT *
+        FROM video
+        WHERE mediaId = #{mediaId}
+        ORDER BY sort DESC, videoId DESC
+    </select>
+
+    <!-- 根据主键查询信息 -->
+    <select id="selectById" resultMap="VideoMap">
+        SELECT mi.biaoti,
+               vi.*
+        FROM video vi,
+             media mi
+        WHERE vi.mediaId = mi.mediaId
+          AND vi.videoId = #{videoId}
+    </select>
+
+    <!-- 根据视频主键查询视频播放源 -->
+    <select id="selectVideoPlayById" resultMap="VideoMap">
+        SELECT playerId,
+               url
+        FROM video
+        WHERE videoId = #{videoId}
+    </select>
+
+    <!-- 根据主键查询信息 -->
+    <select id="selectByMediaId" resultMap="VideoMap">
+        SELECT mi.biaoti,
+               vi.*
+        FROM video vi,
+             media mi
+        WHERE vi.mediaId = mi.mediaId
+          AND vi.mediaId = #{mediaId}
+        ORDER BY sort DESC
+        limit 0, 1
+    </select>
 </mapper>

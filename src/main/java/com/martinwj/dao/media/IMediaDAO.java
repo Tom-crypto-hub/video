@@ -26,4 +26,18 @@ public interface IMediaDAO {
      * @return
      */
     List<Map<String, Object>> selectSqlByApi(@Param("selectSql") String selectSql);
+
+    /**
+     * 根据主键，查询该视频名称
+     * @param mediaId
+     * @return
+     */
+    String selectBiaotiById(String mediaId);
+
+    /**
+     * 根据主键查询媒体信息
+     * @param mediaId 主键
+     * @return
+     */
+    Media selectById(String mediaId);
 }

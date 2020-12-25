@@ -1,35 +1,17 @@
-package com.martinwj.dao.video;
+package com.martinwj.service;
 
-import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Video;
 import it.sauronsoftware.jave.VideoInfo;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 /**
- * @ClassName: IVideoDAO
+ * @ClassName: VideoService
  * @Description: TODO
  * @author: martin-wj
- * @createDate: 2020-12-23
+ * @createDate: 2020-12-24
  */
-@Repository
-public interface IVideoDAO {
-
-    /**
-     * 查询该视频下的第一集
-     * @param mediaId 媒体信息主键
-     * @return
-     */
-    Video selectByMediaIdFirst(String mediaId);
-
-    /**
-     * 查询该视频下的最新一集
-     * @param mediaId 媒体信息主键
-     * @return
-     */
-    Video selectByMediaIdLast(String mediaId);
+public interface VideoService {
 
     /**
      * 根据媒体信息主键，查询该视频下所播放的集数，从大到小排序（后台管理专用）
@@ -46,11 +28,11 @@ public interface IVideoDAO {
     Video selectById(String videoId);
 
     /**
-     * 根据视频主键查询视频播放源
+     * 根据视频主键查询视频播放源（电脑端）
      * @param videoId
      * @return
      */
-    Video selectVideoPlayById(String videoId);
+    String selectVideoPlayById(String videoId);
 
     /**
      * 根据视频mediaId查找一条视频（电脑端）
@@ -58,4 +40,5 @@ public interface IVideoDAO {
      * @return
      */
     Video selectByMediaId(String mediaId);
+
 }

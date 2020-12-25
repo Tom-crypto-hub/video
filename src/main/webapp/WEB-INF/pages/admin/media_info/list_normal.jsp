@@ -94,7 +94,7 @@
 											</td>
 											<td>${entity.biaoti}</td>
 											<td>
-												<a href="edit.action?mediaId=${entity.mediaId}">
+												<a href="${pageContext.request.contextPath}/video_info/edit.action?mediaId=${entity.mediaId}">
 													<button class="button wathet"><span class="icon-edit-2"></span> 媒体信息</button>
 												</a>
 												<a href="${pageContext.request.contextPath}/video_info/list.action?mediaId=${entity.mediaId}">
