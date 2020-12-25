@@ -166,6 +166,7 @@ public class MediaAction {
         Map<String, Object> param = new HashMap<String, Object>();
 
         String typeId = request.getParameter("type_id");
+        System.out.println(typeId);
         // 查询字段列表
         List<Field> fieldList = fieldService.listByTypeId(typeId);
         if (fieldList!=null && fieldList.isEmpty()==false) {

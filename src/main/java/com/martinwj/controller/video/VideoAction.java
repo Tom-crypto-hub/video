@@ -75,10 +75,11 @@ public class VideoAction {
         if (!StringUtils.isEmpty(videoId)) {
             Video video = videoService.selectById(videoId);
             map.put("videoInfo", video);
-        } else if (!StringUtils.isEmpty(mediaId)) {
-            Video video = videoService.selectByMediaId(mediaId);
-            map.put("videoInfo", video);
         }
+//        else if (!StringUtils.isEmpty(mediaId)) {
+//            Video video = videoService.selectByMediaId(mediaId);
+//            map.put("videoInfo", video);
+//        }
 
         // 根据媒体信息主键，查询该视频名称
         String biaoti = mediaService.selectBiaotiById(mediaId);

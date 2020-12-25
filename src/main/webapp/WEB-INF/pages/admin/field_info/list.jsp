@@ -54,7 +54,12 @@
 						<tbody>
 							<c:forEach items="${pageInfo.list}" var="entity" varStatus="status" >
 								<tr>
-									<td class="checkbox"><input type="checkbox" class="fill listen-1-2" value="${entity.id}" name="id" /> </td>
+									<c:when test="${entity.type=='system'}">
+										<td class="checkbox"><input type="checkbox" class="fill listen-1-2" value="${entity.id}" name="id" disabled="disabled" /> </td>
+									</c:when>
+									<c:when test="${entity.type!='system'}">
+										<td class="checkbox"><input type="checkbox" class="fill listen-1-2" value="${entity.id}" name="id" /> </td>
+									</c:when>
 									<td><input type="text" class="text" name="sort" value="${entity.sort}" data-type="非负整数" error-msg="请填写非负整数" error-pos="36" /></td>
 									<td><input type="text" class="text" name="name" value="${entity.name}" data-type="必填" error-pos="36" /></td>
 									<td><input type="text" class="text" name="varName" value="${entity.varName}" data-type="必填" error-pos="36" /></td>
