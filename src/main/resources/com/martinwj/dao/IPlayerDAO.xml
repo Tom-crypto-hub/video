@@ -21,4 +21,31 @@
         FROM player
         ORDER BY sort
     </select>
+
+    <!--添加播放器-->
+    <insert id="addList" parameterType="com.martinwj.entity.Player">
+        insert into player(name,content,sort)
+        values (#{name},#{content},#{sort})
+    </insert>
+    <!--删除播放器-->
+    <delete id="deleteById" parameterType="string">
+        delete from player
+        where id in
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--更新播放器列表-->
+    <update id="updateList" parameterType="com.martinwj.entity.Player">
+        update player
+        set name=#{name},sort=#{sort}
+        where id=#{id}
+    </update>
+    <!--根据主键查询播放器信息-->
+    <select id="selectById" resultMap="PlayerMap">
+        select *
+        from player
+        where id = #{id}
+    </select>
 </mapper>

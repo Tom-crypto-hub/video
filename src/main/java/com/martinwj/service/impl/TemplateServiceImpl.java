@@ -6,6 +6,8 @@ import com.martinwj.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @ClassName: TemplateServiceImpl
  * @Description: TODO
@@ -34,5 +36,10 @@ public class TemplateServiceImpl implements TemplateService {
      */
     public String selectNameByType(String type) {
         return iTemplateDAO.selectNameByType(type);
+    }
+
+    @Override
+    public List<Template> selectAll() {
+        return iTemplateDAO.selectAll();
     }
 }

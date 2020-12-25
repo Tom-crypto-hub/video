@@ -27,4 +27,12 @@
         FROM template
         WHERE type = #{type}
     </select>
+
+
+    <!-- 查询所有的模板 -->
+    <select id="selectAll" resultMap="TemplateMap">
+        SELECT *
+        FROM template
+    </select>
+
 </mapper>

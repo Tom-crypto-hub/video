@@ -2,6 +2,8 @@ package com.martinwj.service;
 
 import com.martinwj.entity.Template;
 
+import java.util.List;
+
 /**
  * @ClassName: TemplateService
  * @Description: TODO
@@ -23,4 +25,11 @@ public interface TemplateService {
      * @return
      */
     public String selectNameByType(String type);
+
+
+    /**
+     * 查询所有的模板信息
+     * @return
+     */
+    List<Template> selectAll();
 }

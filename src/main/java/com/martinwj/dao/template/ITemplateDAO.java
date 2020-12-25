@@ -3,6 +3,8 @@ package com.martinwj.dao.template;
 import com.martinwj.entity.Template;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @ClassName: ITemplateDAO
  * @Description: TODO
@@ -25,4 +27,10 @@ public interface ITemplateDAO {
      * @return
      */
     String selectNameByType(String type);
+
+    /**
+     * 查询所有的模板
+     * @return
+     */
+    List<Template> selectAll();
 }

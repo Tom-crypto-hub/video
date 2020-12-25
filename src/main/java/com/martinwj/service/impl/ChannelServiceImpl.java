@@ -39,4 +39,48 @@ public class ChannelServiceImpl implements ChannelService {
         }
         return iChannelDAO.selectById(id);
     }
+
+    /**
+     * 通过Id删除频道
+     * @param id
+     * @return
+     */
+    @Override
+    public int deleteById(String id) {
+        return iChannelDAO.deleteById(id);
+    }
+
+    /**
+     * 添加频道信息
+     * @return
+     */
+    @Override
+    public int addList(Channel channel) {
+        return iChannelDAO.addList(channel);
+    }
+
+    /**
+     * 更新频道信息
+     * @param channel
+     * @return
+     */
+    @Override
+    public int updateList(Channel channel) {
+        return iChannelDAO.updateList(channel);
+    }
+
+    /**
+     * 保存频道信息
+     * @param channel
+     * @return
+     */
+    @Override
+    public int save(Channel channel) {
+        if(StringUtils.isEmpty(channel.getId())){
+            return addList(channel);
+        } else {
+            return updateList(channel);
+        }
+    }
+
 }

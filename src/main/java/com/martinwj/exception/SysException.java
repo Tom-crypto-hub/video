@@ -20,6 +20,11 @@ public class SysException extends Exception{
         this.message = message.getMsg();
     }
 
+    public SysException(String  message){
+        super(message);
+        this.message = message;
+    }
+
     public String getMessage() {
         return message;
     }

@@ -30,4 +30,21 @@
         FROM channel
         WHERE id = #{id}
     </select>
+    <!-- 根据主键删除频道信息-->
+    <delete id="deleteById" parameterType="String">
+        delete
+        from channel
+        where id=#{id}
+    </delete>
+    <!-- 添加频道信息-->
+    <insert id="addList" parameterType="com.martinwj.entity.Channel">
+        insert into channel(name,sort,template,title,keywords,description)
+        values(#{name},#{sort},#{template},#{title},#{keywords},#{description})
+    </insert>
+
+    <update id="updateList" parameterType="com.martinwj.entity.Channel">
+        update channel
+        set name=#{name},sort=#{sort},template=#{template},title=#{title},keywords=#{keywords},description=#{description}
+        where id=#{id}
+    </update>
 </mapper>

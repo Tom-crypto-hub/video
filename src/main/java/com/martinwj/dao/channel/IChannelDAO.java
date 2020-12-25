@@ -26,4 +26,31 @@ public interface IChannelDAO {
      * @return
      */
     public Channel selectById(String id);
+
+    /**
+     * 根据主键删除频道信息
+     * @param id
+     * @return
+     */
+    int deleteById(String id);
+
+    /**
+     * 添加频道信息
+     * @return
+     */
+    int addList(Channel channel);
+
+    /**
+     * 更新频道信息
+     * @param channel
+     * @return
+     */
+    int updateList(Channel channel);
+
+    /**
+     * 保存频道信息
+     * @param channel
+     * @return
+     */
+    int save(Channel channel);
 }
