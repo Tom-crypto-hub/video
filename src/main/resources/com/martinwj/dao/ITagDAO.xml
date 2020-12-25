@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.martinwj.dao.tag.ITagDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果幻灯片数据与实体属性的映射关系 -->
+    <resultMap id="TagMap" type="com.martinwj.entity.Tag">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <!-- 根据标签名称数组，查询对应的id集合，并按从小到大排序 -->
+    <select id="listIdByNameArr" resultType="String">
+        SELECT id
+        FROM tag
+        WHERE name IN
+        <foreach collection="nameArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY id
+    </select>
+
+    <!-- 根据主键数组，查询名称集合 -->
+    <select id="listNameByIdArr" parameterType="string" resultType="string">
+        SELECT name FROM tag
+        WHERE id IN
+        <foreach collection="idArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        ORDER BY id
+    </select>
+
+    <!-- 根据标签中文名称，查询标签是否已存在 -->
+    <select id="countByName" resultType="int">
+        SELECT COUNT(*)
+        FROM tag
+        WHERE name = #{name}
+    </select>
+
+    <!-- 插入新标签 -->
+    <insert id="insert">
+        INSERT INTO tag
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+        </trim>
+    </insert>
+</mapper>

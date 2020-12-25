@@ -24,8 +24,8 @@
 
     <!--添加播放器-->
     <insert id="addList" parameterType="com.martinwj.entity.Player">
-        insert into player(name,content,sort)
-        values (#{name},#{content},#{sort})
+        insert into player(name, content, sort)
+        values (#{name}, #{content}, #{sort})
     </insert>
     <!--删除播放器-->
     <delete id="deleteById" parameterType="string">
@@ -39,13 +39,21 @@
     <!--更新播放器列表-->
     <update id="updateList" parameterType="com.martinwj.entity.Player">
         update player
-        set name=#{name},sort=#{sort}
-        where id=#{id}
+        set name=#{name},
+            sort=#{sort}
+        where id = #{id}
     </update>
     <!--根据主键查询播放器信息-->
     <select id="selectById" resultMap="PlayerMap">
         select *
         from player
         where id = #{id}
+    </select>
+
+    <!-- 根据主键查询播放器内容 -->
+    <select id="selectContentById" resultType="string">
+        SELECT content
+        FROM player
+        WHERE id = #{id}
     </select>
 </mapper>

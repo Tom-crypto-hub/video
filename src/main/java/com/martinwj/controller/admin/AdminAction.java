@@ -97,7 +97,7 @@ public class AdminAction {
         // 判断session
         HttpSession session  = request.getSession();
         // 从session中取出用户身份信息
-        User user = (User)session.getAttribute("userInfo");
+        User user = (User)session.getAttribute("user");
 
         return Result.success().add("userInfo", user);
     }

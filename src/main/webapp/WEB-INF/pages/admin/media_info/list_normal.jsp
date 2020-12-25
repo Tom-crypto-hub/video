@@ -94,7 +94,7 @@
 											</td>
 											<td>${entity.biaoti}</td>
 											<td>
-												<a href="edit.action?mediaId=${entity.mediaId}">
+												<a href="${pageContext.request.contextPath}/video_info/edit.action?mediaId=${entity.mediaId}">
 													<button class="button wathet"><span class="icon-edit-2"></span> 媒体信息</button>
 												</a>
 												<a href="${pageContext.request.contextPath}/video_info/list.action?mediaId=${entity.mediaId}">
@@ -194,7 +194,16 @@
 	$("#add").click(function() {
 		// 分类id
 		var typeId = $("#type_id").val();
-		
+
+		// 判断选择的分类是否是全部，是全部则不能添加
+		if (typeId==0) {
+			javaex.optTip({
+				content : "请选择添加的分类类型（不能是全部）",
+				type : "error"
+			});
+			return;
+		}
+
 		window.location.href = "edit.action?typeId="+typeId;
 	});
 	

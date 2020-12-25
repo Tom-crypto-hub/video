@@ -268,7 +268,7 @@
 	// 上传海报
 	javaex.upload({
 		type : "image",
-		url : "${pageContext.request.contextPath}/qiniu_info/upload_image.json?type=haibao",	// 请求路径
+		url : "${pageContext.request.contextPath}/qny/upload_image.json?type=haibao",	// 请求路径
 		id : "upload",	// <input type="file" />的id
 		param : "file",			// 参数名称，SSM中与MultipartFile的参数名保持一致
 		dataType : "url",		// 返回的数据类型：base64 或 url
@@ -306,7 +306,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/qiniu_info/upload_image_by_yuancheng.json",
+			url : "${pageContext.request.contextPath}/qny/upload_image_by_yuancheng.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -338,7 +338,7 @@
 	// 上传大封面
 	javaex.upload({
 		type : "image",
-		url : "${pageContext.request.contextPath}/qiniu_info/upload_image.json?type=dafengmian",	// 请求路径
+		url : "${pageContext.request.contextPath}/qny/upload_image.json?type=dafengmian",	// 请求路径
 		id : "upload2",	// <input type="file" />的id
 		maxSize : "5120",
 		param : "file",			// 参数名称，SSM中与MultipartFile的参数名保持一致
@@ -376,7 +376,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/qiniu_info/upload_image_by_yuancheng.json",
+			url : "${pageContext.request.contextPath}/qny/upload_image_by_yuancheng.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -408,7 +408,7 @@
 	// 上传小封面
 	javaex.upload({
 		type : "image",
-		url : "${pageContext.request.contextPath}/qiniu_info/upload_image.json?type=fengmian",	// 请求路径
+		url : "${pageContext.request.contextPath}/qny/upload_image.json?type=fengmian",	// 请求路径
 		id : "upload3",	// <input type="file" />的id
 		maxSize : "5120",
 		param : "file",			// 参数名称，SSM中与MultipartFile的参数名保持一致
@@ -454,7 +454,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/qiniu_info/upload_image_by_yuancheng.json",
+			url : "${pageContext.request.contextPath}/qny/upload_image_by_yuancheng.json",
 			type : "POST",
 			dataType : "json",
 			data : {
@@ -487,7 +487,7 @@
 	javaex.edit({
 		id : "edit",
 		image : {
-			url : "${pageContext.request.contextPath}/qiniu_info/upload_image.json?type=content",	// 请求路径
+			url : "${pageContext.request.contextPath}/qny/upload_image.json?type=content",	// 请求路径
 			param : "file",		// 参数名称，SSM中与MultipartFile的参数名保持一致
 			dataType : "url",	// 返回的数据类型：base64 或 url
 			rtn : "rtnData",	// 后台返回的数据对象，在前面页面用该名字存储

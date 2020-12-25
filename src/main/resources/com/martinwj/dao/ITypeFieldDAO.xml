@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.typefield.ITypeFieldDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="TypeFieldMap" type="com.martinwj.entity.TypeField">
+        <result column="id" property="id" />
+        <result column="typeId" property="typeId" />
+        <result column="fieldId" property="fieldId" />
+        <result column="isScreen" property="isScreen" />
+        <result column="isRequired" property="isRequired" />
+        <result column="sort" property="sort" />
+
+        <result column="fieldName" property="fieldName" />
+    </resultMap>
+
+    <!-- 检索指定字段是否必填 -->
+    <select id="selectIsRequired" resultType="String">
+        SELECT
+                tf.isRequired
+        FROM
+                typeField tf,
+                field fi
+        WHERE
+                tf.fieldId = fi.id
+          AND tf.typeId = #{typeId}
+          AND fi.type = 'user'
+          AND fi.varName = #{varName}
+    </select>
+
+
+</mapper>

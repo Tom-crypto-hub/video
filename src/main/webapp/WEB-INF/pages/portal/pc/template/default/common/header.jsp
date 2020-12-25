@@ -144,7 +144,7 @@ a:visited {color: #666}
 				</div>
 				<a href="#" target="_blank" class="link-ranking"><span>排行榜</span></a>
 			</div>
-			<a href="#" class="head-logo" style="background-image: url(${pageContext.request.contextPath}/static/default/images/logo.png);"></a>
+<%--			<a href="#" class="head-logo" style="background-image: url(${pageContext.request.contextPath}/static/default/images/logo_s.png);background-size:100% 100%;background-color:rgba(255,255,255,0.2);"></a>--%>
 		</div>
 		<a target="_blank" class="banner-link"></a>
 	</div>

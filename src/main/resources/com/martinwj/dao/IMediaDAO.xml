@@ -28,7 +28,7 @@
         SELECT mediaId, typeId, haibao, fengmian, biaoti
         FROM media
         WHERE 1 = 1
-        <if test="typeId!=null and typeId!=''">
+        <if test="typeId!=null and typeId!='' and typeId!=0">
             AND typeId = #{typeId}
         </if>
         <if test="status!=null and status!=''">
@@ -43,5 +43,59 @@
     <!-- 根据接口自定义查询数据 -->
     <select id="selectSqlByApi" resultType="hashmap">
         ${selectSql}
+    </select>
+
+    <select id="selectBiaotiById" resultType="string">
+        select biaoti
+        from media
+        where mediaId=#{mediaId}
+    </select>
+
+    <select id="selectById" resultMap="MediaMap">
+        select * from media where mediaId=#{mediaId}
+    </select>
+
+    <!-- 批量更新媒体 -->
+    <update id="batchUpdate">
+        UPDATE media
+        <set>
+            <if test="status!=null and status!=''">status=#{status},</if>
+            <if test="typeId!=null and typeId!=''">typeId=#{typeId},</if>
+        </set>
+        WHERE mediaId IN
+        <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <!-- 批量删除 -->
+    <delete id="batchDelete">
+        DELETE FROM media WHERE mediaId IN
+        <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 插入一条数据 -->
+    <insert id="insert">
+        ${alterSql}
+    </insert>
+
+    <!-- 更新一条媒体信息 -->
+    <update id="update">
+        ${alterSql}
+    </update>
+
+    <!-- 根据主键和分类id，获取媒体字段信息 -->
+    <select id="selectSqlById" resultType="hashmap">
+        ${selectSql}
+    </select>
+
+    <!-- 查询标题对应的媒体的数量 -->
+    <select id="countByBiaoti" resultType="int">
+        SELECT COUNT(*)
+        FROM media
+        WHERE biaoti = #{biaoti}
+        <if test="mediaId!=null and mediaId!=''">AND mediaId != #{mediaId}</if>
     </select>
 </mapper>
