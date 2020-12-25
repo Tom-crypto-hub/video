@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.field.IFieldDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="FieldMap" type="com.martinwj.entity.Field">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="type" property="type"/>
+        <result column="sort" property="sort"/>
+        <result column="inputType" property="inputType"/>
+        <result column="varName" property="varName"/>
+        <result column="isAllowEdit" property="isAllowEdit"/>
+    </resultMap>
+
+    <!-- 查询字段列表 -->
+    <select id="list" resultMap="FieldMap">
+        SELECT *
+        FROM field
+        WHERE type = 'user'
+        ORDER BY sort
+    </select>
+
+    <!-- 查询分类下的字段列表 -->
+    <select id="listByTypeId" resultMap="FieldMap">
+        SELECT fi.*
+        FROM field fi,
+             typefield tf
+        WHERE fi.id = tf.fieldId
+          AND tf.typeId = #{typeId}
+          AND fi.type = 'user'
+        ORDER BY tf.sort
+    </select>
+
+    <!-- 根据主键查询字段信息 -->
+    <select id="selectById" resultMap="FieldMap">
+        SELECT *
+        FROM field
+        WHERE id = #{id}
+    </select>
+
+    <!-- 更新字段 -->
+    <update id="update">
+        UPDATE field
+        <set>
+            <if test="sort!=null">sort=#{sort},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="varName!=null">varName=#{varName},</if>
+            <if test="inputType!=null">inputType=#{inputType},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="isAllowEdit!=null">isAllowEdit=#{isAllowEdit},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

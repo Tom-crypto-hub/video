@@ -194,7 +194,16 @@
 	$("#add").click(function() {
 		// 分类id
 		var typeId = $("#type_id").val();
-		
+
+		// 判断选择的分类是否是全部，是全部则不能添加
+		if (typeId==0) {
+			javaex.optTip({
+				content : "请选择添加的分类类型（不能是全部）",
+				type : "error"
+			});
+			return;
+		}
+
 		window.location.href = "edit.action?typeId="+typeId;
 	});
 	

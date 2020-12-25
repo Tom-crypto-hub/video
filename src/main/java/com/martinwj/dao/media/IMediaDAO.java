@@ -40,4 +40,45 @@ public interface IMediaDAO {
      * @return
      */
     Media selectById(String mediaId);
+
+    /**
+     * 批量删除
+     * @param mediaIdArr 主键数组
+     */
+    int batchDelete(@Param("mediaIdArr") String[] mediaIdArr);
+
+    /**
+     * 批量更新媒体
+     * @param param
+     */
+    int batchUpdate(Map<String, Object> param);
+
+    /**
+     * 查询媒体信息，返回map
+     * @param selectSql
+     * @return
+     */
+    Map<String, Object> selectSqlById(@Param("selectSql") String selectSql);
+
+    /**
+     * 查询标题对应的媒体的数量
+     * @param biaoti 标题
+     * @param mediaId 主键
+     * @return
+     */
+    int countByBiaoti(@Param("biaoti") String biaoti, @Param("mediaId") String mediaId);
+
+    /**
+     * 插入一条媒体信息
+     * @param alterSql
+     * @return
+     */
+    int insert(@Param("alterSql") String alterSql);
+
+    /**
+     * 更新一条媒体信息
+     * @param alterSql
+     * @return
+     */
+    int update(@Param("alterSql") String alterSql);
 }

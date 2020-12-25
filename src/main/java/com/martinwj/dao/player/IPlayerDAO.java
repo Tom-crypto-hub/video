@@ -46,4 +46,11 @@ public interface IPlayerDAO {
      * @return
      */
     public Player selectById(String id);
+
+    /**
+     * 根据主键查询播放器内容
+     * @param id 主键
+     * @return
+     */
+    String selectContentById(String id);
 }

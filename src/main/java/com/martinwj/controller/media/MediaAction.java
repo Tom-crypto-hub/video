@@ -169,6 +169,7 @@ public class MediaAction {
         // 查询字段列表
         List<Field> fieldList = fieldService.listByTypeId(typeId);
         if (fieldList!=null && fieldList.isEmpty()==false) {
+            System.out.println(fieldList);
             for (Field field : fieldList) {
                 String name = field.getName();		// 字段中文名
                 String varName = field.getVarName();// 字段变量名
@@ -180,7 +181,7 @@ public class MediaAction {
                         // 判断该字段是否是必填项
                         String isRequired = typeFieldService.selectIsRequired(typeId, varName);
                         if ("1".equals(isRequired)) {
-                            throw new SysException(ErrorMsg.ERROR_300002 + "：" + name);
+                            throw new SysException(ErrorMsg.ERROR_300002.getMsg() + "：" + name);
                         }
                         param.put(varName, arr);
                     } else {
@@ -201,7 +202,7 @@ public class MediaAction {
                         // 判断该字段是否是必填项
                         String isRequired = typeFieldService.selectIsRequired(typeId, varName);
                         if ("1".equals(isRequired)) {
-                            throw new SysException(ErrorMsg.ERROR_300002 + "：" + name);
+                            throw new SysException(ErrorMsg.ERROR_300002.getMsg() + "：" + name);
                         }
                     }
                     param.put(varName, value);
@@ -209,9 +210,9 @@ public class MediaAction {
             }
 
             // 分类
-            param.put("type_id", typeId);
+            param.put("typeId", typeId);
             // 主键
-            param.put("media_id", request.getParameter("mediaId"));
+            param.put("mediaId", request.getParameter("mediaId"));
             // 海报
             param.put("haibao", request.getParameter("haibao"));
             // 大封面
@@ -244,17 +245,19 @@ public class MediaAction {
             param.put("jianjie", jianjie);
             // 标签
             String tag = request.getParameter("tag");
+            String tagInput = request.getParameter("tag-input");
+            System.out.println("tag: " + tag);
+            System.out.println("tagInput: " + tagInput);
             if (!StringUtils.isEmpty(tag)) {
                 tag = tag.replace("'", "");
             }
             param.put("tag", tag);
         }
-
+        System.out.println("typeID: " + typeId + ", param: " + param);
         mediaService.save(param);
 
         return Result.success();
     }
-
 
     /**
      * 根据主键，获取媒体信息

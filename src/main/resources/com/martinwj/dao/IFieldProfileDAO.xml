@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.fieldProfile.IFieldProfileDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="FieldProfileMap" type="com.martinwj.entity.FieldProfile">
+        <result column="id" property="id" />
+        <result column="fieldId" property="fieldId" />
+        <result column="name" property="name" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 根据字段主键查询字段详情列表 -->
+    <select id="listByFieldId" resultMap="FieldProfileMap">
+        SELECT *
+        FROM fieldProfile
+        WHERE fieldId = #{fieldId}
+        ORDER BY sort
+    </select>
+
+    <!-- 插入一条新数据 -->
+    <insert id="insert">
+        INSERT INTO fieldprofile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sort!=null and sort!=''">sort,</if>
+            <if test="name!=null and name!=''">name,</if>
+            <if test="fieldId!=null and fieldId!=''">fieldId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sort!=null and sort!=''">#{sort},</if>
+            <if test="name!=null and name!=''">#{name},</if>
+            <if test="fieldId!=null and fieldId!=''">#{fieldId},</if>
+        </trim>
+    </insert>
+
+    <!-- 更新一条新数据 -->
+    <update id="update">
+        UPDATE fieldprofile
+        <set>
+            <if test="sort!=null">sort=#{sort},</if>
+            <if test="name!=null">name=#{name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除字段详情内容 -->
+    <delete id="delete">
+        DELETE FROM fieldprofile WHERE id IN
+        <foreach collection="idArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

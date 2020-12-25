@@ -86,4 +86,24 @@
         ORDER BY sort DESC
         limit 0, 1
     </select>
+
+    <!-- 根据媒体主键数组，批量删除视频信息 -->
+    <delete id="batchDeleteByMediaId">
+        DELETE FROM video WHERE mediaId IN
+        <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 批量更新视频的状态 -->
+    <update id="batchUpdate">
+        UPDATE video
+        <set>
+            <if test="status!=null">status=#{status},</if>
+        </set>
+        WHERE mediaId IN
+        <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

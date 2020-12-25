@@ -3,10 +3,12 @@ package com.martinwj.dao.video;
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Video;
 import it.sauronsoftware.jave.VideoInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: IVideoDAO
@@ -58,4 +60,17 @@ public interface IVideoDAO {
      * @return
      */
     Video selectByMediaId(String mediaId);
+
+    /**
+     * 根据媒体主键数组，批量删除视频信息
+     * @param mediaIdArr
+     */
+    int batchDeleteByMediaId(@Param("mediaIdArr") String[] mediaIdArr);
+
+    /**
+     * 批量更新视频的状态
+     * @param param
+     * @return
+     */
+    int batchUpdate(Map<String, Object> param);
 }
