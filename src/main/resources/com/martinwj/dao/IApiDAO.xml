@@ -32,4 +32,9 @@
         FROM api
         WHERE id = #{id}
     </select>
+
+    <!-- 插入字段 -->
+    <insert id="alter">
+        ${alterSql}
+    </insert>
 </mapper>

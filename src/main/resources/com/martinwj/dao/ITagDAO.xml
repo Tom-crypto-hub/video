@@ -28,7 +28,7 @@
     <select id="listNameByIdArr" parameterType="string" resultType="string">
         SELECT name FROM tag
         WHERE id IN
-        <foreach collection="idArr" index="index" item="item" open="(" separator="," close=")">
+        <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
         ORDER BY id

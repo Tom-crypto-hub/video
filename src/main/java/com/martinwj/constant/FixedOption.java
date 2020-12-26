@@ -14,12 +14,12 @@ public class FixedOption {
         RADIO("radio", "单选(radio)"),
         CHECKBOX("checkbox", "多选(checkbox)"),
 
-		IMAGE("image", "上传图片(image)"),
-		URL("url", "超链接(url)"),
-		SELECT("select", "下拉选择(select)"),
-		DAY("day", "日期(day)"),
-		DAY2("day2", "范围日期(day2)"),
-		STAR("star", "人物(自带链接)")
+//		IMAGE("image", "上传图片(image)"),
+//		URL("url", "超链接(url)"),
+//		SELECT("select", "下拉选择(select)"),
+//		DAY("day", "日期(day)"),
+//		DAY2("day2", "范围日期(day2)"),
+//		STAR("star", "人物(自带链接)")
         ;
 
         private String value;
