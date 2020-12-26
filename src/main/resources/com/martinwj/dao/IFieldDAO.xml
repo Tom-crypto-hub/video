@@ -43,16 +43,89 @@
         WHERE id = #{id}
     </select>
 
+    <!-- 校验字段变量名是否重复 -->
+    <select id="countByVarName" resultType="int">
+        SELECT COUNT(*)
+        FROM field
+        WHERE varName = #{varName}
+        <if test="id!=null and id!=''">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <!-- 插入新的字段 -->
+    <insert id="insert">
+        INSERT INTO field
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sort!=null and sort!=''">
+                sort,
+            </if>
+            <if test="name!=null and name!=''">
+                name,
+            </if>
+            <if test="varName!=null and varName!=''">
+                varName,
+            </if>
+            <if test="inputType!=null and inputType!=''">
+                inputType,
+            </if>
+            <if test="type!=null and type!=''">
+                type,
+            </if>
+            <if test="content!=null and content!=''">
+                content,
+            </if>
+            <if test="isAllowEdit!=null and isAllowEdit!=''">
+                isAllowEdit,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sort!=null and sort!=''">
+                #{sort},
+            </if>
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="varName!=null and varName!=''">
+                #{varName},
+            </if>
+            <if test="inputType!=null and inputType!=''">
+                #{inputType},
+            </if>
+            <if test="type!=null and type!=''">
+                #{type},
+            </if>
+            <if test="content!=null and content!=''">
+                #{content},
+            </if>
+            <if test="isAllowEdit!=null and isAllowEdit!=''">
+                #{isAllowEdit},
+            </if>
+        </trim>
+    </insert>
+
     <!-- 更新字段 -->
     <update id="update">
         UPDATE field
         <set>
-            <if test="sort!=null">sort=#{sort},</if>
-            <if test="name!=null">name=#{name},</if>
-            <if test="varName!=null">varName=#{varName},</if>
-            <if test="inputType!=null">inputType=#{inputType},</if>
-            <if test="content!=null">content=#{content},</if>
-            <if test="isAllowEdit!=null">isAllowEdit=#{isAllowEdit},</if>
+            <if test="sort!=null">
+                sort=#{sort},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="varName!=null">
+                varName=#{varName},
+            </if>
+            <if test="inputType!=null">
+                inputType=#{inputType},
+            </if>
+            <if test="content!=null">
+                content=#{content},
+            </if>
+            <if test="isAllowEdit!=null">
+                isAllowEdit=#{isAllowEdit},
+            </if>
         </set>
         WHERE id = #{id}
     </update>

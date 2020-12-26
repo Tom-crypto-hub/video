@@ -38,4 +38,17 @@ public interface IFieldDAO {
      * 更新字段
      */
     int update(Field field);
+
+    /**
+     * 校验字段变量名是否重复（排除自己）
+     * @param varName 字段变量名
+     * @param id 主键
+     * @return
+     */
+    int countByVarName(@Param("varName") String varName, @Param("id") String id);
+
+    /**
+     * 插入新的字段
+     */
+    int insert(Field field);
 }

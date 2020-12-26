@@ -1,6 +1,7 @@
 package com.martinwj.dao.api;
 
 import com.martinwj.entity.Api;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,5 +29,9 @@ public interface IApiDAO {
      */
     Map<String, Object> selectById(String id);
 
-
+    /**
+     * 向接口表中添加字段
+     * @param alterSql
+     */
+    int alter(@Param("alterSql") String alterSql);
 }
