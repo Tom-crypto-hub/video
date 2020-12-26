@@ -76,4 +76,19 @@ public interface MediaService {
      */
     public void batchDelete(String[] mediaIdArr);
 
+    /**
+     * 根据主键，获取媒体信息
+     * @param mediaId 媒体信息的主键
+     * @return
+     * @throws SysException
+     */
+    public Map<String, Object> selectByMediaId(String mediaId) throws SysException;
+
+    /**
+     * 根据接口自定义查询排行榜数据
+     * @param apiId
+     * @return
+     * @throws SysException
+     */
+    List<Map<String, Object>> getRankDataByApiId(String apiId) throws SysException;
 }

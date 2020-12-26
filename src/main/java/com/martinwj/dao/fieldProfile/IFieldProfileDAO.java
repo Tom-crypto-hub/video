@@ -40,4 +40,17 @@ public interface IFieldProfileDAO {
      */
     int delete(@Param("idArr") String[] idArr);
 
+    /**
+     * 根据主键，查询对应的文本
+     * @param id 主键
+     * @return
+     */
+    String selectById(String id);
+
+    /**
+     * 根据主键数组，查询对应的文本list
+     * @param idArr
+     * @return
+     */
+    List<String> selectByIdArr(@Param("idArr") String[] arr);
 }

@@ -18,4 +18,11 @@ public interface ITypeDAO {
      * 查询分类列表
      */
     List<Type> list();
+
+    /**
+     * 根据主键查询分类信息
+     * @param id 主键
+     * @return
+     */
+    Type selectById(String id);
 }

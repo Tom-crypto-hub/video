@@ -24,9 +24,19 @@
 
     <!--添加播放器-->
     <insert id="addList" parameterType="com.martinwj.entity.Player">
-        insert into player(name, content, sort)
-        values (#{name}, #{content}, #{sort})
+        insert into player
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">name,</if>
+            <if test="content!=null and content!=''">content,</if>
+            <if test="sort!=null and sort!=''">sort,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">#{name},</if>
+            <if test="content!=null and content!=''">#{content},</if>
+            <if test="sort!=null and sort!=''">#{sort},</if>
+        </trim>
     </insert>
+
     <!--删除播放器-->
     <delete id="deleteById" parameterType="string">
         delete from player
@@ -39,10 +49,14 @@
     <!--更新播放器列表-->
     <update id="updateList" parameterType="com.martinwj.entity.Player">
         update player
-        set name=#{name},
-            sort=#{sort}
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="sort!=null">sort=#{sort},</if>
+        </set>
         where id = #{id}
     </update>
+
     <!--根据主键查询播放器信息-->
     <select id="selectById" resultMap="PlayerMap">
         select *

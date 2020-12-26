@@ -123,4 +123,18 @@ public class FieldAction {
         return Result.success();
     }
 
+    /**
+     * 查询字段变量名和其类型
+     * @return
+     */
+    @RequestMapping("get_data_by_type_id.json")
+    @ResponseBody
+    public Result getDataByTypeId(@RequestParam(value="typeId") String typeId) {
+
+        List<Field> list = fieldService.listByTypeId(typeId);
+
+        return Result.success().add("list", list);
+    }
+
+
 }

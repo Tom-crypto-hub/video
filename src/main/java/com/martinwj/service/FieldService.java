@@ -30,4 +30,13 @@ public interface FieldService {
      * @throws SysException
      */
     void save(List<Field> fieldList) throws SysException;
+
+    /**
+     * 获取分类筛选字段的信息2
+     * @param typeId 分类信息的主键
+     * @param fieldName 字段名
+     * @param fieldValue 字段选项名
+     * @return
+     */
+    List<Field> getListField(String typeId, String fieldName, String fieldValue);
 }

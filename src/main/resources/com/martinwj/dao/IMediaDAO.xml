@@ -48,19 +48,25 @@
     <select id="selectBiaotiById" resultType="string">
         select biaoti
         from media
-        where mediaId=#{mediaId}
+        where mediaId = #{mediaId}
     </select>
 
     <select id="selectById" resultMap="MediaMap">
-        select * from media where mediaId=#{mediaId}
+        select *
+        from media
+        where mediaId = #{mediaId}
     </select>
 
     <!-- 批量更新媒体 -->
     <update id="batchUpdate">
         UPDATE media
         <set>
-            <if test="status!=null and status!=''">status=#{status},</if>
-            <if test="typeId!=null and typeId!=''">typeId=#{typeId},</if>
+            <if test="status!=null and status!=''">
+                status=#{status},
+            </if>
+            <if test="typeId!=null and typeId!=''">
+                typeId=#{typeId},
+            </if>
         </set>
         WHERE mediaId IN
         <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
@@ -96,6 +102,50 @@
         SELECT COUNT(*)
         FROM media
         WHERE biaoti = #{biaoti}
-        <if test="mediaId!=null and mediaId!=''">AND mediaId != #{mediaId}</if>
+        <if test="mediaId!=null and mediaId!=''">
+            AND mediaId != #{mediaId}
+        </if>
+    </select>
+
+    <!-- 更新对应的媒体的时间、状态等 -->
+    <update id="updateMedia">
+        UPDATE media
+        <set>
+            <if test="updateTime!=null">
+                updateTime=#{updateTime},
+            </if>
+            <if test="hasVideo!=null">
+                hasVideo=#{hasVideo},
+            </if>
+        </set>
+        WHERE mediaId = #{mediaId}
+    </update>
+
+    <!-- 根据主键，获取媒体信息 -->
+    <select id="selectByMediaId" resultType="hashmap">
+        SELECT ti.name       AS typeName,
+               mi.updateTime AS uploadTime,
+               mi.*
+        FROM media mi,
+             type ti
+        WHERE mi.typeId = ti.id
+          AND mediaId = #{mediaId}
+    </select>
+
+    <!-- 根据关键词，查询符合条件的媒体信息，获取其主键 -->
+    <select id="searchIdByKeyWord" resultType="String">
+        SELECT mediaId
+        FROM media
+        WHERE 1 = 1
+        <if test="keyWord!=null and keyWord!=''">
+            AND (biaoti LIKE CONCAT('%',#{keyWord},'%') OR bieming LIKE CONCAT('%',#{keyWord},'%'))
+        </if>
+        ORDER BY
+        updateTime DESC
+    </select>
+
+    <!-- 根据筛选结果，查询媒体列表 -->
+    <select id="listByFilter" resultType="hashmap">
+        ${selectSql}
     </select>
 </mapper>

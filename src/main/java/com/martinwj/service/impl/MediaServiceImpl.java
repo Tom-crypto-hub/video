@@ -3,15 +3,15 @@ package com.martinwj.service.impl;
 import com.martinwj.constant.ErrorMsg;
 import com.martinwj.dao.api.IApiDAO;
 import com.martinwj.dao.field.IFieldDAO;
+import com.martinwj.dao.fieldProfile.IFieldProfileDAO;
 import com.martinwj.dao.media.IMediaDAO;
 import com.martinwj.dao.tag.ITagDAO;
 import com.martinwj.dao.video.IVideoDAO;
-import com.martinwj.entity.Field;
-import com.martinwj.entity.Media;
-import com.martinwj.entity.Tag;
-import com.martinwj.entity.Video;
+import com.martinwj.entity.*;
 import com.martinwj.exception.SysException;
 import com.martinwj.service.MediaService;
+import com.martinwj.service.QnyService;
+import com.martinwj.util.QiNiuUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -39,6 +39,10 @@ public class MediaServiceImpl implements MediaService {
     private ITagDAO iTagDAO;
     @Autowired
     private IFieldDAO iFieldDAO;
+    @Autowired
+    private QnyService qnyService;
+    @Autowired
+    private IFieldProfileDAO iFieldProfileDAO;
 
     /**
      * 查询媒体列表
@@ -156,7 +160,7 @@ public class MediaServiceImpl implements MediaService {
                 sql.append(" '"+param.get("jianjie").toString()+"', ");
                 sql.append(" '1', ");
                 sql.append(" '0', ");
-                sql.append(" GETDATE() ");
+                sql.append(" now() ");
                 sql.append(" ) ");
 
                 iMediaDAO.insert(sql.toString());
@@ -380,11 +384,178 @@ public class MediaServiceImpl implements MediaService {
      * @param mediaIdArr 主键数组
      */
     public void batchDelete(String[] mediaIdArr) {
-        // 1.0 删除其下的视频信息
+
+        // 1.0 获取视频信息，删除七牛云对象信息
+        Qny videoQny = qnyService.selectByType("video");
+        Qny haibaoQny = qnyService.selectByType("haibao");
+        Qny fengmianQny = qnyService.selectByType("fengmian");
+        Qny contentQny = qnyService.selectByType("content");
+        Qny dafengmianQny = qnyService.selectByType("dafengmian");
+        Qny touxiangQny = qnyService.selectByType("touxiang");
+
+        // 1.1 获取所有的视频信息的URL链接
+        List<Video> videos = iVideoDAO.selectByMediaId(mediaIdArr);
+        for(Video video : videos) {
+            // 1.1.1 删除视频文件
+            if(video.getUrl() != null) {
+                int i = video.getUrl().lastIndexOf("/");
+                QiNiuUtil.deleteFile(videoQny, video.getUrl().substring(i + 1));
+            }
+            // 1.1.2 删除视频的封面文件
+            if(video.getImage() != null) {
+                int i = video.getImage().lastIndexOf("/");
+                QiNiuUtil.deleteFile(fengmianQny, video.getImage().substring(i + 1));
+            }
+        }
+
+        for(String mediaId : mediaIdArr) {
+            Media media = iMediaDAO.selectById(mediaId);
+            // 1.1.3 删除海报信息
+            if(media.getHaibao() != null) {
+                int i = media.getHaibao().lastIndexOf("/");
+                QiNiuUtil.deleteFile(haibaoQny, media.getHaibao().substring(i + 1));
+            }
+            // 1.1.4 删除封面信息
+            if(media.getFengmian() != null) {
+                int i = media.getFengmian().lastIndexOf("/");
+                QiNiuUtil.deleteFile(fengmianQny, media.getFengmian().substring(i + 1));
+            }
+            // 1.1.5 删除大封面信息
+            if(media.getDafengmian() != null) {
+                int i = media.getDafengmian().lastIndexOf("/");
+                QiNiuUtil.deleteFile(haibaoQny, media.getDafengmian().substring(i + 1));
+            }
+        }
+
+        // 2.0 删除其下的视频信息
         iVideoDAO.batchDeleteByMediaId(mediaIdArr);
 
         // 2.0 删除媒体信息
         iMediaDAO.batchDelete(mediaIdArr);
+    }
+
+    /**
+     * 根据主键，获取媒体信息
+     * @param mediaId 媒体信息的主键
+     * @return
+     * @throws SysException
+     */
+    public Map<String, Object> selectByMediaId(String mediaId) throws SysException {
+        Map<String, Object> map = iMediaDAO.selectByMediaId(mediaId);
+        if (map==null) {
+            throw new SysException(ErrorMsg.ERROR_300003);
+        }
+
+        // 遍历map，获取字段对应的文本
+        for (String key : map.keySet()) {
+            if ("mediaId".equals(key) || "tag".equals(key) || "haibao".equals(key) || "biaoti".equals(key) || "kandian".equals(key) || "jianjie".equals(key)) {
+
+            } else {
+                String fieldProfileId = map.get(key).toString();
+                String[] arr = fieldProfileId.split(",");
+                if (arr!=null && arr.length>0) {
+                    // 判断该字段是否是复选框
+                    Field field = iFieldDAO.selectByVarName(key);
+                    if (field!=null) {
+                        // 判断字段类型
+                        if ("radio".equals(field.getInputType())) {
+                            // 单选框
+                            String value = iFieldProfileDAO.selectById(fieldProfileId);
+                            if (!StringUtils.isEmpty(value)) {
+                                map.put(key, value);
+                            }
+                        } else if ("checkbox".equals(field.getInputType())) {
+                            // 复选框
+                            List<String> list = iFieldProfileDAO.selectByIdArr(arr);
+                            if (list!=null && list.isEmpty()==false) {
+                                map.put(key, list);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return map;
+    }
+
+    /**
+     * 根据接口自定义查询排行榜数据
+     * @param apiId
+     * @return
+     * @throws SysException
+     */
+    public List<Map<String, Object>> getRankDataByApiId(String apiId) throws SysException {
+        Map<String, Object> apiInfo = iApiDAO.selectById(apiId);
+        if (apiInfo==null) {
+            throw new SysException(ErrorMsg.ERROR_700002);
+        }
+
+        StringBuilder sql = new StringBuilder();
+        sql.append(" SELECT ");
+        sql.append(" mi.mediaId, ");
+        sql.append(" mi.biaoti, ");
+        sql.append(" mi.fengmian, ");
+        sql.append(" mi.zongjishu, ");
+        sql.append(" vi.viewCount ");
+        sql.append(" FROM ");
+        sql.append(" media mi, ");
+        sql.append(" ( ");
+        sql.append(" SELECT ");
+        sql.append(" mediaId, ");
+        if ("day".equals(apiInfo.get("rankType"))) {
+            sql.append(" SUM(viewCountDay) AS viewCount ");
+        } else if ("week".equals(apiInfo.get("rankType"))) {
+            sql.append(" SUM(viewCountWeek) AS viewCount ");
+        } else if ("month".equals(apiInfo.get("rankType"))) {
+            sql.append(" SUM(viewCountMonth) AS viewCount ");
+        } else if ("year".equals(apiInfo.get("rankType"))) {
+            sql.append(" SUM(viewCountYear) AS viewCount ");
+        } else {
+            return null;
+        }
+        sql.append(" FROM ");
+        sql.append(" video ");
+        sql.append(" GROUP BY ");
+        sql.append(" mediaId ");
+        sql.append(" ) vi ");
+        sql.append(" WHERE ");
+        sql.append(" mi.status = '1' ");
+        sql.append(" AND mi.hasVideo = '1' ");// 其下有视频
+        sql.append(" AND mi.mediaId = vi.mediaId ");
+        sql.append(" AND mi.typeId = '" + apiInfo.get("typeId") + "' ");
+        sql.append(" ORDER BY ");
+        sql.append(" vi.viewCount DESC ");
+        sql.append(" limit ").append(apiInfo.get("num")).append("1");
+
+        // 返回查询结果
+        List<Map<String, Object>> list = iMediaDAO.selectSqlByApi(sql.toString());
+
+        // 判断是否需要查询视频信息
+        String selectVideo = apiInfo.get("selectVideo").toString();
+        if ("0".equals(selectVideo)) {
+            // 不查询
+        } else {
+            if (list!=null && list.isEmpty()==false) {
+                int len = list.size();
+                for (int i=0; i<len; i++) {
+                    String mediaId = list.get(i).get("mediaId").toString();
+                    Video video = null;
+                    if ("1".equals(selectVideo)) {
+                        // 查询第一集
+                        video = iVideoDAO.selectByMediaIdFirst(mediaId);
+                    } else if ("2".equals(selectVideo)) {
+                        // 查询最新一集
+                        video = iVideoDAO.selectByMediaIdLast(mediaId);
+                    }
+                    if (video!=null) {
+                        list.get(i).put("videoInfo", video);
+                    }
+                }
+            }
+        }
+
+        return list;
     }
 
 }

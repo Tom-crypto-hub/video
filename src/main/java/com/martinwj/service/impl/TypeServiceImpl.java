@@ -27,4 +27,13 @@ public class TypeServiceImpl implements TypeService {
         return iTypeDAO.list();
     }
 
+    /**
+     * 根据主键查询分类信息
+     * @param id 主键
+     * @return
+     */
+    public Type selectById(String id) {
+        return iTypeDAO.selectById(id);
+    }
+
 }

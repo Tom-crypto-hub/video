@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.reply.IReplyDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果接口与实体属性的映射关系 -->
+    <resultMap id="ReplyInfoMap" type="com.martinwj.entity.Reply">
+        <result column="id" property="id"/>
+        <result column="videoId" property="videoId"/>
+        <result column="commentId" property="commentId"/>
+        <result column="userId" property="userId"/>
+        <result column="loginName" property="loginName"/>
+        <result column="toUserId" property="toUserId"/>
+        <result column="toLoginName" property="toLoginName"/>
+        <result column="content" property="content"/>
+        <result column="updateTime" property="updateTime"/>
+    </resultMap>
+
+    <!-- 获取某个视频的评论列表 -->
+    <select id="listByCommentId" resultMap="ReplyInfoMap">
+        SELECT ri.id,
+               ri.commentId,
+               ri.userId,
+               ri.loginName,
+               ri.toUserId,
+               ri.toLoginName,
+               ri.content,
+               ri.updateTime AS updateTime,
+               upi.avatar
+        FROM reply ri,
+             userProfile upi
+        WHERE ri.userId = upi.userId
+          AND ri.commentId = #{commentId}
+        ORDER BY updateTime DESC
+    </select>
+
+    <!-- 获取某个视频的回复条数 -->
+    <select id="countByVideoId" resultType="int">
+        SELECT COUNT(*)
+        FROM reply
+        WHERE videoId = #{videoId}
+    </select>
+</mapper>

@@ -57,6 +57,168 @@
         ORDER BY sort DESC, videoId DESC
     </select>
 
+    <!-- 插入一条新数据 -->
+    <insert id="insert">
+        INSERT INTO video
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="mediaId!=null and mediaId!=''">
+                mediaId,
+            </if>
+            <if test="num!=null and num!=''">
+                num,
+            </if>
+            <if test="title!=null and title!=''">
+                title,
+            </if>
+            <if test="image!=null and image!=''">
+                image,
+            </if>
+            <if test="url!=null and url!=''">
+                url,
+            </if>
+            <if test="playerId!=null and playerId!=''">
+                playerId,
+            </if>
+            <if test="sort!=null and sort!=''">
+                sort,
+            </if>
+            <if test="status!=null and status!=''">
+                status,
+            </if>
+            <if test="power!=null and power!=''">
+                power,
+            </if>
+            <if test="remark!=null and remark!=''">
+                remark,
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                updateTime,
+            </if>
+            <if test="viewCount!=null and viewCount!=''">
+                viewCount,
+            </if>
+            <if test="viewCountDay!=null and viewCountDay!=''">
+                viewCountDay,
+            </if>
+            <if test="viewCountWeek!=null and viewCountWeek!=''">
+                viewCountWeek,
+            </if>
+            <if test="viewCountMonth!=null and viewCountMonth!=''">
+                viewCountMonth,
+            </if>
+            <if test="viewCountYear!=null and viewCountYear!=''">
+                viewCountYear,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="mediaId!=null and mediaId!=''">
+                #{mediaId},
+            </if>
+            <if test="num!=null and num!=''">
+                #{num},
+            </if>
+            <if test="title!=null and title!=''">
+                #{title},
+            </if>
+            <if test="image!=null and image!=''">
+                #{image},
+            </if>
+            <if test="url!=null and url!=''">
+                #{url},
+            </if>
+            <if test="playerId!=null and playerId!=''">
+                #{playerId},
+            </if>
+            <if test="sort!=null and sort!=''">
+                #{sort},
+            </if>
+            <if test="status!=null and status!=''">
+                #{status},
+            </if>
+            <if test="power!=null and power!=''">
+                #{power},
+            </if>
+            <if test="remark!=null and remark!=''">
+                #{remark},
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                #{updateTime},
+            </if>
+            <if test="viewCount!=null and viewCount!=''">
+                #{viewCount},
+            </if>
+            <if test="viewCountDay!=null and viewCountDay!=''">
+                #{viewCountDay},
+            </if>
+            <if test="viewCountWeek!=null and viewCountWeek!=''">
+                #{viewCountWeek},
+            </if>
+            <if test="viewCountMonth!=null and viewCountMonth!=''">
+                #{viewCountMonth},
+            </if>
+            <if test="viewCountYear!=null and viewCountYear!=''">
+                #{viewCountYear},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 更新一条数据 -->
+    <update id="update">
+        UPDATE video
+        <set>
+            <if test="mediaId!=null">
+                mediaId=#{mediaId},
+            </if>
+            <if test="num!=null">
+                num=#{num},
+            </if>
+            <if test="title!=null">
+                title=#{title},
+            </if>
+            <if test="image!=null">
+                image=#{image},
+            </if>
+            <if test="url!=null">
+                url=#{url},
+            </if>
+            <if test="playerId!=null">
+                playerId=#{playerId},
+            </if>
+            <if test="sort!=null">
+                sort=#{sort},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="power!=null">
+                power=#{power},
+            </if>
+            <if test="remark!=null">
+                remark=#{remark},
+            </if>
+            <if test="updateTime!=null">
+                updateTime=#{updateTime},
+            </if>
+            <if test="viewCount!=null">
+                viewCount=#{viewCount},
+            </if>
+            <if test="viewCountDay!=null">
+                viewCountDay=#{viewCountDay},
+            </if>
+            <if test="viewCountWeek!=null">
+                viewCountWeek=#{viewCountWeek},
+            </if>
+            <if test="viewCountMonth!=null">
+                viewCountMonth=#{viewCountMonth},
+            </if>
+            <if test="viewCountYear!=null">
+                viewCountYear=#{viewCountYear},
+            </if>
+        </set>
+        WHERE videoId = #{videoId}
+    </update>
+
+
     <!-- 根据主键查询信息 -->
     <select id="selectById" resultMap="VideoMap">
         SELECT mi.biaoti,
@@ -75,16 +237,15 @@
         WHERE videoId = #{videoId}
     </select>
 
-    <!-- 根据主键查询信息 -->
+    <!-- 根据媒体信息主键查询信息 -->
     <select id="selectByMediaId" resultMap="VideoMap">
-        SELECT mi.biaoti,
-               vi.*
-        FROM video vi,
-             media mi
-        WHERE vi.mediaId = mi.mediaId
-          AND vi.mediaId = #{mediaId}
+        SELECT *
+        FROM video
+        WHERE mediaId in
+        <foreach collection="mediaIdArr" index="index" item="item" close=")" open="(" separator=",">
+            #{item}
+        </foreach>
         ORDER BY sort DESC
-        limit 0, 1
     </select>
 
     <!-- 根据媒体主键数组，批量删除视频信息 -->
@@ -99,11 +260,89 @@
     <update id="batchUpdate">
         UPDATE video
         <set>
-            <if test="status!=null">status=#{status},</if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
         </set>
         WHERE mediaId IN
         <foreach collection="mediaIdArr" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
+
+    <!-- 更新统一封面 -->
+    <update id="updateImage">
+        UPDATE video
+        SET image = #{image}
+        WHERE mediaId = #{mediaId}
+    </update>
+
+    <!-- 更新统一权限值 -->
+    <update id="updatePower">
+        UPDATE video
+        SET power = #{power}
+        WHERE mediaId = #{mediaId}
+    </update>
+
+    <!-- 批量更新视频状态 -->
+    <update id="batchUpdateStatus">
+        UPDATE video
+        SET status = #{status}
+        WHERE videoId IN
+        <foreach collection="videoIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <!-- 根据媒体主键和第几集，查询是否存在既存数据 -->
+    <select id="selectByMediaIdAndNum" resultMap="VideoMap">
+        SELECT *
+        FROM video
+        WHERE mediaId = #{mediaId}
+          AND num = #{num}
+    </select>
+
+    <!-- 批量删除 -->
+    <delete id="batchDelete">
+        DELETE FROM video WHERE videoId IN
+        <foreach collection="videoIdArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 根据主键查询信息（前台播放页面专用） -->
+    <select id="selectByIdWithPortal" resultMap="VideoMap">
+        SELECT mi.biaoti,
+               vi.videoId,
+               vi.mediaId,
+               vi.num,
+               vi.title,
+               vi.power,
+               vi.viewCount,
+               vi.viewCountDay,
+               vi.viewCountWeek,
+               vi.viewCountMonth,
+               vi.viewCountYear
+        FROM video vi,
+             media mi
+        WHERE vi.mediaId = mi.mediaId
+          AND vi.videoId = #{videoId}
+    </select>
+
+    <!-- 根据媒体信息主键，查询该视频下的所有播放集数（正常的） -->
+    <select id="listByMediaId" resultMap="VideoMap">
+        SELECT videoId,
+               mediaId,
+               num,
+               title,
+               image,
+               viewCount,
+               remark,
+               updateTime
+        FROM video
+        WHERE mediaId = #{mediaId}
+          AND status = '1'
+        ORDER BY sort,
+                 videoId
+    </select>
 </mapper>

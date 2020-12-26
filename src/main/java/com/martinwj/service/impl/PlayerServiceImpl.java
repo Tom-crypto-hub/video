@@ -60,16 +60,27 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     /**
-     * 保存
+     * 批量保存播放器
+     * @param playerList
+     */
+    public void batchSave(List<Player> playerList) {
+        for (Player player : playerList) {
+            if (StringUtils.isEmpty(player.getId())) {
+                // 插入
+                iPlayerDAO.addList(player);
+            } else {
+                // 更新
+               iPlayerDAO.updateList(player);
+            }
+        }
+    }
+
+    /**
+     * 保存播放器
      * @param player
-     * @return
      */
     public int save(Player player) {
-        if(StringUtils.isEmpty(player.getId())){
-            return addList(player);
-        } else {
-            return updateList(player);
-        }
+        return iPlayerDAO.updateList(player);
     }
 
     @Override

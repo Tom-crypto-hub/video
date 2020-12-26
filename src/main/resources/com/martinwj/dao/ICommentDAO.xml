@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.comment.ICommentDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果接口与实体属性的映射关系 -->
+    <resultMap id="CommentMap" type="com.martinwj.entity.Comment">
+        <result column="id" property="id"/>
+        <result column="videoId" property="videoId"/>
+        <result column="userId" property="userId"/>
+        <result column="loginName" property="loginName"/>
+        <result column="content" property="content"/>
+        <result column="updateTime" property="updateTime"/>
+
+        <result column="avatar" property="avatar"/>
+    </resultMap>
+
+    <!-- 插入新的接口 -->
+    <insert id="insert">
+        INSERT INTO comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="videoId!=null and videoId!=''">
+                videoId,
+            </if>
+            <if test="userId!=null and userId!=''">
+                userId,
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                loginName,
+            </if>
+            <if test="content!=null and content!=''">
+                content,
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                updateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="videoId!=null and videoId!=''">
+                #{videoId},
+            </if>
+            <if test="userId!=null and userId!=''">
+                #{userId},
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                #{loginName},
+            </if>
+            <if test="content!=null and content!=''">
+                #{content},
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 获取某个视频的评论列表 -->
+    <select id="listByVideoId" resultMap="CommentMap">
+        SELECT ci.id,
+               ci.videoId,
+               ci.userId,
+               ci.loginName,
+               ci.content,
+               ci.updateTime AS updateTime,
+               upi.avatar
+        FROM comment ci,
+             userProfile upi
+        WHERE ci.userId = upi.userId
+          AND ci.videoId = #{videoId}
+        ORDER BY updateTime DESC
+    </select>
+
+    <!-- 获取某个视频的评论条数 -->
+    <select id="countByVideoId" resultType="int">
+        SELECT COUNT(*)
+        FROM comment
+        WHERE videoId = #{videoId}
+    </select>
+</mapper>

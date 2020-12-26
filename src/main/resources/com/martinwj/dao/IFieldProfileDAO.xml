@@ -7,10 +7,10 @@
     <cache type="com.martinwj.jedis.RedisCache"/>
     <!-- 建立sql查询结果字段与实体属性的映射关系 -->
     <resultMap id="FieldProfileMap" type="com.martinwj.entity.FieldProfile">
-        <result column="id" property="id" />
-        <result column="fieldId" property="fieldId" />
-        <result column="name" property="name" />
-        <result column="sort" property="sort" />
+        <result column="id" property="id"/>
+        <result column="fieldId" property="fieldId"/>
+        <result column="name" property="name"/>
+        <result column="sort" property="sort"/>
     </resultMap>
 
     <!-- 根据字段主键查询字段详情列表 -->
@@ -25,14 +25,26 @@
     <insert id="insert">
         INSERT INTO fieldprofile
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="sort!=null and sort!=''">sort,</if>
-            <if test="name!=null and name!=''">name,</if>
-            <if test="fieldId!=null and fieldId!=''">fieldId,</if>
+            <if test="sort!=null and sort!=''">
+                sort,
+            </if>
+            <if test="name!=null and name!=''">
+                name,
+            </if>
+            <if test="fieldId!=null and fieldId!=''">
+                fieldId,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="sort!=null and sort!=''">#{sort},</if>
-            <if test="name!=null and name!=''">#{name},</if>
-            <if test="fieldId!=null and fieldId!=''">#{fieldId},</if>
+            <if test="sort!=null and sort!=''">
+                #{sort},
+            </if>
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="fieldId!=null and fieldId!=''">
+                #{fieldId},
+            </if>
         </trim>
     </insert>
 
@@ -40,8 +52,12 @@
     <update id="update">
         UPDATE fieldprofile
         <set>
-            <if test="sort!=null">sort=#{sort},</if>
-            <if test="name!=null">name=#{name},</if>
+            <if test="sort!=null">
+                sort=#{sort},
+            </if>
+            <if test="name!=null">
+                name=#{name},
+            </if>
         </set>
         WHERE id = #{id}
     </update>
@@ -54,4 +70,20 @@
         </foreach>
     </delete>
 
+    <!-- 根据主键，查询对应的文本 -->
+    <select id="selectById" resultType="String">
+        SELECT name
+        FROM fieldProfile
+        WHERE id = #{id}
+    </select>
+
+    <!-- 根据主键数组，查询对应的文本list -->
+    <select id="selectByIdArr" resultType="String">
+        SELECT name
+        FROM fieldprofile
+        WHERE id IN
+        <foreach collection="idArr" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

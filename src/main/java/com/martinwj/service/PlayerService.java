@@ -35,7 +35,7 @@ public interface PlayerService {
     /**
      * 保存
      */
-    int save(Player player);
+    void batchSave(List<Player> player);
 
     /**
      * 根据主键查询频道信息
@@ -44,4 +44,10 @@ public interface PlayerService {
      * @return
      */
     public Player selectById(String id);
+
+    /**
+     * 保存播放器
+     * @param player
+     */
+    public int save(Player player);
 }

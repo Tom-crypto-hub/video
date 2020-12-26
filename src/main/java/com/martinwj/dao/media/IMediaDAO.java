@@ -81,4 +81,33 @@ public interface IMediaDAO {
      * @return
      */
     int update(@Param("alterSql") String alterSql);
+
+    /**
+     * 更新对应的媒体的时间、状态等
+     * @param media
+     * @return
+     */
+    int updateMedia(Media media);
+
+    /**
+     * 根据主键，获取媒体信息
+     * @param mediaId 媒体信息的主键
+     * @return
+     */
+    Map<String, Object> selectByMediaId(@Param("mediaId") String mediaId);
+
+    /**
+     * 根据关键词，查询符合条件的媒体信息，获取其主键（这里只取10条记录）
+     * @param keyWord 关键词
+     * @return
+     */
+    List<String> searchIdByKeyWord(@Param("keyWord") String keyWord);
+
+    /**
+     * 根据筛选结果，查询媒体列表
+     * @param selectSql
+     * @return
+     */
+    List<Map<String, Object>> listByFilter(@Param("selectSql") String selectSql);
+
 }

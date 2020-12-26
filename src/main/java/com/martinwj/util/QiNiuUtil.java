@@ -5,6 +5,7 @@ import com.martinwj.entity.Qny;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
+import com.qiniu.storage.BucketManager;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * @ClassName: QiNiuUtil
@@ -191,9 +193,36 @@ public class QiNiuUtil {
         }
     }
 
+    /**
+     *
+     * @param qny
+     * @param fileName 文件名称
+     */
+    public static void deleteFile(Qny qny, String fileName) {
+        Auth auth = getAuth(qny);
+        //构造一个带指定Zone对象的配置类
+		Configuration cfg = new Configuration(Zone.zone0());
+        //...其他参数参考类注释
+        BucketManager bucketManager = new BucketManager(auth, cfg);
+        try {
+            bucketManager.delete(qny.getBucket(), fileName);
+        } catch (QiniuException ex) {
+            // 如果遇到异常，说明删除失败
+            System.err.println(ex.code());
+            System.err.println(ex.response.toString());
+        }
+    }
+
     public static Auth getAuth(Qny qny){
         Auth auth = Auth.create(qny.getAk(), qny.getSk());
         return auth;
+    }
+
+    public static void main(String[] args) {
+        String str = "http://he.yinyuetai.com/uploads/videos/common/8C90013BA0540DDB025858AC820E5472.mp4";
+        int i = str.lastIndexOf("/");
+        System.out.println(str.substring(i+1));
+
     }
 }
 

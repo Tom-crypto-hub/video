@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.java2d.pipe.SpanIterator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -119,10 +120,10 @@ public class MediaAction {
      */
     @RequestMapping("edit.action")
     public String edit(ModelMap map,
+                       @RequestParam(required=false, value="typeId") String typeId,
                        @RequestParam(required=false, value="mediaId") String mediaId) {
 
         Media media = mediaService.selectById(mediaId);
-        String typeId = "";
         if (media!=null) {
             map.put("mediaInfo", media);
 
@@ -147,8 +148,8 @@ public class MediaAction {
         // 查询该分类下的字段列表
         List<Field> fieldList = fieldService.listByTypeId(typeId);
         map.put("fieldInfoList", fieldList);
-
         System.out.println(typeId);
+
         map.put("typeId", typeId);
         map.put("mediaId", mediaId);
 
@@ -213,7 +214,7 @@ public class MediaAction {
             // 分类
             param.put("typeId", typeId);
             // 主键
-            param.put("mediaId", request.getParameter("mediaId"));
+            param.put("mediaId", request.getParameter("media_id"));
             // 海报
             param.put("haibao", request.getParameter("haibao"));
             // 大封面
@@ -246,9 +247,7 @@ public class MediaAction {
             param.put("jianjie", jianjie);
             // 标签
             String tag = request.getParameter("tag");
-            String tagInput = request.getParameter("tag-input");
             System.out.println("tag: " + tag);
-            System.out.println("tagInput: " + tagInput);
             if (!StringUtils.isEmpty(tag)) {
                 tag = tag.replace("'", "");
             }

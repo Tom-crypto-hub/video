@@ -2,8 +2,11 @@ package com.martinwj.controller.video;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.martinwj.constant.ErrorMsg;
 import com.martinwj.entity.Player;
+import com.martinwj.entity.Result;
 import com.martinwj.entity.Video;
+import com.martinwj.exception.SysException;
 import com.martinwj.service.MediaService;
 import com.martinwj.service.PlayerService;
 import com.martinwj.service.VideoService;
@@ -14,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -76,10 +80,6 @@ public class VideoAction {
             Video video = videoService.selectById(videoId);
             map.put("videoInfo", video);
         }
-//        else if (!StringUtils.isEmpty(mediaId)) {
-//            Video video = videoService.selectByMediaId(mediaId);
-//            map.put("videoInfo", video);
-//        }
 
         // 根据媒体信息主键，查询该视频名称
         String biaoti = mediaService.selectBiaotiById(mediaId);
@@ -108,6 +108,107 @@ public class VideoAction {
         return "admin/video_info/video";
     }
 
+    /**
+     * 视频播放地址保存
+     * @return
+     */
+    @RequestMapping("save.json")
+    @ResponseBody
+    public Result save(Video video) {
 
+        videoService.save(video);
+        return Result.success();
+    }
+
+    /**
+     * 更新统一封面
+     * @param mediaId 媒体信息主键
+     * @param imgUrl 图片地址
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("update_image.json")
+    @ResponseBody
+    public Result updateImage(
+            @RequestParam(value="mediaId") String mediaId,
+            @RequestParam(value="imgUrl") String imgUrl) throws SysException {
+
+        if (StringUtils.isEmpty(mediaId) || StringUtils.isEmpty(imgUrl)) {
+            throw new SysException(ErrorMsg.ERROR_600002);
+        }
+        videoService.updateImage(mediaId, imgUrl);
+
+        return Result.success();
+    }
+
+    /**
+     * 更新统一权限值
+     * @param mediaId 媒体信息主键
+     * @param power 权限值
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("update_power.json")
+    @ResponseBody
+    public Result updatePower(
+            @RequestParam(value="mediaId") String mediaId,
+            @RequestParam(value="power") String power) throws SysException {
+
+        if (StringUtils.isEmpty(power) || StringUtils.isEmpty(power)) {
+            throw new SysException(ErrorMsg.ERROR_600006);
+        }
+        videoService.updatePower(mediaId, power);
+
+        return Result.success();
+    }
+
+    /**
+     * 批量更新排序
+     * @param videoIdArr 主键数组
+     * @param sortArr 排序数组
+     */
+    @RequestMapping("update_sort.json")
+    @ResponseBody
+    public Result updateSort(
+            @RequestParam(value="videoIdArr") String[] videoIdArr,
+            @RequestParam(value="sortArr") String[] sortArr) {
+
+        videoService.updateSort(videoIdArr, sortArr);
+
+        return Result.success();
+    }
+
+    /**
+     * 批量更新视频状态
+     * @param videoIdArr 主键数组
+     * @param status 状态
+     * @return
+     */
+    @RequestMapping("batch_update_status.json")
+    @ResponseBody
+    public Result batchUpdateStatus(
+            @RequestParam(value="videoIdArr") String[] videoIdArr,
+            @RequestParam(value="status") String status) {
+
+        videoService.batchUpdateStatus(videoIdArr, status);
+
+        return Result.success();
+    }
+
+    /**
+     * 批量删除视频
+     * @param videoIdArr 主键数组
+     * @return
+     * @throws SysException
+     */
+    @RequestMapping("batch_delete.json")
+    @ResponseBody
+    public Result batchDelete(
+            @RequestParam(value="videoIdArr") String[] videoIdArr) throws SysException {
+
+        videoService.batchDelete(videoIdArr);
+
+        return Result.success();
+    }
 
 }

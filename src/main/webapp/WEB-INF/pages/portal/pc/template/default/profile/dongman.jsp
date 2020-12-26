@@ -51,13 +51,13 @@
 						<h1 id="biaoti">${mediaInfo.biaoti}</h1>
 
 						<ul class="equal-3" style="margin-top: 10px;">
-							<li>地区：<a href="${pageContext.request.contextPath}/portal/list.action?typeId=1&name=地区&value=${mediaInfo.dongman_diqu}" target="_blank">${mediaInfo.dongman_diqu}</a></li>
+							<li>地区：<a href="${pageContext.request.contextPath}/portal/list.action?typeId=1&name=地区&value=${mediaInfo.dongmanDiqu}" target="_blank">${mediaInfo.dongmanDiqu}</a></li>
 							<li>年份：<a href="${pageContext.request.contextPath}/portal/list.action?typeId=1&name=年份&value=${mediaInfo.nianfen}" target="_blank">${mediaInfo.nianfen}</a></li>
 							<li>状态：<a href="${pageContext.request.contextPath}/portal/list.action?typeId=1&name=状态&value=${mediaInfo.zhuangtai}" target="_blank">${mediaInfo.zhuangtai}</a></li>
 							<li>风格：
-								<c:forEach items="${mediaInfo.dongman_fengge}" var="value" varStatus="status">
+								<c:forEach items="${mediaInfo.dongmanFengge}" var="value" varStatus="status">
 									<c:choose>
-										<c:when test="${(status.index+1)==fn:length(mediaInfo.dongman_fengge)}">
+										<c:when test="${(status.index+1)==fn:length(mediaInfo.dongmanFengge)}">
 											<a href="${pageContext.request.contextPath}/portal/list.action?typeId=1&name=风格&value=${value}" target="_blank" class="tag-link-item">${value}</a>
 										</c:when>
 										<c:otherwise>
@@ -196,7 +196,7 @@
 				for (var i=0; i<list.length; i++) {
 					html += '<li class="v-li drama">';
 					html += '<a href="play.action?videoId='+list[i].videoInfo.videoId+'" target="_blank" class="drama-item">'+(i+1)+' '+list[i].biaoti+'</a>';
-					html += '<span class="month_rank_count">' + list[i].view_count + '次播放</span>';
+					html += '<span class="month_rank_count">' + list[i].viewCount + '次播放</span>';
 					html += '</li>';
 				}
 				

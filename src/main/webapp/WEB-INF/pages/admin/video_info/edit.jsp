@@ -202,7 +202,7 @@
 	// 上传封面
 	javaex.upload({
 		type : "image",
-		url : "${pageContext.request.contextPath}/qiniu/upload_image.json?type=fengmian",	// 请求路径
+		url : "${pageContext.request.contextPath}/qny/upload_image.json?type=fengmian",	// 请求路径
 		id : "upload",	// <input type="file" />的id
 		param : "file",			// 参数名称，SSM中与MultipartFile的参数名保持一致
 		dataType : "url",		// 返回的数据类型：base64 或 url
@@ -247,7 +247,7 @@
 		});
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/qiniu_info/upload_image_by_yuancheng.json",
+			url : "${pageContext.request.contextPath}/qny/upload_image_by_yuancheng.json",
 			type : "POST",
 			dataType : "json",
 			data : {

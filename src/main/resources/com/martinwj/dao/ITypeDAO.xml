@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.martinwj.dao.type.ITypeDAO">
-
     <!-- 使用Redis二级缓存 -->
     <cache type="com.martinwj.jedis.RedisCache"/>
 
@@ -22,5 +21,12 @@
         SELECT *
         FROM type
         ORDER BY sort
+    </select>
+
+    <!-- 根据主键查询分类信息 -->
+    <select id="selectById" resultMap="TypeMap">
+        SELECT *
+        FROM type
+        WHERE id = #{id}
     </select>
 </mapper>

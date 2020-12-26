@@ -26,7 +26,7 @@ public class Video implements Serializable {
     private String sort;		// 排序用
     private String status;		// 状态，是否禁用。1代表正常，0代表禁用
     private String remark;		// 视频简介
-    private String power;		// 视频播放权限值
+    private Integer power;		// 视频播放权限值
     private String updateTime;	// 发布时间
     private String viewCount;		// 该视频播放总量
     private String viewCountDay;	// 日播放量

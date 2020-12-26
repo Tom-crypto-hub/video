@@ -266,6 +266,15 @@
 			// 批量移动到分类
 			// 获取目标用户组的id
 			var typeId = $("#type_id2").val();
+
+			// 判断选择的分类是否是全部，是全部则不能移动
+			if (typeId == 0) {
+				javaex.optTip({
+					content : "请选择移动后的分类类型（不能是全部）",
+					type : "error"
+				});
+				return;
+			}
 			
 			javaex.optTip({
 				content : "数据提交中，请稍候...",

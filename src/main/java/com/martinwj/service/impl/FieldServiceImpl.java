@@ -39,6 +39,7 @@ public class FieldServiceImpl implements FieldService {
 
     /**
      * 查询分类下的字段列表
+     *
      * @param typeId 分类信息主键
      * @return
      */
@@ -49,6 +50,7 @@ public class FieldServiceImpl implements FieldService {
 
     /**
      * 保存字段
+     *
      * @param fieldList
      * @throws SysException
      */
@@ -59,9 +61,9 @@ public class FieldServiceImpl implements FieldService {
                 // 1.0 校验字段变量名是否重复或者是否已被媒体表内置字段占用
                 String varName = field.getVarName();
                 int count = iFieldDAO.countByVarName(varName, null);
-                if (count>0) {
+                if (count > 0) {
                     // 重复
-                    throw new SysException(ErrorMsg.ERROR_200001+"："+varName);
+                    throw new SysException(ErrorMsg.ERROR_200001 + "：" + varName);
                 }
 
                 // 2.0 插入
@@ -71,9 +73,9 @@ public class FieldServiceImpl implements FieldService {
                 // 1.0 校验字段变量名是否重复（排除自己）
                 String varName = field.getVarName();
                 int count = iFieldDAO.countByVarName(varName, field.getId());
-                if (count>0) {
+                if (count > 0) {
                     // 重复
-                    throw new SysException(ErrorMsg.ERROR_200001+"："+varName);
+                    throw new SysException(ErrorMsg.ERROR_200001 + "：" + varName);
                 }
 
                 // 2.0 更新
@@ -89,10 +91,10 @@ public class FieldServiceImpl implements FieldService {
                 StringBuffer sb = new StringBuffer();
                 sb.append("	<div class='unit'>");
                 sb.append("		<div class='left'>");
-                sb.append("			<p class='subtitle'>"+field.getName()+"</p>");
+                sb.append("			<p class='subtitle'>" + field.getName() + "</p>");
                 sb.append("		</div>");
                 sb.append("		<div class='right'>");
-                sb.append("		<input type='text' class='text' name='"+field.getVarName()+"' value='' />");
+                sb.append("		<input type='text' class='text' name='" + field.getVarName() + "' value='' />");
                 sb.append("		</div>");
                 // 清浮动
                 sb.append("		<span class='clearfix'></span>");
@@ -106,10 +108,10 @@ public class FieldServiceImpl implements FieldService {
                 StringBuffer sb = new StringBuffer();
                 sb.append("	<div class='unit'>");
                 sb.append("		<div class='left'>");
-                sb.append("			<p class='subtitle'>"+field.getName()+"</p>");
+                sb.append("			<p class='subtitle'>" + field.getName() + "</p>");
                 sb.append("		</div>");
                 sb.append("		<div class='right'>");
-                sb.append("			<textarea class='desc' name='"+field.getVarName()+"'></textarea>");
+                sb.append("			<textarea class='desc' name='" + field.getVarName() + "'></textarea>");
                 sb.append("		</div>");
                 // 清浮动
                 sb.append("		<span class='clearfix'></span>");
@@ -123,10 +125,10 @@ public class FieldServiceImpl implements FieldService {
                 StringBuffer sb = new StringBuffer();
                 sb.append("	<div class='unit'>");
                 sb.append("		<div class='left'>");
-                sb.append("			<p class='subtitle'>"+field.getName()+"</p>");
+                sb.append("			<p class='subtitle'>" + field.getName() + "</p>");
                 sb.append("		</div>");
                 sb.append("		<div class='right'>");
-                sb.append("		<input type='text' class='text' name='"+field.getVarName()+"' data-type=\"空|正整数\" error-msg=\"正整数格式错误\" value='' />");
+                sb.append("		<input type='text' class='text' name='" + field.getVarName() + "' data-type=\"空|正整数\" error-msg=\"正整数格式错误\" value='' />");
                 sb.append("		</div>");
                 // 清浮动
                 sb.append("		<span class='clearfix'></span>");
@@ -142,12 +144,12 @@ public class FieldServiceImpl implements FieldService {
                 StringBuffer sb = new StringBuffer();
                 sb.append("	<div class='unit'>");
                 sb.append("		<div class='left'>");
-                sb.append("			<p class='subtitle'>"+field.getName()+"</p>");
+                sb.append("			<p class='subtitle'>" + field.getName() + "</p>");
                 sb.append("		</div>");
                 sb.append("		<div class='right'>");
                 sb.append("			<ul class='equal-8'>");
-                for(FieldProfile fieldProfile : fieldProfileList) {
-                    sb.append("			    <li><input type='radio' class='fill' name='" + field.getVarName() + "' value='"+ fieldProfile.getId() +"' checked />" + fieldProfile.getName() + "</li>");
+                for (FieldProfile fieldProfile : fieldProfileList) {
+                    sb.append("			    <li><input type='radio' class='fill' name='" + field.getVarName() + "' value='" + fieldProfile.getId() + "'/>" + fieldProfile.getName() + "</li>");
                 }
                 sb.append("			</ul>");
                 sb.append("		</div>");
@@ -165,12 +167,12 @@ public class FieldServiceImpl implements FieldService {
                 StringBuffer sb = new StringBuffer();
                 sb.append("	<div class='unit'>");
                 sb.append("		<div class='left'>");
-                sb.append("			<p class='subtitle'>"+field.getName()+"</p>");
+                sb.append("			<p class='subtitle'>" + field.getName() + "</p>");
                 sb.append("		</div>");
                 sb.append("		<div class='right'>");
                 sb.append("			<ul class='equal-8'>");
-                for(FieldProfile fieldProfile : fieldProfileList) {
-                    sb.append("			    <li><input type='checkbox' class='fill' name='" + field.getVarName() + "' value='"+ fieldProfile.getId() +"' checked />" + fieldProfile.getName() + "</li>");
+                for (FieldProfile fieldProfile : fieldProfileList) {
+                    sb.append("			    <li><input type='checkbox' class='fill' name='" + field.getVarName() + "' value='" + fieldProfile.getId() + "' />" + fieldProfile.getName() + "</li>");
                 }
                 sb.append("			</ul>");
                 sb.append("		</div>");
@@ -188,7 +190,7 @@ public class FieldServiceImpl implements FieldService {
         // 数据库名称
         String table_database = "video";
         String target_table_name = "api";
-        for (int i=0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             String varName = list.get(i).getVarName();
 
             StringBuffer sql = new StringBuffer();
@@ -202,4 +204,53 @@ public class FieldServiceImpl implements FieldService {
         }
     }
 
+    /**
+     * 获取分类筛选字段的信息2
+     *
+     * @param typeId     分类信息的主键
+     * @param fieldName  字段名
+     * @param fieldValue 字段选项名
+     * @return
+     */
+    public List<Field> getListField(String typeId, String fieldName, String fieldValue) {
+        // 1.0 查询该分类下的所有可筛选字段
+        List<Field> fieldList = iFieldDAO.listCategoryField(typeId);
+        if (fieldList != null && !fieldList.isEmpty()) {
+            for (Field field : fieldList) {
+                // 2.0 获取每个字段下的具体选项
+                List<FieldProfile> fieldProfileList = iFieldProfileDAO.listByFieldId(field.getId());
+                if (fieldProfileList == null || fieldProfileList.size() == 0) {
+                    return null;
+                }
+                field.setFieldProfileList(fieldProfileList);
+
+                // 3.0 判断参数是否合法
+                if (StringUtils.isEmpty(fieldName) && StringUtils.isEmpty(fieldValue)) {
+
+                } else {
+                    if (StringUtils.isEmpty(fieldName)) {
+                        return null;
+                    }
+                    if (StringUtils.isEmpty(fieldValue)) {
+                        return null;
+                    }
+
+                    // 字段一致时，判断是否存在参数选项
+                    if (field.getName().equals(fieldName)) {
+                        boolean flag = false;
+                        for (FieldProfile fieldProfileInfo : fieldProfileList) {
+                            if (fieldProfileInfo.getName().equals(fieldValue)) {
+                                flag = true;
+                            }
+                        }
+                        if (!flag) {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
+        return fieldList;
+    }
 }

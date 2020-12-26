@@ -27,7 +27,7 @@
 			<div class="block">
 				<!--页面有多个表格时，可以用于标识表格-->
 				<h2>${biaoti}</h2>
-				<a href="${pageContext.request.contextPath}/media_info/list_normal.action">
+				<a href="${pageContext.request.contextPath}/media/list_normal.action">
 					<button class="button wathet" style="position: absolute;right: 20px;top: 16px;"><span class="icon-arrow_back"></span> 返回</button>
 				</a>
 				
@@ -83,12 +83,12 @@
 											<td>${entity.title}</td>
 											<td>${entity.viewCount}</td>
 											<td>
-												<c:choose>
-													<c:when test="${entity.status=='1'}">
-														<font color="green">正常</font>
-													</c:when>
-													<c:otherwise>
-														<font color="red">禁用</font>
+															<c:choose>
+															<c:when test="${entity.status=='1'}">
+															<font color="green">正常</font>
+															</c:when>
+															<c:otherwise>
+															<font color="red">禁用</font>
 													</c:otherwise>
 												</c:choose>
 											</td>

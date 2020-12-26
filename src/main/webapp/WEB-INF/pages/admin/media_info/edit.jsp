@@ -31,7 +31,7 @@
 				<div class="main">
 					<!--表单-->
 					<form id="form">
-						<input type="hidden" name="type_id" value="${typeId}" />
+						<input type="hidden" id="type_id" name="type_id" value="${typeId}" />
 						<input type="hidden" name="media_id" value="${mediaId}" />
 						
 						<!--上传海报-->
@@ -521,7 +521,7 @@
 						// 建议延迟加载
 						setTimeout(function() {
 							// 跳转页面
-							window.location.href = "list_normal.action";
+							window.location.href = "list_normal.action?typeId=" + ${typeId};
 						}, 2000);
 					} else {
 						javaex.optTip({

@@ -129,4 +129,26 @@
         </set>
         WHERE id = #{id}
     </update>
+
+
+    <!-- 根据字段变量名，查询字段信息 -->
+    <select id="selectByVarName" resultMap="FieldMap">
+        SELECT inputType
+        FROM field
+        WHERE varName = #{varName}
+    </select>
+
+    <!-- 查询分类筛选字段列表 -->
+    <select id="listCategoryField" resultMap="FieldMap">
+        SELECT fi.id,
+               fi.name,
+               fi.varName,
+               fi.inputType
+        FROM field fi,
+             typeField tf
+        WHERE fi.id = tf.fieldId
+          AND tf.isScreen = '1'
+          AND tf.typeId = #{typeId}
+        ORDER BY tf.sort
+    </select>
 </mapper>

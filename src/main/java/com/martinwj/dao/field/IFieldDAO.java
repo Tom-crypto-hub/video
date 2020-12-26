@@ -51,4 +51,18 @@ public interface IFieldDAO {
      * 插入新的字段
      */
     int insert(Field field);
+
+    /**
+     * 根据字段变量名，查询字段信息
+     * @param varName 字段变量名
+     * @return
+     */
+    Field selectByVarName(String varName);
+
+    /**
+     * 根据分类id，查询该分类的单选框字段
+     * @param typeId 分类信息的id
+     * @return
+     */
+    List<Field> listCategoryField(String typeId);
 }

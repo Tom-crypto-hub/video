@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,16 +61,32 @@ public class PlayerAction {
     public Result save(@RequestParam(value = "idArr") String[] idArr,
                        @RequestParam(value = "sortArr") String[] sortArr,
                        @RequestParam(value = "nameArr") String[] nameArr){
-        Player player = new Player();
-        for(int i=0;i<idArr.length;i++){
 
-            player.setId(idArr[i]);
-            player.setSort(sortArr[i]);
-            player.setName(nameArr[i]);
-            player.setContent("<iframe src=\"http://jx.yylep.com/?url={url}\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen=\"true\" allowtransparency=\"true\" style=\"overflow: visible;border: 0;\"></iframe>");
-            playerService.save(player);
+        List<Player> playerList = new ArrayList<Player>();
+
+        // 判断是否已有既存数据
+        if (idArr.length==0) {
+            // 全是新增
+            // 遍历sortArr数组
+            for (int i=0; i<sortArr.length; i++) {
+                Player player = new Player();
+                player.setSort(sortArr[i]);
+                player.setName(nameArr[i]);
+
+                playerList.add(player);
+            }
+        } else {
+            // 遍历idArr数组
+            for (int i=0; i<idArr.length; i++) {
+                Player player = new Player();
+                player.setId(idArr[i]);
+                player.setSort(sortArr[i]);
+                player.setName(nameArr[i]);
+
+                playerList.add(player);
+            }
         }
-
+        playerService.batchSave(playerList);
         return Result.success();
     }
 
