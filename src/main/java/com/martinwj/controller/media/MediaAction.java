@@ -114,16 +114,15 @@ public class MediaAction {
     /**
      * 媒体信息编辑
      * @param map
-     * @param typeId 分类主键
      * @param mediaId 媒体主键
      * @return
      */
     @RequestMapping("edit.action")
     public String edit(ModelMap map,
-                       @RequestParam(required=false, value="typeId") String typeId,
                        @RequestParam(required=false, value="mediaId") String mediaId) {
 
         Media media = mediaService.selectById(mediaId);
+        String typeId = "";
         if (media!=null) {
             map.put("mediaInfo", media);
 
@@ -149,6 +148,7 @@ public class MediaAction {
         List<Field> fieldList = fieldService.listByTypeId(typeId);
         map.put("fieldInfoList", fieldList);
 
+        System.out.println(typeId);
         map.put("typeId", typeId);
         map.put("mediaId", mediaId);
 
