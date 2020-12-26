@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.martinwj.dao.user.user_info.IUserInfoDAO">
+    <!-- 使用Redis二级缓存 -->
+    <cache type="com.martinwj.jedis.RedisCache"/>
+
+    <!-- 建立sql查询结果字段与实体属性的映射关系 -->
+    <resultMap id="UserMap" type="com.martinwj.entity.User">
+        <result column="id" property="id"/>
+        <result column="loginName" property="loginName"/>
+        <result column="password" property="passWord"/>
+        <result column="email" property="email"/>
+        <result column="registerTime" property="registerTime"/>
+        <result column="registerIp" property="registerIp"/>
+        <result column="lastLoginTime" property="lastLoginTime"/>
+        <result column="lastLoginIp" property="lastLoginIp"/>
+        <result column="status" property="status"/>
+        <result column="groupName" property="groupName"/>
+        <result column="avatar" property="avatar"/>
+    </resultMap>
+    <!--查询被封禁用户列表-->
+    <select id="listBan" resultMap="UserMap">
+        select `user`.id,userprofile.avatar avatar,`user`.loginName,`user`.email,`group`.`name` groupName,`user`.registerTime,`group`.id
+        from `user`
+				join userprofile on `user`.id = userprofile.userId
+				join `group` on userprofile.groupId = `group`.id
+				where `status` = 2
+				order by `user`.id
+    </select>
+    <!--查询正常用户列表-->
+    <select id="listNormal" resultMap="UserMap">
+        select `user`.id,userprofile.avatar,`user`.loginName,`user`.email,`group`.`name` groupName,`user`.registerTime
+        from `user`
+				join userprofile on `user`.id = userprofile.userId
+				join `group` on userprofile.groupId = `group`.id
+				where `status` = 1
+				order by `user`.id
+    </select>
+    <!--查询未激活用户列表-->
+    <select id="listNotActive" resultMap="UserMap">
+        select `user`.id,userprofile.avatar,`user`.loginName,`user`.email,`group`.`name` groupName,`user`.registerTime
+        from `user`
+				join userprofile on `user`.id = userprofile.userId
+				join `group` on userprofile.groupId = `group`.id
+				where `status` = 0
+				order by `user`.id
+    </select>
+    <!--批量激活用户-->
+    <update id="update" parameterType="string">
+        update `user`
+        set status=#{status}
+        where id in
+        <foreach  item="id" open="(" close=")" separator="," collection="idArr">
+            #{id}
+        </foreach>
+    </update>
+    <!--批量更改用户组-->
+
+    <!--获取到用户组名-->
+
+</mapper>

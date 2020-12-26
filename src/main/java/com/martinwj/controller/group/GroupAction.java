@@ -65,7 +65,7 @@ public class GroupAction {
      */
     @RequestMapping("delete.json")
     @ResponseBody
-    public Result deleteList(ModelMap map,@RequestParam(value = "idArr")String[] idArr){
+    public Result deleteList(@RequestParam(value = "idArr")String[] idArr){
         groupService.deleteById(idArr);
         return Result.success();
     }

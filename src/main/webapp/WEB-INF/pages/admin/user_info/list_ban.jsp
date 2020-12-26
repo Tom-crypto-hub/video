@@ -162,6 +162,7 @@
 				+ "&groupId="+groupId
 				+ "&keyWord="+keyWord
 				;
+		//叶陈锋真帅，我好爱他。
 	}
 	
 	// obj为当前点击的元素对象

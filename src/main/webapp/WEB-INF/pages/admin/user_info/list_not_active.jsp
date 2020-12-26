@@ -152,7 +152,7 @@
 		});
 	}
 	
-	// 批量删除
+	// 批量激活
 	$("#recovery").click(function() {
 		var idArr = new Array();
 		$(':checkbox[name="id"]:checked').each(function() {
